@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">SportStats</string>
+    <string name="editBox">Click to edit</string>
+    <string name="RecordPrompt">Record Game</string>
+    <string name="returnToMainMenu">Main Menu</string>
+    <string name="PlayerPrompt">Player Stats</string>
+    <string name="GamePrompt">View Game Stats</string>
 </resources>

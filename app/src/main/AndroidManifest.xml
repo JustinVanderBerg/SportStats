@@ -16,6 +16,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".RecordGame"
+            android:parentActivityName=".LoadScreen" />
+        <activity
+            android:name=".ViewPlayer"
+            android:parentActivityName=".LoadScreen" />
+        <activity
+            android:name=".ViewGame"
+            android:parentActivityName=".LoadScreen"></activity>
     </application>
 
 </manifest>
