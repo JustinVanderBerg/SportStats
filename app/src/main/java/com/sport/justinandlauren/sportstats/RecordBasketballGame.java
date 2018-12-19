@@ -5,12 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-public class RecordGame extends AppCompatActivity {
+public class RecordBasketballGame extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_record_game);
+        setContentView(R.layout.activity_record_basketball_game);
         setTitle("Record Game");
     }
 
