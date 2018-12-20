@@ -1,4 +1,5 @@
 package com.sport.justinandlauren.sportstats;
+
 import java.util.Arrays;
 
 /*
@@ -10,7 +11,6 @@ import java.util.Arrays;
 
 
 /**
- *
  * @author justin
  */
 public abstract class AbstractGame {
@@ -20,8 +20,9 @@ public abstract class AbstractGame {
 
     /**
      * Primary Constructor
+     *
      * @param numPlayers number of players in the game
-     * @param players list of all the players
+     * @param players    list of all the players
      */
     public AbstractGame(int numPlayers, AbstractHuman[] players) {
         this.numPlayers = numPlayers;
@@ -34,13 +35,14 @@ public abstract class AbstractGame {
     public int getNumPlayers() {
         return numPlayers;
     }
-    
+
     /**
      * Method to get a player who played in the game
+     *
      * @param i index of player to get
      * @return player at index i
      */
-    public AbstractHuman getAbstractHuman(int i){
+    public AbstractHuman getAbstractHuman(int i) {
         return players[i];
     }
 
@@ -48,5 +50,5 @@ public abstract class AbstractGame {
     public String toString() {
         return "AbstractGame{" + "numPlayers=" + numPlayers + ", players=" + Arrays.toString(players) + '}';
     }
-    
+
 }

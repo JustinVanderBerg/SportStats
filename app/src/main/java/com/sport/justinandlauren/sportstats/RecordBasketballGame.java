@@ -16,15 +16,20 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_record_basketball_game);
         setTitle("Record Game");
-        Button button = new Button(this);
-        button.setTag("bench1");
-        button.callOnClick();
-        button.setId(R.id.bench1);
-        button.setText("Justin");
+        Button[] buttons = new Button[2];
         LinearLayout layout = findViewById(R.id.benchPlayers);
-        layout.addView(button);
-        button.setOnClickListener(this);
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        //generate two buttons
+        for(int i =0;i<2;i++) {
+            Button button = new Button(this);
+            button.setTag("bench1");
+            button.callOnClick();
+            int id = this.getResources().getIdentifier(("bench" + (i+1)),"id", this.getPackageName());
+            button.setId(id);
+            button.setText("Justin" + (i+1));
+            layout.addView(button);
+            button.setOnClickListener(this);
+            buttons[i] = button;
+        }
     }
 
     public void MainMenu(View view){
