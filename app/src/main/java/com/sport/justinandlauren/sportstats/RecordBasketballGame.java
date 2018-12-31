@@ -29,7 +29,6 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
             int id = this.getResources().getIdentifier(("bench" + (i+1)),"id", this.getPackageName());
             button.setId(id);
             button.setText("Justin VanderBerg" + (i+1));
-
             layout.addView(button);
             button.setOnClickListener(this);
             buttons[i] = button;
