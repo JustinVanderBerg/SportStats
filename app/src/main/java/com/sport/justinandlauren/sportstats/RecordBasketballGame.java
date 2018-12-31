@@ -16,26 +16,30 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_record_basketball_game);
         setTitle("Record Game");
-        Button[] buttons = new Button[2];
+        Button[] buttons = new Button[10];
+        //layout where all the buttons get placed
         LinearLayout layout = findViewById(R.id.benchPlayers);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(100,100);
         //generate two buttons
-        for(int i =0;i<2;i++) {
+        for(int i =0;i<10;i++) {
             Button button = new Button(this);
+            button.setLayoutParams(params);
             button.setTag("bench1");
             button.callOnClick();
             int id = this.getResources().getIdentifier(("bench" + (i+1)),"id", this.getPackageName());
             button.setId(id);
-            button.setText("Justin" + (i+1));
+            button.setText("Justin VanderBerg" + (i+1));
+
             layout.addView(button);
             button.setOnClickListener(this);
             buttons[i] = button;
         }
     }
 
-    public void MainMenu(View view){
-        Intent intent = new Intent(this,LoadScreen.class);
-        startActivity(intent);
-    }
+    /**
+     * This method is called whenever the user clicks on the creen
+     * @param view Current view that the user is on
+     */
     public void onClick(View view){
         if(view.getId() == R.id.bench1){
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
