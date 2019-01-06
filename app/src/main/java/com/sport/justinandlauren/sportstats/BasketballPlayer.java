@@ -32,6 +32,18 @@ public class BasketballPlayer extends AbstractHuman{
         super();
         
     }
+
+    /**
+     * Secondary constructor
+     *
+     * @param name          of player
+     * @param playerNumber  number of player
+     * @param secondsPlayed seconds played(in said game)
+     */
+    public BasketballPlayer(String name, int playerNumber, long secondsPlayed) {
+        super(name, playerNumber, secondsPlayed);
+
+    }
     
     /**
      * @return the shotsAttempted

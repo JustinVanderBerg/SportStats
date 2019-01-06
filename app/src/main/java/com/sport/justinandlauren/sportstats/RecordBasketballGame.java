@@ -2,11 +2,9 @@ package com.sport.justinandlauren.sportstats;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
@@ -18,6 +16,7 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
     int numBenchPlayers = game.getNumPlayers()-5;
     //buttons for the bench players
     ToggleButton[] benchPlayers = new ToggleButton[numBenchPlayers];
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,7 +79,8 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
         for(int i =btnClicked + 1; i< numBenchPlayers; i++){
             benchPlayers[i].setChecked(false);
         }
-        //if the user clicked on one of the court players
+
+        //if the user clicked on one of the bench players
         if(view.getId() == R.id.bench1){
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
