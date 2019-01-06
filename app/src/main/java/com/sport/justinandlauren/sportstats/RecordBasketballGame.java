@@ -60,6 +60,26 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
 
             AlertDialog alertDialog = builder.create();
             alertDialog.show();
+        }else if(view.getId() == R.id.bench2){
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+            builder.setTitle("Your Title");
+
+            builder.setMessage("Clicked second bench")
+                    .setCancelable(false)
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // TODO: handle the OK
+                        }
+                    })
+                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
         }
     }
 }
