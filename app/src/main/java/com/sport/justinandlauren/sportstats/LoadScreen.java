@@ -14,8 +14,8 @@ public class LoadScreen extends AppCompatActivity {
     }
 
     //Called when user selects the record game button
-    public void displayRecordGame(View view){
-        Intent intent = new Intent(this, RecordBasketballGame.class);
+    public void displayEnterPlayers(View view){
+        Intent intent = new Intent(this, enterPlayers.class);
         startActivity(intent);
     }
     //display player stats
