@@ -37,10 +37,9 @@ public class BasketballGame extends AbstractGame {
      * Primary Constructor
      *
      * @param numPlayers
-     * @param players
      */
-    public BasketballGame(int numPlayers, AbstractHuman[] players) {
-        super(numPlayers, players);
+    public BasketballGame(int numPlayers) {
+        super(numPlayers);
     }
 
     /**

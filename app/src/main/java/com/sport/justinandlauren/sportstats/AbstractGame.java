@@ -23,11 +23,10 @@ public abstract class AbstractGame implements Serializable {
      * Primary Constructor
      *
      * @param numPlayers number of players in the game
-     * @param players    list of all the players
      */
-    public AbstractGame(int numPlayers, AbstractHuman[] players) {
+    public AbstractGame(int numPlayers) {
         this.numPlayers = numPlayers;
-        this.players = players;
+        this.players = null;
     }
 
     /**
@@ -45,6 +44,10 @@ public abstract class AbstractGame implements Serializable {
      */
     public AbstractHuman getAbstractHuman(int i) {
         return players[i];
+    }
+
+    public void setPlayers(AbstractHuman[] players) {
+        this.players = players;
     }
 
     @Override

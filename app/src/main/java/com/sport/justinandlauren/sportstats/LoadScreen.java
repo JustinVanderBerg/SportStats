@@ -11,9 +11,7 @@ import android.widget.EditText;
 
 public class LoadScreen extends AppCompatActivity {
 
-    //boolean to check input
-    private boolean goodInput = false;
-
+    private AbstractGame mainGame;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +23,6 @@ public class LoadScreen extends AppCompatActivity {
         final Intent intent = new Intent(this, enterPlayers.class);
         //create input dialog for user to input number of players
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        goodInput = false;
         //set title
         builder.setTitle("Start Game");
         //inputbox
@@ -38,11 +35,12 @@ public class LoadScreen extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int id) {
                         try {
                             int numPlayers = Integer.parseInt(input.getText().toString());
-                            goodInput = true;
-                            intent.putExtra("Game Class", "hello");
-                            startActivity(intent);
+                            if (numPlayers >= 5 && numPlayers < 20) {
+                                mainGame = new BasketballGame(numPlayers);
+                                intent.putExtra("Game Class", mainGame);
+                                startActivity(intent);
+                            }
                         } catch (NumberFormatException e) {
-                            goodInput = false;
                         }
 
                     }
@@ -50,14 +48,11 @@ public class LoadScreen extends AppCompatActivity {
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
-                        goodInput = true;
                     }
                 });
 
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
-
-
 
     }
 
