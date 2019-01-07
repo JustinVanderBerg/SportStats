@@ -5,15 +5,16 @@
  */
 //INSERT PACKAGE TITLE
 package com.sport.justinandlauren.sportstats;
+
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  *
  * @author justin
  */
 
-public class AbstractSport {
+public class AbstractSport implements Serializable {
 
     private int gamesWon;
     private int gamesPlayed;

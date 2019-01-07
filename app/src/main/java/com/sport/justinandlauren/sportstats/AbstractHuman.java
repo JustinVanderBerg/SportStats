@@ -10,7 +10,9 @@ abstract human class - ICS4U Final Project Overview
 
 package com.sport.justinandlauren.sportstats;
 
-public class AbstractHuman {
+import java.io.Serializable;
+
+public class AbstractHuman implements Serializable {
     //declare variables
     //protected instance variables
     protected String name;

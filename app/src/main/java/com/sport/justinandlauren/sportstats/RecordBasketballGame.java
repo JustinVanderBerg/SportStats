@@ -50,6 +50,11 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
             toggleButton.setOnClickListener(this);
             //default to not being selected
             toggleButton.setChecked(false);
+
+            //set space between buttons
+            toggleButton.setMinHeight(0);
+            toggleButton.setMinWidth(0);
+
             //add to array for easy manipulation
             benchPlayers[i] = toggleButton;
         }

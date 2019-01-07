@@ -1,5 +1,6 @@
 package com.sport.justinandlauren.sportstats;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
 /*
@@ -13,7 +14,7 @@ import java.util.Arrays;
 /**
  * @author justin
  */
-public abstract class AbstractGame {
+public abstract class AbstractGame implements Serializable {
     //once game is created, cannot change the number of players
     private int numPlayers;
     AbstractHuman[] players;

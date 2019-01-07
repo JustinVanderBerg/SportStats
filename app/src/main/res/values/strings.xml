@@ -6,7 +6,6 @@
     <string name="PlayerPrompt">Player Stats</string>
     <string name="GamePrompt">View Game Stats</string>
     <string name="PictureDiscription">Image of a Basketball Court</string>
-    <string name="benchLabel">Bench</string>
     <string name="StartGamePrompt">Done</string>
     <string name="benchLabel">Bench</string>
 </resources>
