@@ -242,7 +242,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_end="178dp" />
+        app:layout_constraintGuide_end="184dp" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guidelineVButton1"
