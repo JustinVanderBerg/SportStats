@@ -84,7 +84,7 @@ public class enterPlayers extends AppCompatActivity {
                     .setCancelable(false)
                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            // TODO: handle the OK
+                            //don't start the record game if incorrect
                         }
                     });
 

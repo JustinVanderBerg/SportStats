@@ -42,17 +42,31 @@ public abstract class AbstractGame implements Serializable {
      * @param index index of player to get
      * @return player at index index
      */
-    public AbstractHuman getAbstractHuman(int index) {
+    public AbstractHuman getHuman(int index) {
         return players[index];
     }
 
-    public AbstractHuman setAbstractHuman(int index) {
-        // TODO: Finish method
-        return null;
+    /**
+     * Method to change a person in the player array
+     *
+     * @param index location of player to set
+     * @param human player set at index in player array
+     */
+    public void setHuman(int index, AbstractHuman human) {
+        players[index] = human;
     }
 
+    /**
+     * Method to change the whole player array to another one
+     *
+     * @param players array of players to set the game's players to
+     */
     public void setPlayers(AbstractHuman[] players) {
         this.players = players;
+    }
+
+    public AbstractHuman[] getPlayers() {
+        return this.players;
     }
 
     @Override
