@@ -9,4 +9,9 @@
     <string name="StartGamePrompt">Done</string>
     <string name="benchLabel">Bench</string>
     <string name="onCourtLabel">Court</string>
+
+    <string name="shotMadeLabel">Shot Made</string>
+    <string name="Point3MadeLabel">3-Point Made</string>
+    <string name="foulShotMadeLabel">Foul Shot Made</string>
+    <string name="PersonFoulLabel">Personal Foul</string>
 </resources>
