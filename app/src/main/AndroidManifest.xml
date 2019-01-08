@@ -17,8 +17,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RecordBasketballGame"
-            android:parentActivityName=".enterPlayers" />
+            android:name=".RecordBasketballGame" />
         <activity
             android:name=".ViewPlayer"
             android:parentActivityName=".LoadScreen" />

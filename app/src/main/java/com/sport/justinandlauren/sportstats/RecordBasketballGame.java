@@ -28,40 +28,38 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
         //change bench label text transparency
         TextView benchLabel = findViewById(R.id.benchPrompt);
         benchLabel.setTextColor(benchLabel.getTextColors());
+        //only add players too bench when there are players to add
+        if (numBenchPlayers > 0) {
+            //layout where all the benchPlayers get placed
+            LinearLayout layout = findViewById(R.id.benchPlayers);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(100, 100);
+            //generate two benchPlayers
+            for (int i = 0; i < numBenchPlayers; i++) {
+                //make a new toggle button(either on or off)
+                ToggleButton toggleButton = new ToggleButton(this);
+                //set the size of the toggle button
+                toggleButton.setLayoutParams(params);
+                //get and set id(possibility of 15 bench players max)
+                int id = this.getResources().getIdentifier(("bench" + (i + 1)), "id", this.getPackageName());
+                toggleButton.setId(id);
+                //set text padding and text of the button
+                toggleButton.setPadding(3, 3, 3, 3);
+                toggleButton.setTextOn(game.getAbstractHuman(i).getName());
+                toggleButton.setTextOff(game.getAbstractHuman(i).getName());
+                toggleButton.setText(game.getAbstractHuman(i).getName());
+                //add it to the linear layout view
+                layout.addView(toggleButton);
+                //add the on click listener
+                toggleButton.setOnClickListener(this);
+                //default to not being selected
+                toggleButton.setChecked(false);
 
-        //layout where all the benchPlayers get placed
-        LinearLayout layout = findViewById(R.id.benchPlayers);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(100, 100);
-        //generate two benchPlayers
-        for (int i = 0; i < numBenchPlayers; i++) {
-            //make a new toggle button(either on or off)
-            ToggleButton toggleButton = new ToggleButton(this);
-            //set the size of the toggle button
-            toggleButton.setLayoutParams(params);
-            //get and set id(possibility of 15 bench players max)
-            int id = this.getResources().getIdentifier(("bench" + (i + 1)), "id", this.getPackageName());
-            toggleButton.setId(id);
-            //set text padding and text of the button
-            toggleButton.setPadding(3, 3, 3, 3);
-            toggleButton.setTextOn("Justin VanderBerg" + (i + 1));
-            toggleButton.setTextOff("Justin VanderBerg" + (i + 1));
-            toggleButton.setText("Justin VanderBerg" + (i + 1));
-            //add it to the linear layout view
-            layout.addView(toggleButton);
-            //add the on click listener
-            toggleButton.setOnClickListener(this);
-            //default to not being selected
-            toggleButton.setChecked(false);
-
-            //set space between buttons
-            toggleButton.setMinHeight(0);
-            toggleButton.setMinWidth(0);
-
-            //add to array for easy manipulation
-            benchPlayers[i] = toggleButton;
+                //add to array for easy manipulation
+                benchPlayers[i] = toggleButton;
+            }
+            //default to first bench player being selected
+            benchPlayers[0].setChecked(true);
         }
-        //default to first bench player being selected
-        benchPlayers[0].setChecked(true);
     }
 
     /**
