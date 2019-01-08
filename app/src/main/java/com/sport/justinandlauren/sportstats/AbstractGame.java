@@ -39,11 +39,16 @@ public abstract class AbstractGame implements Serializable {
     /**
      * Method to get a player who played in the game
      *
-     * @param i index of player to get
-     * @return player at index i
+     * @param index index of player to get
+     * @return player at index index
      */
-    public AbstractHuman getAbstractHuman(int i) {
-        return players[i];
+    public AbstractHuman getAbstractHuman(int index) {
+        return players[index];
+    }
+
+    public AbstractHuman setAbstractHuman(int index) {
+        // TODO: Finish method
+        return null;
     }
 
     public void setPlayers(AbstractHuman[] players) {
