@@ -15,10 +15,10 @@
         android:src="@drawable/basketballcourt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <ScrollView
         android:id="@+id/courtPlayersScrollBar"
@@ -29,10 +29,10 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.169"
-        app:layout_constraintStart_toEndOf="@+id/BenchScrollBar"
+        app:layout_constraintHorizontal_bias="0.134"
+        app:layout_constraintStart_toEndOf="@+id/benchPrompt"
         app:layout_constraintTop_toBottomOf="@+id/courtPrompt"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
             android:id="@+id/courtPlayers"
@@ -108,71 +108,19 @@
         tools:text="@string/onCourtLabel"
         tools:textColor="@android:color/black" />
 
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="20dp" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="20dp" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="20dp" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="20dp" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="20dp" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="20dp" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="20dp" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="20dp" />
-
     <Button
         android:id="@+id/btnShotMade"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/shotMadeLabel"
         android:textAllCaps="true"
-        app:layout_constraintBottom_toBottomOf="@+id/guidelineHButton1"
-        app:layout_constraintStart_toStartOf="@+id/guidelineVButton1"
-        app:layout_constraintTop_toTopOf="@+id/guidelineHButton1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/courtPlayersScrollBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.097"
         tools:text="@string/shotMadeLabel" />
 
 
@@ -180,75 +128,36 @@
         android:id="@+id/btnFoulShotMade"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
         android:text="@string/foulShotMadeLabel"
         android:textAllCaps="true"
-        app:layout_constraintBottom_toBottomOf="@+id/guideline11"
-        app:layout_constraintStart_toStartOf="@+id/guidelineVButton1"
-        app:layout_constraintTop_toTopOf="@+id/guideline11"
+        app:layout_constraintStart_toEndOf="@+id/courtPlayersScrollBar"
+        app:layout_constraintTop_toBottomOf="@+id/btnShotMade"
         tools:text="@string/foulShotMadeLabel" />
 
     <Button
         android:id="@+id/btn3PtMade"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
         android:text="@string/Point3MadeLabel"
         android:textAllCaps="true"
-        app:layout_constraintBottom_toBottomOf="@+id/guideline12"
-        app:layout_constraintStart_toStartOf="@+id/guidelineVButton1"
-        app:layout_constraintTop_toTopOf="@+id/guideline12"
+        app:layout_constraintStart_toEndOf="@+id/courtPlayersScrollBar"
+        app:layout_constraintTop_toBottomOf="@+id/btnFoulShotMade"
         tools:text="@string/Point3MadeLabel" />
 
     <Button
         android:id="@+id/btnPFoul"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
         android:text="@string/PersonFoulLabel"
         android:textAllCaps="true"
-        app:layout_constraintBottom_toBottomOf="@+id/guideline13"
-        app:layout_constraintStart_toStartOf="@+id/guidelineVButton1"
-        app:layout_constraintTop_toTopOf="@+id/guideline13"
+        app:layout_constraintStart_toEndOf="@+id/courtPlayersScrollBar"
+        app:layout_constraintTop_toBottomOf="@+id/btn3PtMade"
         tools:text="@string/PersonFoulLabel" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="20dp" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guidelineHButton1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="37dp" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="144dp" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="192dp" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_end="184dp" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guidelineVButton1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="767dp" />
 
 </android.support.constraint.ConstraintLayout>

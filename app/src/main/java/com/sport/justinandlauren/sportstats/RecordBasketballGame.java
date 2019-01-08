@@ -157,7 +157,7 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
 
             //layout where all the benchPlayerButtons get placed
             LinearLayout layout = findViewById(R.id.benchPlayers);
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(100, 100);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
             //generate two benchPlayerButtons
             for (int i = 0; i < numBenchPlayers; i++) {
@@ -199,7 +199,7 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
 
         //layout where all the court players get placed
         LinearLayout layout = findViewById(R.id.courtPlayers);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(100, 100);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
         //generate 5 court buttons
         for (int i = 0; i < numCourtPlayers; i++) {
