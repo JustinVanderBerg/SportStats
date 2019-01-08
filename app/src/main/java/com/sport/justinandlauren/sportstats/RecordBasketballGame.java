@@ -173,6 +173,8 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
                 //set text padding and text of the button
                 toggleButton.setPadding(3, 3, 3, 3);
                 toggleButton.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
+                toggleButton.setMinWidth(100);
+                toggleButton.setMinHeight(100);
                 //first five players are initially on court, so start at 6th player
                 //set the text of the button
                 setText(toggleButton, "\n" + game.getHuman(i + 5).getPlayerNumber() + "\n\n" + game.getHuman(i + 5).getName());
@@ -213,6 +215,8 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
             toggleButton.setId(id);
             //text location on the button
             toggleButton.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
+            toggleButton.setMinWidth(100);
+            toggleButton.setMinHeight(100);
             //set text padding and text of the button
             toggleButton.setPadding(3, 3, 3, 3);
             setText(toggleButton, "\n" + game.getHuman(i).getPlayerNumber() + "\n\n" + game.getHuman(i).getName());
