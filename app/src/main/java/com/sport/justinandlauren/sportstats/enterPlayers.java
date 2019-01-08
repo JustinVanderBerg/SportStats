@@ -66,6 +66,8 @@ public class enterPlayers extends AppCompatActivity {
 
         //only launch the game recording screen if all data is entered correctly
         if (!error) {
+            //sort the players array from highest to lowest based off player number
+            sort(players, 0, players.length - 1);
             //update the players array in the main game
             mainGame.setPlayers(players);
             Intent intent = new Intent(this, RecordBasketballGame.class);
@@ -97,6 +99,78 @@ public class enterPlayers extends AppCompatActivity {
         //initialize player array
         for (int i = 0; i < mainGame.getNumPlayers(); i++) {
             players[i] = new BasketballPlayer();
+        }
+    }
+
+    /**
+     * merge sort ascending
+     *
+     * @param arr  array to sort
+     * @param low  low value of the segment to sort
+     * @param high high value of the segment to sort
+     */
+    private void sort(AbstractHuman arr[], int low, int high) {
+        //base case
+        if (low < high) {
+
+            int middle = (low + high) / 2;
+            sort(arr, low, middle);
+            sort(arr, middle + 1, high);
+            merge(arr, low, middle, high);
+        }
+    }
+
+    /**
+     * merge sort ascending combine segments
+     *
+     * @param arr    array to sort
+     * @param low    low value of the segment to sort
+     * @param middle middle value to split the array around
+     * @param high   high value of the segment to sort
+     */
+    private void merge(AbstractHuman[] arr, int low, int middle, int high) {
+
+        int numLeft = (middle - low + 1);
+        int numRight = (high - middle);
+        //left segment of array
+        AbstractHuman[] L = new BasketballPlayer[numLeft];
+        //right segment of array
+        AbstractHuman[] R = new BasketballPlayer[numRight];
+        //fill the left array with the left section of the array
+        for (int i = 0; i < numLeft; i++) {
+            L[i] = arr[i + low];
+        }
+        //fill the right array with the left segment of the array
+        for (int i = 0; i < numRight; i++) {
+            R[i] = arr[middle + 1 + i];
+        }
+
+        int i = 0, j = 0, k = low;
+        //while there are still elements left in the left and right array
+        while (i < numLeft && j < numRight) {
+            //if the element in the left array is less than right array set array at current location to left element
+            if (L[i].getPlayerNumber() <= R[j].getPlayerNumber()) {
+                arr[k] = L[i];
+                i++;
+
+            } else {//else the right element is less, therefore set the array a current location to right element
+
+                arr[k] = R[j];
+                j++;
+            }
+            k++;
+        }
+        //merge the rest of the left segment back into the array, if elements remain
+        while (i < numLeft) {
+            arr[k] = L[i];
+            i++;
+            k++;
+        }
+        //merge the rest of the right segment back into the array, if elements remain
+        while (j < numRight) {
+            arr[k] = R[j];
+            j++;
+            k++;
         }
     }
 }

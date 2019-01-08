@@ -15,4 +15,9 @@
     <item type = "id" name="bench13"/>
     <item type = "id" name="bench14"/>
     <item type = "id" name="bench15"/>
+    <item type="id" name="court1" />
+    <item type="id" name="court2" />
+    <item type="id" name="court3" />
+    <item type="id" name="court4" />
+    <item type="id" name="court5" />
 </resources>
