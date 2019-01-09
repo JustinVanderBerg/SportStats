@@ -23,6 +23,10 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
     //variable to allow substitutions
     private boolean benchSelected = false;
     private int benchSelectedLocation = -1;
+
+    //Variable to hold whether the game is going or not
+    private boolean gameGoing = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +41,14 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
         generateCourtPlayers();
     }
 
+    /**
+     * Method that is called when the timer button is clicked
+     *
+     * @param view Current view
+     */
+    public void timerClick(View view) {
+
+    }
     /**
      * This method is called whenever the user clicks on the screen
      *

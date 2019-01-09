@@ -33,7 +33,8 @@ public class enterPlayers extends AppCompatActivity {
             EditText tempEditText = new EditText(this);
             tempEditText.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT));
             //set the prompt for the text field
-            tempEditText.setHint(i + ". Player name");
+            tempEditText.setHint((i + 1) + ". Player name");
+            tempEditText.setText((i + 1) + ". Player name");
             playerNames.addView(tempEditText);
             names[i] = tempEditText;
         }
@@ -44,7 +45,8 @@ public class enterPlayers extends AppCompatActivity {
             EditText tempEditText = new EditText(this);
             tempEditText.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT));
             //set the prompt for the text field
-            tempEditText.setHint(i + ". Player number");
+            tempEditText.setHint((i + 1) + ". Player number");
+            tempEditText.setText((i + 1) + "");
             playerNumbers.addView(tempEditText);
             numbers[i] = tempEditText;
         }
