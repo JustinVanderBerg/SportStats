@@ -245,7 +245,7 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
         //the bench starts at index 5 of the player array, so add five to get correct location in array
         //swap the player locations
         AbstractHuman tempBench = game.getHuman(bench + 5);
-        game.setHuman(bench, game.getHuman(court));
+        game.setHuman(bench + 5, game.getHuman(court));
         game.setHuman(court, tempBench);
         //ask the user if they would like to resort the bench by player number again
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -290,7 +290,7 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
 
         //change the text of the bench button to now hold the correct player info
         ToggleButton benchButton = findViewById(this.getResources().getIdentifier("bench" + (bench + 1), "id", this.getPackageName()));
-        setText(benchButton, "\n" + game.getHuman(bench).getPlayerNumber() + "\n\n" + game.getHuman(bench).getName());
+        setText(benchButton, "\n" + game.getHuman(bench + 5).getPlayerNumber() + "\n\n" + game.getHuman(bench + 5).getName());
         //change the text of the court button to hold the substituted player's info
         ToggleButton courtButton = findViewById(this.getResources().getIdentifier("court" + (court + 1), "id", this.getPackageName()));
         setText(courtButton, "\n" + game.getHuman(court).getPlayerNumber() + "\n\n" + game.getHuman(court).getName());
