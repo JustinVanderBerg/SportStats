@@ -15,7 +15,7 @@
         android:src="@drawable/basketballcourt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
@@ -104,81 +104,76 @@
 
     <Button
         android:id="@+id/btnShotMade"
-        android:layout_width="170dp"
+        android:layout_width="190dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
         android:text="@string/shotMadeLabel"
         android:textAllCaps="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.084"
-        tools:layout_editor_absoluteX="179dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnShotAttempted"
+        app:layout_constraintEnd_toStartOf="@+id/btnShotAttempted"
         tools:text="@string/shotMadeLabel" />
 
 
     <Button
         android:id="@+id/btnFoulShotMade"
-        android:layout_width="170dp"
+        android:layout_width="190dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         android:text="@string/foulShotMadeLabel"
         android:textAllCaps="true"
-        app:layout_constraintTop_toBottomOf="@+id/btnShotMade"
-        tools:layout_editor_absoluteX="209dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnFoulShotAttempted"
+        app:layout_constraintEnd_toStartOf="@+id/btnFoulShotAttempted"
         tools:text="@string/foulShotMadeLabel" />
 
     <Button
         android:id="@+id/btn3PtMade"
-        android:layout_width="170dp"
+        android:layout_width="190dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:text="@string/Point3MadeLabel"
         android:textAllCaps="true"
-        app:layout_constraintTop_toBottomOf="@+id/btnFoulShotMade"
-        tools:layout_editor_absoluteX="349dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btn3PtAttempted"
+        app:layout_constraintEnd_toStartOf="@+id/btn3PtAttempted"
         tools:text="@string/Point3MadeLabel" />
 
     <Button
         android:id="@+id/btnPFoul"
-        android:layout_width="170dp"
+        android:layout_width="190dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="352dp"
         android:layout_marginEnd="8dp"
         android:text="@string/PersonFoulLabel"
         android:textAllCaps="true"
-        app:layout_constraintEnd_toStartOf="@+id/btn3PtAttempted"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnTechFoul"
+        app:layout_constraintEnd_toStartOf="@+id/btnTechFoul"
         tools:text="@string/PersonFoulLabel" />
 
     <Button
         android:id="@+id/btnShotAttempted"
         android:layout_width="190dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/shotAttemptedLabel"
         android:textAllCaps="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.2"
-        tools:layout_editor_absoluteX="378dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnFoulShotAttempted"
+        app:layout_constraintEnd_toStartOf="@+id/courtPlayersScrollBar"
         tools:text="@string/shotAttemptedLabel" />
 
     <Button
         android:id="@+id/btnFoulShotAttempted"
         android:layout_width="190dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/foulShotAttemptedLabel"
         android:textAllCaps="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.048"
-        tools:layout_editor_absoluteX="341dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn3PtAttempted"
+        app:layout_constraintEnd_toStartOf="@+id/courtPlayersScrollBar"
         tools:text="@string/foulShotAttemptedLabel" />
 
     <Button
         android:id="@+id/btn3PtAttempted"
-        android:layout_width="170dp"
+        android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
@@ -190,7 +185,7 @@
 
     <Button
         android:id="@+id/btnTechFoul"
-        android:layout_width="170dp"
+        android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -199,7 +194,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/courtPlayersScrollBar"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.98"
+        app:layout_constraintVertical_bias="0.977"
         tools:text="@string/techFoulLabel" />
 
     <Button
