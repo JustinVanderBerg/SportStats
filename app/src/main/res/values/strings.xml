@@ -14,4 +14,9 @@
     <string name="Point3MadeLabel">3-Point Made</string>
     <string name="foulShotMadeLabel">Foul Shot Made</string>
     <string name="PersonFoulLabel">Personal Foul</string>
+
+    <string name="shotAttemptedLabel">Shot Attempted</string>
+    <string name="Point3AttemptedLabel">3-Point Attempted</string>
+    <string name="foulShotAttemptedLabel">Foul Shot Attempted</string>
+    <string name="techFoulLabel">Tech Foul</string>
 </resources>
