@@ -19,4 +19,5 @@
     <string name="point3AttemptedLabel">3-Point Attempted</string>
     <string name="foulShotAttemptedLabel">Foul Shot Attempted</string>
     <string name="techFoulLabel">Tech Foul</string>
+    <string name="minutePrompt">Enter the number of minutes per quarter</string>
 </resources>
