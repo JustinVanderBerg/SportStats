@@ -18,15 +18,16 @@ public abstract class AbstractGame implements Serializable {
     //once game is created, cannot change the number of players
     private int numPlayers;
     AbstractHuman[] players;
-
+    private long gameLength;
     /**
      * Primary Constructor
      *
      * @param numPlayers number of players in the game
      */
-    public AbstractGame(int numPlayers) {
+    public AbstractGame(int numPlayers, int gameLength) {
         this.numPlayers = numPlayers;
         this.players = null;
+        this.gameLength = gameLength;
     }
 
     /**

@@ -18,15 +18,18 @@ public class enterPlayers extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_players);
+
         //get the game class, in order to access number of players, and modify the player array
         mainGame = (AbstractGame) getIntent().getSerializableExtra("Game Class");
         names = new EditText[mainGame.getNumPlayers()];
         numbers = new EditText[mainGame.getNumPlayers()];
         players = new BasketballPlayer[mainGame.getNumPlayers()];
         resetPlayerArray();
+
         //get the scroll area to put the player input boxes in
         LinearLayout playerNames = findViewById(R.id.inputNames);
         LinearLayout playerNumbers = findViewById(R.id.inputNumbers);
+
         //create an edit text box for each of the players
         for (int i = 0; i < mainGame.getNumPlayers(); i++) {
             //create a new edit text box
@@ -34,7 +37,7 @@ public class enterPlayers extends AppCompatActivity {
             tempEditText.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT));
             //set the prompt for the text field
             tempEditText.setHint((i + 1) + ". Player name");
-            tempEditText.setText((i + 1) + ". Player name");
+            tempEditText.setText("Player name");
             playerNames.addView(tempEditText);
             names[i] = tempEditText;
         }
@@ -55,11 +58,16 @@ public class enterPlayers extends AppCompatActivity {
     public void displayRecordGame(View view){
         //variable to make sure to only show record game screen if all data is entered correctly
         boolean error = false;
+
+        int minutesPerQuarter = -1;
         //get all names and numbers
         for (int i = 0; i < mainGame.getNumPlayers(); i++) {
             try {
                 players[i].setName(names[i].getText().toString());
                 players[i].setPlayerNumber(Integer.parseInt(numbers[i].getText().toString()));
+                EditText temp = findViewById(R.id.numMinutesPerQuarter);
+                minutesPerQuarter = Integer.parseInt(temp.getText().toString());
+                // TODO: finish timer
             } catch (NumberFormatException e) {
                 //error on users input
                 error = true;
