@@ -26,7 +26,7 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
 
     //Variable to hold whether the game is going or not
     private boolean gameGoing = false;
-    private long timeLeftInPeriod;
+    private long timeLeftInPeriod = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +48,10 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
      * @param view Current view
      */
     public void timerClick(View view) {
+        //user hasn't
+        if (timeLeftInPeriod == -1) {
 
+        }
     }
     /**
      * This method is called whenever the user clicks on the screen

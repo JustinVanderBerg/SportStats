@@ -67,7 +67,8 @@ public class enterPlayers extends AppCompatActivity {
                 players[i].setPlayerNumber(Integer.parseInt(numbers[i].getText().toString()));
                 EditText temp = findViewById(R.id.numMinutesPerQuarter);
                 minutesPerQuarter = Integer.parseInt(temp.getText().toString());
-                // TODO: finish timer
+                long secondsPerQuarter = minutesPerQuarter * 60000;
+                mainGame.setGameLength(secondsPerQuarter);
             } catch (NumberFormatException e) {
                 //error on users input
                 error = true;
