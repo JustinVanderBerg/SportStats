@@ -34,6 +34,7 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
     private long timeLeftInPeriod = -1;
     private DecimalFormat timerFormat = new DecimalFormat("00");
     CountDownTimer gameTime;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +48,16 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
         generateBenchPlayers();
         generateCourtPlayers();
         Button btnTimer = findViewById(R.id.btnTimer);
-
+        btnTimer.setBackgroundColor(Color.BLACK);
+        //set the initial start time of the period
+        long numMinute, numSeconds;
+        timeLeftInPeriod = game.getGameLength();
+        //switch the milliseconds game length to minutes and seconds
+        numMinute = (timeLeftInPeriod / 1000) / 60;
+        numSeconds = (timeLeftInPeriod / 1000) % 60;
+        //set color to red because it isn't going
+        btnTimer.setTextColor(Color.RED);
+        btnTimer.setText(numMinute + ":" + timerFormat.format(numSeconds));
     }
 
     /**
@@ -57,11 +67,15 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
      */
     public void timerClick(View view) {
         final Button btnTimer = (Button) view;
-        btnTimer.setBackgroundColor(Color.BLACK);
-        //user hasn't started quarter yet, so make new timer and start it
-        if (timeLeftInPeriod == -1) {
+
+        //pause the game if they click the timer and the time is currently going
+        if (gameGoing) {
+            gameGoing = false;
+            gameTime.onFinish();
+            gameTime.cancel();
+        } else {
             gameGoing = true;
-            gameTime = new CountDownTimer(game.getGameLength(), 300) {
+            gameTime = new CountDownTimer(timeLeftInPeriod, 300) {
                 @Override
                 public void onTick(long millisUntilFinished) {
                     long numMinute, numSeconds;
@@ -78,25 +92,17 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
                     //set the initial start time of the period
                     long numMinute, numSeconds;
                     //switch the milliseconds game length to minutes and seconds
-                    numMinute = (game.getGameLength() / 1000) / 60;
-                    numSeconds = (game.getGameLength() / 1000) % 60;
+                    numMinute = (timeLeftInPeriod / 1000) / 60;
+                    numSeconds = (timeLeftInPeriod / 1000) % 60;
                     btnTimer.setTextColor(Color.RED);
                     btnTimer.setText(numMinute + ":" + timerFormat.format(numSeconds));
                     gameGoing = false;
                 }
             };
             gameTime.start();
-        } else {
-            //pause the game if they click the timer and the time is currently going
-            if (gameGoing) {
-                gameGoing = false;
-                gameTime.cancel();
-            } else {
-                gameGoing = true;
-
-            }
         }
     }
+
     /**
      * This method is called whenever the user clicks on the screen
      *
@@ -118,6 +124,7 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
 
     /**
      * Method to handle the clicking of the bench buttons
+     *
      * @param view The view the user clicked
      */
     private void checkBenchButtons(View view) {
@@ -169,6 +176,7 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
 
     /**
      * Check if the user clicked on one of the court buttons
+     *
      * @param view The view that the user clicked
      */
     private void checkCourtButtons(View view) {
@@ -298,6 +306,7 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
     /**
      * Method used to substitute players
      * Note that the abstract players array in the game class always is in the order 1-5 on court, and then bench players afterwards
+     *
      * @param bench Player location currently on the bench, who will be swapped with the player on the court
      * @param court Player loaction on the court who will be swapped with the player on the bench
      */
