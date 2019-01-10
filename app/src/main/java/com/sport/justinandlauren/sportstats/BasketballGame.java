@@ -38,8 +38,8 @@ public class BasketballGame extends AbstractGame {
      *
      * @param numPlayers
      */
-    public BasketballGame(int numPlayers) {
-        super(numPlayers);
+    public BasketballGame(int numPlayers, long gameLength) {
+        super(numPlayers, gameLength);
     }
 
     /**
