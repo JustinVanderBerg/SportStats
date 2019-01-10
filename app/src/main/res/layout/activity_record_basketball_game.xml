@@ -105,7 +105,7 @@
     <Button
         android:id="@+id/btnShotMade"
         android:layout_width="190dp"
-        android:layout_height="wrap_content"
+        android:layout_height="75dp"
         android:layout_marginEnd="8dp"
         android:text="@string/shotMadeLabel"
         android:textAllCaps="true"
@@ -117,7 +117,7 @@
     <Button
         android:id="@+id/btnFoulShotMade"
         android:layout_width="190dp"
-        android:layout_height="wrap_content"
+        android:layout_height="75dp"
         android:layout_marginEnd="8dp"
         android:text="@string/foulShotMadeLabel"
         android:textAllCaps="true"
@@ -128,7 +128,7 @@
     <Button
         android:id="@+id/btn3PtMade"
         android:layout_width="190dp"
-        android:layout_height="wrap_content"
+        android:layout_height="75dp"
         android:layout_marginEnd="8dp"
         android:text="@string/Point3MadeLabel"
         android:textAllCaps="true"
@@ -139,7 +139,7 @@
     <Button
         android:id="@+id/btnPFoul"
         android:layout_width="190dp"
-        android:layout_height="wrap_content"
+        android:layout_height="75dp"
         android:layout_marginEnd="8dp"
         android:text="@string/PersonFoulLabel"
         android:textAllCaps="true"
@@ -150,7 +150,7 @@
     <Button
         android:id="@+id/btnShotAttempted"
         android:layout_width="190dp"
-        android:layout_height="wrap_content"
+        android:layout_height="75dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:text="@string/shotAttemptedLabel"
@@ -162,7 +162,7 @@
     <Button
         android:id="@+id/btnFoulShotAttempted"
         android:layout_width="190dp"
-        android:layout_height="wrap_content"
+        android:layout_height="75dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:text="@string/foulShotAttemptedLabel"
@@ -174,7 +174,7 @@
     <Button
         android:id="@+id/btn3PtAttempted"
         android:layout_width="190dp"
-        android:layout_height="wrap_content"
+        android:layout_height="75dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:text="@string/point3AttemptedLabel"
@@ -186,7 +186,7 @@
     <Button
         android:id="@+id/btnTechFoul"
         android:layout_width="190dp"
-        android:layout_height="wrap_content"
+        android:layout_height="75dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:text="@string/techFoulLabel"
@@ -194,13 +194,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/courtPlayersScrollBar"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.836"
+        app:layout_constraintVertical_bias="0.858"
         tools:text="@string/techFoulLabel" />
 
     <Button
         android:id="@+id/btnTimer"
         android:layout_width="190dp"
-        android:layout_height="wrap_content"
+        android:layout_height="75dp"
         android:layout_marginEnd="8dp"
         android:onClick="timerClick"
         app:layout_constraintBaseline_toBaselineOf="@+id/btnNegative"
@@ -209,7 +209,7 @@
     <Button
         android:id="@+id/btnNegative"
         android:layout_width="190dp"
-        android:layout_height="wrap_content"
+        android:layout_height="75dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:text="@string/negativeLabel"
@@ -220,7 +220,7 @@
     <TextView
         android:id="@+id/txtPlayerPM"
         android:layout_width="190dp"
-        android:layout_height="50dp"
+        android:layout_height="75dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:gravity="center"
@@ -232,7 +232,7 @@
     <TextView
         android:id="@+id/txtPlayerFoul"
         android:layout_width="190dp"
-        android:layout_height="50dp"
+        android:layout_height="75dp"
         android:layout_marginEnd="8dp"
         android:gravity="center"
         android:text="TextView"
@@ -242,7 +242,7 @@
     <TextView
         android:id="@+id/txtOurScore"
         android:layout_width="190dp"
-        android:layout_height="50dp"
+        android:layout_height="75dp"
         android:gravity="center"
         android:text="TextView"
         app:layout_constraintBaseline_toBaselineOf="@+id/txtOppScore"
@@ -251,7 +251,7 @@
     <TextView
         android:id="@+id/txtOppScore"
         android:layout_width="190dp"
-        android:layout_height="50dp"
+        android:layout_height="75dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:gravity="center"
@@ -262,7 +262,7 @@
     <Button
         android:id="@+id/btnAddOppScore"
         android:layout_width="190dp"
-        android:layout_height="wrap_content"
+        android:layout_height="75dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:text="Button"
@@ -272,7 +272,7 @@
     <TextView
         android:id="@+id/txtTeamFouls"
         android:layout_width="190dp"
-        android:layout_height="50dp"
+        android:layout_height="75dp"
         android:layout_marginEnd="8dp"
         android:gravity="center"
         android:text="TextView"
