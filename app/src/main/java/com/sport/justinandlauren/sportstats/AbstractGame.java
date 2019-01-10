@@ -24,7 +24,7 @@ public abstract class AbstractGame implements Serializable {
      *
      * @param numPlayers number of players in the game
      */
-    public AbstractGame(int numPlayers, int gameLength) {
+    public AbstractGame(int numPlayers, long gameLength) {
         this.numPlayers = numPlayers;
         this.players = null;
         this.gameLength = gameLength;
