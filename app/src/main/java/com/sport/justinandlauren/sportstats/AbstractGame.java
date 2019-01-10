@@ -75,4 +75,17 @@ public abstract class AbstractGame implements Serializable {
         return "AbstractGame{" + "numPlayers=" + numPlayers + ", players=" + Arrays.toString(players) + '}';
     }
 
+    /**
+     * @return the length of the game
+     */
+    public long getGameLength() {
+        return gameLength;
+    }
+
+    /**
+     * @param gameLength length of the game in milliseconds
+     */
+    public void setGameLength(long gameLength) {
+        this.gameLength = gameLength;
+    }
 }
