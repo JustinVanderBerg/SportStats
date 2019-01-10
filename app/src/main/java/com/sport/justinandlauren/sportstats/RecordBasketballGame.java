@@ -2,13 +2,18 @@ package com.sport.justinandlauren.sportstats;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
+
+import java.text.DecimalFormat;
 
 public class RecordBasketballGame extends AppCompatActivity implements View.OnClickListener {
     //new basketball game
@@ -27,7 +32,8 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
     //Variable to hold whether the game is going or not
     private boolean gameGoing = false;
     private long timeLeftInPeriod = -1;
-
+    private DecimalFormat timerFormat = new DecimalFormat("00");
+    CountDownTimer gameTime;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +46,8 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
         //change bench label text transparency
         generateBenchPlayers();
         generateCourtPlayers();
+        Button btnTimer = findViewById(R.id.btnTimer);
+
     }
 
     /**
@@ -48,9 +56,45 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
      * @param view Current view
      */
     public void timerClick(View view) {
-        //user hasn't
+        final Button btnTimer = (Button) view;
+        btnTimer.setBackgroundColor(Color.BLACK);
+        //user hasn't started quarter yet, so make new timer and start it
         if (timeLeftInPeriod == -1) {
+            gameGoing = true;
+            gameTime = new CountDownTimer(game.getGameLength(), 300) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    long numMinute, numSeconds;
+                    numMinute = (millisUntilFinished / 1000) / 60;
+                    numSeconds = (millisUntilFinished / 1000) % 60;
+                    btnTimer.setTextColor(Color.GREEN);
+                    btnTimer.setText(numMinute + ":" + timerFormat.format(numSeconds));
+                    timeLeftInPeriod = millisUntilFinished;
+                    gameGoing = true;
+                }
 
+                @Override
+                public void onFinish() {
+                    //set the initial start time of the period
+                    long numMinute, numSeconds;
+                    //switch the milliseconds game length to minutes and seconds
+                    numMinute = (game.getGameLength() / 1000) / 60;
+                    numSeconds = (game.getGameLength() / 1000) % 60;
+                    btnTimer.setTextColor(Color.RED);
+                    btnTimer.setText(numMinute + ":" + timerFormat.format(numSeconds));
+                    gameGoing = false;
+                }
+            };
+            gameTime.start();
+        } else {
+            //pause the game if they click the timer and the time is currently going
+            if (gameGoing) {
+                gameGoing = false;
+                gameTime.cancel();
+            } else {
+                gameGoing = true;
+
+            }
         }
     }
     /**

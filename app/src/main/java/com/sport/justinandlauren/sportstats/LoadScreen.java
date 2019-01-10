@@ -37,7 +37,7 @@ public class LoadScreen extends AppCompatActivity {
                         try {
                             int numPlayers = Integer.parseInt(input.getText().toString());
                             if (numPlayers >= 5 && numPlayers <= 20) {
-                                mainGame = new BasketballGame(numPlayers);
+                                mainGame = new BasketballGame(numPlayers, 0);
                                 intent.putExtra("Game Class", mainGame);
                                 startActivity(intent);
                             }
