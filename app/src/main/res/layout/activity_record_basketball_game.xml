@@ -97,8 +97,8 @@
         android:textColorLink="@android:color/black"
         android:textSize="36sp"
         android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/benchPrompt"
         app:layout_constraintEnd_toStartOf="@+id/benchPrompt"
-        tools:layout_editor_absoluteY="0dp"
         tools:text="@string/onCourtLabel"
         tools:textColor="@android:color/black" />
 
@@ -194,19 +194,90 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/courtPlayersScrollBar"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.977"
+        app:layout_constraintVertical_bias="0.836"
         tools:text="@string/techFoulLabel" />
 
     <Button
         android:id="@+id/btnTimer"
-        android:layout_width="wrap_content"
+        android:layout_width="190dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
         android:onClick="timerClick"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnNegative"
+        app:layout_constraintEnd_toStartOf="@+id/btnNegative" />
+
+    <Button
+        android:id="@+id/btnNegative"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/negativeLabel"
+        app:layout_constraintBottom_toTopOf="@+id/txtOppScore"
+        app:layout_constraintEnd_toStartOf="@+id/courtPlayersScrollBar"
+        tools:text="@string/negativeLabel" />
+
+    <TextView
+        android:id="@+id/txtPlayerPM"
+        android:layout_width="190dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toStartOf="@+id/courtPlayersScrollBar"
+        app:layout_constraintTop_toBottomOf="@+id/btnTechFoul" />
+
+    <TextView
+        android:id="@+id/txtPlayerFoul"
+        android:layout_width="190dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:text="TextView"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtPlayerPM"
+        app:layout_constraintEnd_toStartOf="@+id/txtPlayerPM" />
+
+    <TextView
+        android:id="@+id/txtOurScore"
+        android:layout_width="190dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="TextView"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtOppScore"
+        app:layout_constraintEnd_toStartOf="@+id/txtOppScore" />
+
+    <TextView
+        android:id="@+id/txtOppScore"
+        android:layout_width="190dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddOppScore"
+        app:layout_constraintEnd_toStartOf="@+id/courtPlayersScrollBar" />
+
+    <Button
+        android:id="@+id/btnAddOppScore"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/btnShotAttempted"
+        app:layout_constraintEnd_toStartOf="@+id/courtPlayersScrollBar" />
+
+    <TextView
+        android:id="@+id/txtTeamFouls"
+        android:layout_width="190dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:text="TextView"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnAddOppScore"
+        app:layout_constraintEnd_toStartOf="@+id/btnAddOppScore" />
 
 
     />

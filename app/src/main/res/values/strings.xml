@@ -20,4 +20,7 @@
     <string name="foulShotAttemptedLabel">Foul Shot Attempted</string>
     <string name="techFoulLabel">Tech Foul</string>
     <string name="minutePrompt">Enter the number of minutes per quarter</string>
+
+    <string name="negativeLabel">Negative</string>
+
 </resources>
