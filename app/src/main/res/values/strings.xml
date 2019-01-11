@@ -23,4 +23,5 @@
 
     <string name="negativeLabel">Negative</string>
     <string name="addOppScoreLabel">+1 To Opp Score</string>
+    <string name="sortBenchPrompt">Keep bench and court sorted</string>
 </resources>

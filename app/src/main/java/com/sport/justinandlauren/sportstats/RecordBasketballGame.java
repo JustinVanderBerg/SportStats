@@ -1,10 +1,9 @@
 package com.sport.justinandlauren.sportstats;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
@@ -70,20 +69,25 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
 
         //pause the game if they click the timer and the time is currently going
         if (gameGoing) {
+            //pause the game, call the finish function of the timer and then cancel the timer, while storing the time left on cancel
             gameGoing = false;
             gameTime.onFinish();
             gameTime.cancel();
         } else {
             gameGoing = true;
-            gameTime = new CountDownTimer(timeLeftInPeriod, 300) {
+            //create a new timer, as whenever the time isn't going, the countdown timer is cancelled
+            gameTime = new CountDownTimer(timeLeftInPeriod, 250) {
                 @Override
                 public void onTick(long millisUntilFinished) {
+                    //switch the milliseconds till finished to minutes and seconds till finished
                     long numMinute, numSeconds;
                     numMinute = (millisUntilFinished / 1000) / 60;
                     numSeconds = (millisUntilFinished / 1000) % 60;
+                    //update the text of the timer
                     btnTimer.setTextColor(Color.GREEN);
                     btnTimer.setText(numMinute + ":" + timerFormat.format(numSeconds));
                     timeLeftInPeriod = millisUntilFinished;
+                    //game is still going
                     gameGoing = true;
                 }
 
@@ -91,6 +95,10 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
                 public void onFinish() {
                     //set the initial start time of the period
                     long numMinute, numSeconds;
+                    //if less than a seccond left
+                    if (timeLeftInPeriod < 1000) {
+                        timeLeftInPeriod = game.getGameLength();
+                    }
                     //switch the milliseconds game length to minutes and seconds
                     numMinute = (timeLeftInPeriod / 1000) / 60;
                     numSeconds = (timeLeftInPeriod / 1000) % 60;
@@ -140,22 +148,12 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
                     benchSelected = false;
                     benchSelectedLocation = -1;
                 } else {
+                    benchPlayerButtons[i].setTextColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
+                    setText(benchPlayerButtons[i], benchPlayerButtons[i].getText().toString());
                     benchPlayerButtons[i].setChecked(true);
                     benchSelected = true;
                     benchSelectedLocation = i;
-                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                    //set title
-                    builder.setTitle("Substitution");
-                    builder.setMessage("Please click the player on the court you would like to substitute with, or on the bench player again to cancel")
-                            .setCancelable(false)
-                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
 
-                                }
-                            });
-
-                    AlertDialog alertDialog = builder.create();
-                    alertDialog.show();
                 }
                 //stop checking if other buttons were clicked
                 i = numBenchPlayers;
@@ -165,9 +163,20 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
         if (btnClicked != -1) {
             //turn off all buttons but the button that was clicked
             for (int i = 0; i < btnClicked; i++) {
+                //check if button was selected, if so, change the text color back
+                if (benchPlayerButtons[i].isChecked()) {
+                    benchPlayerButtons[i].setTextColor(Color.BLACK);
+                    setText(benchPlayerButtons[i], benchPlayerButtons[i].getText().toString());
+                }
                 benchPlayerButtons[i].setChecked(false);
+
             }
             for (int i = btnClicked + 1; i < numBenchPlayers; i++) {
+                //check if button was selected, if so, change the text color back
+                if (benchPlayerButtons[i].isChecked()) {
+                    benchPlayerButtons[i].setTextColor(Color.BLACK);
+                    setText(benchPlayerButtons[i], benchPlayerButtons[i].getText().toString());
+                }
                 benchPlayerButtons[i].setChecked(false);
             }
 
@@ -196,6 +205,8 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
                     }
                 } else {
                     courtPlayerButtons[i].setChecked(true);
+                    courtPlayerButtons[i].setTextColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
+                    setText(courtPlayerButtons[i], courtPlayerButtons[i].getText().toString());
                     i = numCourtPlayers;
                 }
             }
@@ -204,9 +215,20 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
         if (btnClicked != -1) {
             //turn off all buttons but the button that was clicked
             for (int i = 0; i < btnClicked; i++) {
+                //check if button was selected, if so, change the text color back
+                if (courtPlayerButtons[i].isChecked()) {
+                    courtPlayerButtons[i].setTextColor(Color.BLACK);
+                    setText(courtPlayerButtons[i], courtPlayerButtons[i].getText().toString());
+                }
                 courtPlayerButtons[i].setChecked(false);
+
             }
             for (int i = btnClicked + 1; i < numCourtPlayers; i++) {
+                //check if button was selected, if so, change the text color back
+                if (courtPlayerButtons[i].isChecked()) {
+                    courtPlayerButtons[i].setTextColor(Color.BLACK);
+                    setText(courtPlayerButtons[i], courtPlayerButtons[i].getText().toString());
+                }
                 courtPlayerButtons[i].setChecked(false);
             }
         }
@@ -316,46 +338,6 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
         AbstractHuman tempBench = game.getHuman(bench + 5);
         game.setHuman(bench + 5, game.getHuman(court));
         game.setHuman(court, tempBench);
-        //ask the user if they would like to resort the bench by player number again
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-        //set the title
-        builder.setTitle("Sort Bench");
-        //set the message and set the type of buttons
-        builder.setMessage("Would you like to resort the bench and court by player number?")
-                .setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        //resort the bench and court players so they are ordered from highest to lowest again
-                        AbstractHuman[] tempPlayers = game.getPlayers();
-
-                        //sort the court
-                        sort(tempPlayers, 0, 4);
-
-                        //sort the bench
-                        sort(tempPlayers, 5, tempPlayers.length - 1);
-
-                        //update the players array in the game
-                        game.setPlayers(tempPlayers);
-
-                        //loop through and update all button text as it could possibly have changed
-                        for (int i = 0; i < numBenchPlayers; i++) {
-                            ToggleButton toggleButton = findViewById(getResources().getIdentifier("bench" + (i + 1), "id", getPackageName()));
-                            setText(toggleButton, "\n" + game.getHuman(i + 5).getPlayerNumber() + "\n\n" + game.getHuman(i + 5).getName());
-                        }
-                        for (int i = 0; i < numCourtPlayers; i++) {
-                            ToggleButton toggleButton = findViewById(getResources().getIdentifier("court" + (i + 1), "id", getPackageName()));
-                            setText(toggleButton, "\n" + game.getHuman(i).getPlayerNumber() + "\n\n" + game.getHuman(i).getName());
-                        }
-                    }
-                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                //don't do anything if they select no
-            }
-        });
-
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
 
         //change the text of the bench button to now hold the correct player info
         ToggleButton benchButton = findViewById(this.getResources().getIdentifier("bench" + (bench + 1), "id", this.getPackageName()));
@@ -369,6 +351,29 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
         benchSelectedLocation = -1;
     }
 
+    private void sortCourtAndBench() {
+        //resort the bench and court players so they are ordered from highest to lowest again
+        AbstractHuman[] tempPlayers = game.getPlayers();
+
+        //sort the court
+        sort(tempPlayers, 0, 4);
+
+        //sort the bench
+        sort(tempPlayers, 5, tempPlayers.length - 1);
+
+        //update the players array in the game
+        game.setPlayers(tempPlayers);
+
+        //loop through and update all button text as it could possibly have changed
+        for (int i = 0; i < numBenchPlayers; i++) {
+            ToggleButton toggleButton = findViewById(getResources().getIdentifier("bench" + (i + 1), "id", getPackageName()));
+            setText(toggleButton, "\n" + game.getHuman(i + 5).getPlayerNumber() + "\n\n" + game.getHuman(i + 5).getName());
+        }
+        for (int i = 0; i < numCourtPlayers; i++) {
+            ToggleButton toggleButton = findViewById(getResources().getIdentifier("court" + (i + 1), "id", getPackageName()));
+            setText(toggleButton, "\n" + game.getHuman(i).getPlayerNumber() + "\n\n" + game.getHuman(i).getName());
+        }
+    }
     /**
      * Method to set the text of a toggle button (on text, off text, and main text)
      *

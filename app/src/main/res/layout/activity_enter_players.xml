@@ -73,10 +73,21 @@
         android:ems="10"
         android:hint="@string/minutePrompt"
         android:inputType="textPersonName"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnStartGame"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/playerNumbers" />
+
+    <Switch
+        android:id="@+id/benchSort"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="@string/sortBenchPrompt"
+        android:textSize="18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/numMinutesPerQuarter"
+        app:layout_constraintStart_toEndOf="@+id/numMinutesPerQuarter" />
 
 </android.support.constraint.ConstraintLayout>

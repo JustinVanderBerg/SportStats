@@ -19,6 +19,7 @@ public abstract class AbstractGame implements Serializable {
     private int numPlayers;
     AbstractHuman[] players;
     private long gameLength;
+    boolean keepBenchSorted;
     /**
      * Primary Constructor
      *
