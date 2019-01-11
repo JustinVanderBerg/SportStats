@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 
 public class enterPlayers extends AppCompatActivity {
     private AbstractGame mainGame;
@@ -69,6 +70,8 @@ public class enterPlayers extends AppCompatActivity {
                 minutesPerQuarter = Integer.parseInt(temp.getText().toString());
                 long secondsPerQuarter = minutesPerQuarter * 60000;
                 mainGame.setGameLength(secondsPerQuarter);
+                Switch keepSort = findViewById(R.id.benchSort);
+                mainGame.setKeepSorted(keepSort.isEnabled());
             } catch (NumberFormatException e) {
                 //error on users input
                 error = true;

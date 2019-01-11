@@ -223,6 +223,7 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
                 courtPlayerButtons[i].setChecked(false);
 
             }
+            // TODO finish green text selection for substitution
             for (int i = btnClicked + 1; i < numCourtPlayers; i++) {
                 //check if button was selected, if so, change the text color back
                 if (courtPlayerButtons[i].isChecked()) {
@@ -338,7 +339,9 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
         AbstractHuman tempBench = game.getHuman(bench + 5);
         game.setHuman(bench + 5, game.getHuman(court));
         game.setHuman(court, tempBench);
-
+        if (game.keepSorted()) {
+            sortCourtAndBench();
+        }
         //change the text of the bench button to now hold the correct player info
         ToggleButton benchButton = findViewById(this.getResources().getIdentifier("bench" + (bench + 1), "id", this.getPackageName()));
         setText(benchButton, "\n" + game.getHuman(bench + 5).getPlayerNumber() + "\n\n" + game.getHuman(bench + 5).getName());

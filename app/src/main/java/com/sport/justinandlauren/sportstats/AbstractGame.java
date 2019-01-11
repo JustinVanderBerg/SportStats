@@ -19,16 +19,31 @@ public abstract class AbstractGame implements Serializable {
     private int numPlayers;
     AbstractHuman[] players;
     private long gameLength;
-    boolean keepBenchSorted;
+    private boolean keepBenchSorted;
     /**
      * Primary Constructor
      *
      * @param numPlayers number of players in the game
      */
-    public AbstractGame(int numPlayers, long gameLength) {
+    public AbstractGame(int numPlayers, long gameLength, boolean keepBenchSorted) {
         this.numPlayers = numPlayers;
         this.players = null;
         this.gameLength = gameLength;
+        this.keepBenchSorted = keepBenchSorted;
+    }
+
+    /**
+     * @return whether the bench should be kept sorted
+     */
+    public boolean keepSorted() {
+        return keepBenchSorted;
+    }
+
+    /**
+     * @param keepBenchSorted whether the bench should be kept sorted, true for always sorted
+     */
+    public void setKeepSorted(boolean keepBenchSorted) {
+        this.keepBenchSorted = keepBenchSorted;
     }
 
     /**
