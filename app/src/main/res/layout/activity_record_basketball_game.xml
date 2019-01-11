@@ -224,7 +224,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:gravity="center"
-        android:text="TextView"
+        android:text="Player +/-:"
         android:textAlignment="center"
         app:layout_constraintEnd_toStartOf="@+id/courtPlayersScrollBar"
         app:layout_constraintTop_toBottomOf="@+id/btnTechFoul" />
@@ -235,7 +235,7 @@
         android:layout_height="60dp"
         android:layout_marginEnd="8dp"
         android:gravity="center"
-        android:text="TextView"
+        android:text="Player # Fouls:"
         app:layout_constraintBaseline_toBaselineOf="@+id/txtPlayerPM"
         app:layout_constraintEnd_toStartOf="@+id/txtPlayerPM" />
 
@@ -244,7 +244,7 @@
         android:layout_width="190dp"
         android:layout_height="60dp"
         android:gravity="center"
-        android:text="TextView"
+        android:text="Our Score:"
         app:layout_constraintBaseline_toBaselineOf="@+id/txtOppScore"
         app:layout_constraintEnd_toStartOf="@+id/txtOppScore" />
 
@@ -255,19 +255,21 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:gravity="center"
-        android:text="TextView"
+        android:text="Opp Score:"
         app:layout_constraintBottom_toTopOf="@+id/btnAddOppScore"
         app:layout_constraintEnd_toStartOf="@+id/courtPlayersScrollBar" />
 
     <Button
         android:id="@+id/btnAddOppScore"
+        android:background="@color/red"
         android:layout_width="190dp"
         android:layout_height="60dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Button"
+        android:text="@string/addOppScoreLabel"
         app:layout_constraintBottom_toTopOf="@+id/btnShotAttempted"
-        app:layout_constraintEnd_toStartOf="@+id/courtPlayersScrollBar" />
+        app:layout_constraintEnd_toStartOf="@+id/courtPlayersScrollBar"
+        tools:text="@string/addOppScoreLabel" />
 
     <TextView
         android:id="@+id/txtTeamFouls"
@@ -275,7 +277,7 @@
         android:layout_height="60dp"
         android:layout_marginEnd="8dp"
         android:gravity="center"
-        android:text="TextView"
+        android:text="Our Team Fouls:"
         app:layout_constraintBaseline_toBaselineOf="@+id/btnAddOppScore"
         app:layout_constraintEnd_toStartOf="@+id/btnAddOppScore" />
 
