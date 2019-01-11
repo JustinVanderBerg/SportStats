@@ -200,7 +200,7 @@
     <Button
         android:id="@+id/btnTimer"
         android:layout_width="190dp"
-        android:layout_height="75dp"
+        android:layout_height="90dp"
         android:layout_marginEnd="8dp"
         android:onClick="timerClick"
         app:layout_constraintBaseline_toBaselineOf="@+id/btnNegative"
@@ -209,7 +209,7 @@
     <Button
         android:id="@+id/btnNegative"
         android:layout_width="190dp"
-        android:layout_height="75dp"
+        android:layout_height="90dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:text="@string/negativeLabel"
@@ -220,7 +220,7 @@
     <TextView
         android:id="@+id/txtPlayerPM"
         android:layout_width="190dp"
-        android:layout_height="75dp"
+        android:layout_height="60dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:gravity="center"
@@ -232,7 +232,7 @@
     <TextView
         android:id="@+id/txtPlayerFoul"
         android:layout_width="190dp"
-        android:layout_height="75dp"
+        android:layout_height="60dp"
         android:layout_marginEnd="8dp"
         android:gravity="center"
         android:text="TextView"
@@ -242,7 +242,7 @@
     <TextView
         android:id="@+id/txtOurScore"
         android:layout_width="190dp"
-        android:layout_height="75dp"
+        android:layout_height="60dp"
         android:gravity="center"
         android:text="TextView"
         app:layout_constraintBaseline_toBaselineOf="@+id/txtOppScore"
@@ -251,7 +251,7 @@
     <TextView
         android:id="@+id/txtOppScore"
         android:layout_width="190dp"
-        android:layout_height="75dp"
+        android:layout_height="60dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:gravity="center"
@@ -262,7 +262,7 @@
     <Button
         android:id="@+id/btnAddOppScore"
         android:layout_width="190dp"
-        android:layout_height="75dp"
+        android:layout_height="60dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:text="Button"
@@ -272,7 +272,7 @@
     <TextView
         android:id="@+id/txtTeamFouls"
         android:layout_width="190dp"
-        android:layout_height="75dp"
+        android:layout_height="60dp"
         android:layout_marginEnd="8dp"
         android:gravity="center"
         android:text="TextView"
