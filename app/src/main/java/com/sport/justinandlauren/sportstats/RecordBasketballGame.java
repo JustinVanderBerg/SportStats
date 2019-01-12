@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -342,7 +341,6 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
         AbstractHuman tempBench = game.getHuman(bench + 5);
         game.setHuman(bench + 5, game.getHuman(court));
         game.setHuman(court, tempBench);
-        Log.i("myTag", "GAME SORTED: " + game.keepSorted());
         if (game.keepSorted()) {
             sortCourtAndBench();
         }
