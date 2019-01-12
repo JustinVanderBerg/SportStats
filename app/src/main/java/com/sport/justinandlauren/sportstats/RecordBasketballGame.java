@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -49,14 +50,9 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
         generateCourtPlayers();
         Button btnTimer = findViewById(R.id.btnTimer);
         //set the initial start time of the period
-        long numMinute, numSeconds;
+
         timeLeftInPeriod = game.getGameLength();
-        //switch the milliseconds game length to minutes and seconds
-        numMinute = (timeLeftInPeriod / 1000) / 60;
-        numSeconds = (timeLeftInPeriod / 1000) % 60;
-        //set color to red because it isn't going
-        btnTimer.setTextColor(Color.RED);
-        btnTimer.setText(numMinute + ":" + timerFormat.format(numSeconds));
+        setTimerText(btnTimer, Color.RED);
     }
 
     /**
@@ -76,7 +72,7 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
         } else {
             gameGoing = true;
             //create a new timer, as whenever the time isn't going, the countdown timer is cancelled
-            gameTime = new CountDownTimer(timeLeftInPeriod, 250) {
+            gameTime = new CountDownTimer(timeLeftInPeriod, 500) {
                 @Override
                 public void onTick(long millisUntilFinished) {
                     //switch the milliseconds till finished to minutes and seconds till finished
@@ -192,6 +188,8 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
                     //make sure that the bench location is valid
                     if (benchSelectedLocation != -1) {
                         substitution(benchSelectedLocation, i);
+                        benchSelectedLocation = -1;
+                        benchSelected = false;
                     }
                 } else {
                     checkButton(courtPlayerButtons[i]);
@@ -220,12 +218,13 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
      * @param tempButton toggle button to deselect
      */
     private void uncheckButton(ToggleButton tempButton) {
-        //change the text color back
+        tempButton.setChecked(false);
 
+        //change the text color back
         tempButton.setTextColor(Color.BLACK);
         setText(tempButton, tempButton.getText().toString());
 
-        tempButton.setChecked(false);
+
     }
 
     /**
@@ -234,9 +233,11 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
      * @param tempButton toggle button to deselect
      */
     private void checkButton(ToggleButton tempButton) {
+        tempButton.setChecked(true);
+        //set text color to green
         tempButton.setTextColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
         setText(tempButton, tempButton.getText().toString());
-        tempButton.setChecked(true);
+
     }
 
     /**
@@ -333,7 +334,7 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
      * Note that the abstract players array in the game class always is in the order 1-5 on court, and then bench players afterwards
      *
      * @param bench Player location currently on the bench, who will be swapped with the player on the court
-     * @param court Player loaction on the court who will be swapped with the player on the bench
+     * @param court Player location on the court who will be swapped with the player on the bench
      */
     private void substitution(int bench, int court) {
         //the bench starts at index 5 of the player array, so add five to get correct location in array
@@ -343,18 +344,19 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
         game.setHuman(court, tempBench);
         if (game.keepSorted()) {
             sortCourtAndBench();
+        } else {
+            //change the text of the bench button to now hold the correct player info
+            ToggleButton benchButton = findViewById(this.getResources().getIdentifier("bench" + (bench + 1), "id", this.getPackageName()));
+            setText(benchPlayerButtons[bench], "\n" + game.getHuman(bench + 5).getPlayerNumber() + "\n\n" + game.getHuman(bench + 5).getName());
+            uncheckButton(benchButton);
+            //change the text of the court button to hold the substituted player's info
+            ToggleButton courtButton = findViewById(this.getResources().getIdentifier("court" + (court + 1), "id", this.getPackageName()));
+            setText(courtPlayerButtons[court], "\n" + game.getHuman(court).getPlayerNumber() + "\n\n" + game.getHuman(court).getName());
+            uncheckButton(courtButton);
+            Log.wtf("COURT", "Checking first button" + courtPlayerButtons[0].isChecked());
+            checkButton(courtPlayerButtons[0]);
+            Log.wtf("COURT", "Checked first button" + courtPlayerButtons[0].isChecked());
         }
-        //change the text of the bench button to now hold the correct player info
-        ToggleButton benchButton = findViewById(this.getResources().getIdentifier("bench" + (bench + 1), "id", this.getPackageName()));
-        setText(benchButton, "\n" + game.getHuman(bench + 5).getPlayerNumber() + "\n\n" + game.getHuman(bench + 5).getName());
-        //change the text of the court button to hold the substituted player's info
-        ToggleButton courtButton = findViewById(this.getResources().getIdentifier("court" + (court + 1), "id", this.getPackageName()));
-
-        setText(courtButton, "\n" + game.getHuman(court).getPlayerNumber() + "\n\n" + game.getHuman(court).getName());
-        //deselect the bench button so substitution is no longer happening
-        benchButton.setChecked(false);
-        benchSelected = false;
-        benchSelectedLocation = -1;
     }
 
     private void sortCourtAndBench() {
@@ -383,6 +385,7 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
             uncheckButton(toggleButton);
         }
         //check the first court button
+        //TODO figure out why the court player button isn't appearing selected
         checkButton(courtPlayerButtons[0]);
     }
 
