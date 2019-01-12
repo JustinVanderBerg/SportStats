@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -66,18 +67,23 @@ public class enterPlayers extends AppCompatActivity {
             try {
                 players[i].setName(names[i].getText().toString());
                 players[i].setPlayerNumber(Integer.parseInt(numbers[i].getText().toString()));
-                EditText temp = findViewById(R.id.numMinutesPerQuarter);
-                minutesPerQuarter = Integer.parseInt(temp.getText().toString());
-                long secondsPerQuarter = minutesPerQuarter * 60000;
-                mainGame.setGameLength(secondsPerQuarter);
-                Switch keepSort = findViewById(R.id.benchSort);
-                mainGame.setKeepSorted(keepSort.isEnabled());
+
             } catch (NumberFormatException e) {
                 //error on users input
                 error = true;
             }
         }
-
+        try {
+            EditText temp = findViewById(R.id.numMinutesPerQuarter);
+            minutesPerQuarter = Integer.parseInt(temp.getText().toString());
+            long secondsPerQuarter = minutesPerQuarter * 60000;
+            mainGame.setGameLength(secondsPerQuarter);
+            Switch keepSort = findViewById(R.id.benchSort);
+            Log.wtf("STUFF", "Is enabled:" + keepSort.isEnabled());
+            mainGame.setKeepSorted(keepSort.isEnabled());
+        } catch (NumberFormatException e) {
+            error = true;
+        }
         //only launch the game recording screen if all data is entered correctly
         if (!error) {
             //sort the players array from highest to lowest based off player number

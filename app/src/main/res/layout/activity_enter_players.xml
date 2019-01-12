@@ -78,16 +78,20 @@
         app:layout_constraintEnd_toStartOf="@+id/btnStartGame"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playerNumbers" />
+        app:layout_constraintTop_toBottomOf="@+id/playerNumbers"
+        android:importantForAutofill="no" />
 
     <Switch
         android:id="@+id/benchSort"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
+        android:checked="true"
+        android:showText="false"
         android:text="@string/sortBenchPrompt"
         android:textSize="18sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/numMinutesPerQuarter"
-        app:layout_constraintStart_toEndOf="@+id/numMinutesPerQuarter" />
+        app:layout_constraintStart_toEndOf="@+id/numMinutesPerQuarter"
+        tools:checked="true" />
 
 </android.support.constraint.ConstraintLayout>
