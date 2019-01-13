@@ -594,10 +594,11 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
             ((TextView) findViewById(R.id.txtPlayerFoul)).setText(getString(R.string.playerFouls) + game.getHuman(courtSelectedLocation).getTotalPersonalFouls());
             //show correct player plus/minus
             ((TextView) findViewById(R.id.txtPlayerPM)).setText(getString(R.string.playerPM) + playerPM.format(game.getHuman(courtSelectedLocation).getPlusMinus()));
+        } else {
+            //set to default text without any values if no player is selected
+            ((TextView) findViewById(R.id.txtPlayerFoul)).setText(getString(R.string.playerFouls));
+            ((TextView) findViewById(R.id.txtPlayerPM)).setText(getString(R.string.playerPM));
         }
-        //set to default text without any values if no player is selected
-        ((TextView) findViewById(R.id.txtPlayerFoul)).setText(getString(R.string.playerFouls));
-        ((TextView) findViewById(R.id.txtPlayerPM)).setText(getString(R.string.playerPM));
         //show correct team fouls
         ((TextView) findViewById(R.id.txtTeamFouls)).setText(getString(R.string.ourTeamFouls) + game.getTotalTeamFouls());
         //show the correct score for user team
