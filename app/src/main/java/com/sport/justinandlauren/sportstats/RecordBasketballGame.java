@@ -57,6 +57,8 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
         //set the initial start time of the period
         timeLeftInPeriod = game.getGameLength();
         setTimerText(btnTimer, Color.RED);
+        //update display info
+        updateTextBoxInfo();
     }
 
     /**
@@ -136,6 +138,7 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
                 tempHuman.setShotsMade(tempHuman.getShotsMade() + changeAmount);
                 game.setTotalShotsMade(game.getTotalShotsMade() + changeAmount);
                 game.setPointsForPerQuarter(game.getCurrentQuarter(), game.getPointsForPerQuarter(game.getCurrentQuarter()) + (changeAmount * 2));
+                game.setPointsFor(game.getPointsFor() + (changeAmount * 2));
                 //Update number of shots attempted for the player
             } else if (view.getId() == R.id.btnShotAttempted) {
                 tempHuman.setShotsAttempted(tempHuman.getShotsAttempted() + changeAmount);
@@ -145,6 +148,7 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
                 tempHuman.setFoulShotsMade(tempHuman.getFoulShotsMade() + changeAmount);
                 game.setTotalFoulShotsMade(game.getTotalFoulShotsMade() + changeAmount);
                 game.setPointsForPerQuarter(game.getCurrentQuarter(), game.getPointsForPerQuarter(game.getCurrentQuarter()) + changeAmount);
+                game.setPointsFor(game.getPointsFor() + changeAmount);
                 //Update number of foul shots attempted for the player
             } else if (view.getId() == R.id.btnFoulShotAttempted) {
                 tempHuman.setFoulShotsAttempted(tempHuman.getFoulShotsAttempted() + changeAmount);
@@ -154,6 +158,7 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
                 tempHuman.setThreePointsMade(tempHuman.getThreePointsMade() + changeAmount);
                 game.setTotalThreePointsMade(game.getTotalThreePointsMade() + changeAmount);
                 game.setPointsForPerQuarter(game.getCurrentQuarter(), game.getPointsForPerQuarter(game.getCurrentQuarter()) + (changeAmount * 3));
+                game.setPointsFor(game.getPointsFor() + (changeAmount * 3));
                 //update number of three points attempted for the player and in game class
             } else if (view.getId() == R.id.btn3PtAttempted) {
                 tempHuman.setThreePointsMade(tempHuman.getThreePointsMade() + changeAmount);
@@ -161,6 +166,7 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
                 //update the number of personal fouls for a player and the total for the team for the game
             } else if (view.getId() == R.id.btnPFoul) {
                 tempHuman.setPersonalFoulsPerQuarter(game.getCurrentQuarter(), tempHuman.getPersonalFoulsPerQuarter(game.getCurrentQuarter()) + changeAmount);
+                tempHuman.setTotalPersonalFouls(tempHuman.getTotalPersonalFouls() + changeAmount);
                 game.setTeamFoulsPerQuarter(game.getCurrentQuarter(), game.getTeamFoulsPerQuarter(game.getCurrentQuarter()) + changeAmount);
                 //add a technical foul to the selected player and to the team total
             } else if (view.getId() == R.id.btnTechFoul) {
@@ -180,7 +186,6 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
                 game.setTotalTechFouls(game.getTotalTechFouls() + changeAmount);
             }
         }
-
     }
 
     /**
@@ -196,7 +201,7 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
         } else {
             changeInfoButtonStates(false);
         }
-
+        updateTextBoxInfo();
     }
 
 
@@ -576,4 +581,29 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
         findViewById(R.id.btnPFoul).setEnabled(enabled);
     }
 
+    /**
+     * Method to update all the text boxes that display information on the record game screen
+     */
+    private void updateTextBoxInfo() {
+        //TODO update current period textbox
+        //text format for plus minus
+        DecimalFormat playerPM = new DecimalFormat("#,##0.0");
+        //if there is a player selected on the court
+        if (courtSelectedLocation != -1) {
+            //show correct player fouls
+            ((TextView) findViewById(R.id.txtPlayerFoul)).setText(getString(R.string.playerFouls) + game.getHuman(courtSelectedLocation).getTotalPersonalFouls());
+            //show correct player plus/minus
+            ((TextView) findViewById(R.id.txtPlayerPM)).setText(getString(R.string.playerPM) + playerPM.format(game.getHuman(courtSelectedLocation).getPlusMinus()));
+        }
+        //set to default text without any values if no player is selected
+        ((TextView) findViewById(R.id.txtPlayerFoul)).setText(getString(R.string.playerFouls));
+        ((TextView) findViewById(R.id.txtPlayerPM)).setText(getString(R.string.playerPM));
+        //show correct team fouls
+        ((TextView) findViewById(R.id.txtTeamFouls)).setText(getString(R.string.ourTeamFouls) + game.getTotalTeamFouls());
+        //show the correct score for user team
+        ((TextView) findViewById(R.id.txtOurScore)).setText(getString(R.string.ourScore) + game.getPointsFor());
+        //show correct score for away team
+        ((TextView) findViewById(R.id.txtOppScore)).setText(getString(R.string.oppScore) + game.getPointsAgainst());
+
+    }
 }

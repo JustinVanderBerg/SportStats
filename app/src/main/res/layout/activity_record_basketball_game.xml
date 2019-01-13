@@ -239,13 +239,13 @@
 
     <TextView
         android:id="@+id/txtPlayerPM"
-        android:background="@color/gray"
         android:layout_width="190dp"
         android:layout_height="60dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:background="@color/gray"
         android:gravity="center"
-        android:text="Player +/-:"
+        android:text="@string/playerPM"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textStyle="bold"
@@ -254,12 +254,12 @@
 
     <TextView
         android:id="@+id/txtPlayerFoul"
-        android:background="@color/gray"
         android:layout_width="190dp"
         android:layout_height="60dp"
         android:layout_marginEnd="8dp"
+        android:background="@color/gray"
         android:gravity="center"
-        android:text="Player # Fouls:"
+        android:text="@string/playerFouls"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/txtPlayerPM"
@@ -267,12 +267,12 @@
 
     <TextView
         android:id="@+id/txtOurScore"
-        android:background="@color/gray"
         android:layout_width="190dp"
         android:layout_height="60dp"
         android:layout_marginEnd="8dp"
+        android:background="@color/gray"
         android:gravity="center"
-        android:text="Our Score:"
+        android:text="@string/ourScore"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/txtOppScore"
@@ -280,13 +280,13 @@
 
     <TextView
         android:id="@+id/txtOppScore"
-        android:background="@color/gray"
         android:layout_width="190dp"
         android:layout_height="60dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@color/gray"
         android:gravity="center"
-        android:text="Opp Score:"
+        android:text="@string/oppScore"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/btnAddOppScore"
@@ -307,18 +307,16 @@
 
     <TextView
         android:id="@+id/txtTeamFouls"
-        android:background="@color/gray"
         android:layout_width="190dp"
         android:layout_height="60dp"
         android:layout_marginEnd="8dp"
+        android:background="@color/gray"
         android:gravity="center"
-        android:text="Our Team Fouls:"
+        android:text="@string/ourTeamFouls"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/btnAddOppScore"
         app:layout_constraintEnd_toStartOf="@+id/btnAddOppScore" />
 
-
-    />
 
 </android.support.constraint.ConstraintLayout>

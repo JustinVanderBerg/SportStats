@@ -28,22 +28,10 @@ public class BasketballPlayer extends AbstractHuman{
     private double plusMinus;
 
     /**
-     *
+     * Primary Constructor
      */
     public BasketballPlayer() {
         super();
-        
-    }
-
-    /**
-     * Secondary constructor
-     *
-     * @param name          of player
-     * @param playerNumber  number of player
-     * @param secondsPlayed seconds played(in said game)
-     */
-    public BasketballPlayer(String name, int playerNumber, long secondsPlayed) {
-        super(name, playerNumber, secondsPlayed);
         shotsAttempted = 0;
         shotsMade = 0;
         shotsPercent = 0;
@@ -54,6 +42,9 @@ public class BasketballPlayer extends AbstractHuman{
         foulShotsMade = 0;
         foulShotPercent = 0;
         personalFoulsPerQuarter = new int[4];
+        for (int i = 0; i < 4; i++) {
+            personalFoulsPerQuarter[i] = 0;
+        }
         totalPersonalFouls = 0;
         totalTechnicalFouls = 0;
         plusMinus = 0;

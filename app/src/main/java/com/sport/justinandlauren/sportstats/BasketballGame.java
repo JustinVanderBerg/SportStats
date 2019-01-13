@@ -38,8 +38,8 @@ public class BasketballGame extends AbstractGame {
     /**
      * Primary Constructor
      *
-     * @param numPlayers number of players playing in the game
-     * @param gameLength the length of the quarters in milliseconds
+     * @param numPlayers      number of players playing in the game
+     * @param gameLength      the length of the quarters in milliseconds
      * @param keepBenchSorted Whether to keep the bench sorted throughout the game
      */
     public BasketballGame(int numPlayers, long gameLength, boolean keepBenchSorted) {
@@ -51,6 +51,11 @@ public class BasketballGame extends AbstractGame {
         totalTeamFouls = 0;
         pointsForPerQuarter = new int[4];
         pointsAgainstPerQuarter = new int[4];
+        for (int i = 0; i < 4; i++) {
+            teamFoulsPerQuarter[i] = 0;
+            pointsForPerQuarter[i] = 0;
+            pointsAgainstPerQuarter[i] = 0;
+        }
         totalShotsAttempted = 0;
         totalShotsMade = 0;
         shotPercentage = 0;
@@ -308,6 +313,17 @@ public class BasketballGame extends AbstractGame {
      */
     public void setTotalShotsAttempted(int totalShotsAttempted) {
         this.totalShotsAttempted = totalShotsAttempted;
+    }
+
+    /**
+     * Method that overrides the get human in the abstract game class so that casting isn't required
+     *
+     * @param index index of player to get
+     * @return a basketball player at index i
+     */
+    @Override
+    public BasketballPlayer getHuman(int index) {
+        return (BasketballPlayer) players[index];
     }
 
     @Override
