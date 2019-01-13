@@ -66,21 +66,16 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:alpha="1"
-        android:foregroundTint="@android:color/black"
         android:text="@string/benchLabel"
         android:textAllCaps="true"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColorHighlight="@android:color/black"
-        android:textColorHint="@android:color/black"
-        android:textColorLink="@android:color/black"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/benchLabel"
-        tools:textColor="@android:color/black" />
+        tools:text="@string/benchLabel"/>
 
     <TextView
         android:id="@+id/courtPrompt"
@@ -88,19 +83,14 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:alpha="1"
-        android:foregroundTint="@android:color/black"
         android:text="@string/onCourtLabel"
         android:textAllCaps="true"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColorHighlight="@android:color/black"
-        android:textColorHint="@android:color/black"
-        android:textColorLink="@android:color/black"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/benchPrompt"
         app:layout_constraintEnd_toStartOf="@+id/benchPrompt"
-        tools:text="@string/onCourtLabel"
-        tools:textColor="@android:color/black" />
+        tools:text="@string/onCourtLabel"/>
 
     <Button
         android:id="@+id/btnShotMade"
@@ -227,9 +217,20 @@
         app:layout_constraintEnd_toStartOf="@+id/courtPlayersScrollBar"
         tools:text="@string/negativeLabel" />
 
+    <Button
+        android:id="@+id/btnNegative2"
+        android:layout_width="95dp"
+        android:layout_height="90dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/gray"
+        android:text="@string/negativeLabel"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnTimer"
+        app:layout_constraintEnd_toStartOf="@+id/btnTimer"
+        tools:text="@string/negativeLabel" />
+
     <TextView
         android:id="@+id/txtPlayerPM"
-        android:background="@color/green"
+        android:background="@color/gray"
         android:layout_width="190dp"
         android:layout_height="60dp"
         android:layout_marginTop="8dp"
@@ -237,40 +238,48 @@
         android:gravity="center"
         android:text="Player +/-:"
         android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/courtPlayersScrollBar"
         app:layout_constraintTop_toBottomOf="@+id/btnTechFoul" />
 
     <TextView
         android:id="@+id/txtPlayerFoul"
-        android:background="@color/green"
+        android:background="@color/gray"
         android:layout_width="190dp"
         android:layout_height="60dp"
         android:layout_marginEnd="8dp"
         android:gravity="center"
         android:text="Player # Fouls:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/txtPlayerPM"
         app:layout_constraintEnd_toStartOf="@+id/txtPlayerPM" />
 
     <TextView
         android:id="@+id/txtOurScore"
+        android:background="@color/gray"
         android:layout_width="190dp"
         android:layout_height="60dp"
         android:layout_marginEnd="8dp"
-        android:background="@color/green"
         android:gravity="center"
         android:text="Our Score:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/txtOppScore"
         app:layout_constraintEnd_toStartOf="@+id/txtOppScore" />
 
     <TextView
         android:id="@+id/txtOppScore"
-        android:background="@color/green"
+        android:background="@color/gray"
         android:layout_width="190dp"
         android:layout_height="60dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:gravity="center"
         android:text="Opp Score:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/btnAddOppScore"
         app:layout_constraintEnd_toStartOf="@+id/courtPlayersScrollBar" />
 
@@ -288,12 +297,14 @@
 
     <TextView
         android:id="@+id/txtTeamFouls"
-        android:background="@color/green"
+        android:background="@color/gray"
         android:layout_width="190dp"
         android:layout_height="60dp"
         android:layout_marginEnd="8dp"
         android:gravity="center"
         android:text="Our Team Fouls:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/btnAddOppScore"
         app:layout_constraintEnd_toStartOf="@+id/btnAddOppScore" />
 
