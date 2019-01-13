@@ -17,7 +17,7 @@ import java.text.DecimalFormat;
 
 public class RecordBasketballGame extends AppCompatActivity implements View.OnClickListener {
     //new basketball game
-    private AbstractGame game;
+    private BasketballGame game;
     //5 players on court at all times, therefore number of players on bench is total players subtract 5
     private int numBenchPlayers;
     private final int numCourtPlayers = 5;
@@ -25,6 +25,10 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
     private ToggleButton[] benchPlayerButtons;
     private ToggleButton[] courtPlayerButtons;
 
+    //variable to store whether clicking a button adds or subtracts the value
+    private boolean addValues = true;
+    //variable to hold which court player is currently selected
+    private int courtSelectedLocation = 0;
     //variable to allow substitutions
     private boolean benchSelected = false;
     private int benchSelectedLocation = -1;
@@ -39,7 +43,7 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_record_basketball_game);
-        game = (AbstractGame) (getIntent().getSerializableExtra("Game Class"));
+        game = (BasketballGame) (getIntent().getSerializableExtra("Game Class"));
         numBenchPlayers = game.getNumPlayers() - 5;
         benchPlayerButtons = new ToggleButton[numBenchPlayers];
         courtPlayerButtons = new ToggleButton[numCourtPlayers];
@@ -106,13 +110,51 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
     }
 
     /**
+     * Method to check which button was clicked on, and update player info
+     *
+     * @param view view that was clicked on
+     */
+    private void updatePlayerInfo(View view) {
+        //temp human used to update info
+        BasketballPlayer tempHuman = (BasketballPlayer) game.getHuman(courtSelectedLocation);
+        //variable to store whether to add or subtract values
+        int changeAmount;
+        if (addValues) {
+            changeAmount = 1;
+        } else {
+            changeAmount = -1;
+        }
+        //check which button was clicked
+        //Update number of shots made for the player
+        if (view.getId() == R.id.btnShotMade) {
+            tempHuman.setShotsMade(tempHuman.getShotsMade() + changeAmount);
+            game.setPointsForPerQuarter(game.getCurrentQuarter(), game.getPointsForPerQuarter(game.getCurrentQuarter()) + (changeAmount * 2));
+            //Update number of shots attempted for the player
+        } else if (view.getId() == R.id.btnShotAttempted) {
+            tempHuman.setShotsAttempted(tempHuman.getShotsAttempted() + changeAmount);
+            //Update number of foul shots made for the player
+        } else if (view.getId() == R.id.btnFoulShotMade) {
+            tempHuman.setFoulShotsMade(tempHuman.getFoulShotsMade() + changeAmount);
+            game.setPointsForPerQuarter(game.getCurrentQuarter(), game.getPointsForPerQuarter(game.getCurrentQuarter()) + changeAmount);
+            //Update number of foul shots attempted for the player
+        } else if (view.getId() == R.id.btnFoulShotAttempted) {
+            tempHuman.setFoulShotsAttempted(tempHuman.getFoulShotsAttempted() + changeAmount);
+            //Update number of three points made for the player
+        } else if (view.getId() == R.id.btn3PtMade) {
+            tempHuman.setThreePointsMade(tempHuman.getThreePointsMade() + changeAmount);
+            game.setPointsForPerQuarter(game.getCurrentQuarter(), game.getPointsForPerQuarter(game.getCurrentQuarter()) + (changeAmount * 3));
+        }
+    }
+    /**
      * This method is called whenever the user clicks on the screen
      *
      * @param view View that the user clicked
      */
     public void onClick(View view) {
         checkToggleButtons(view);
+        updatePlayerInfo(view);
     }
+
 
     /**
      * method to check all the toggle buttons for the bench and the court
@@ -179,12 +221,14 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
         for (int i = 0; i < numCourtPlayers; i++) {
             if (view.getId() == this.getResources().getIdentifier(("court" + (i + 1)), "id", this.getPackageName())) {
                 btnClicked = i;
+                courtSelectedLocation = i;
                 //do substitution if one of the bench players is selected
                 if (benchSelected) {
 
                     //make sure that the bench location is valid
                     if (benchSelectedLocation != -1) {
                         btnClicked = substitution(benchSelectedLocation, i);
+                        courtSelectedLocation = btnClicked;
                         benchSelectedLocation = -1;
                         benchSelected = false;
                     }
