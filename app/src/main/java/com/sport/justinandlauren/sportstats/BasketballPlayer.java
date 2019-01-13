@@ -27,7 +27,9 @@ public class BasketballPlayer extends AbstractHuman{
     private int totalTechnicalFouls;
     private double plusMinus;
 
-    
+    /**
+     *
+     */
     public BasketballPlayer() {
         super();
         
@@ -42,7 +44,19 @@ public class BasketballPlayer extends AbstractHuman{
      */
     public BasketballPlayer(String name, int playerNumber, long secondsPlayed) {
         super(name, playerNumber, secondsPlayed);
-
+        shotsAttempted = 0;
+        shotsMade = 0;
+        shotsPercent = 0;
+        threePointsAttempted = 0;
+        threePointsMade = 0;
+        threePointsPercent = 0;
+        foulShotsAttempted = 0;
+        foulShotsMade = 0;
+        foulShotPercent = 0;
+        personalFoulsPerQuarter = new int[4];
+        totalPersonalFouls = 0;
+        totalTechnicalFouls = 0;
+        plusMinus = 0;
     }
     
     /**
@@ -172,17 +186,19 @@ public class BasketballPlayer extends AbstractHuman{
     }
 
     /**
-     * @return the personalFoulsPerQuarter
+     * @param index the quarter to get the fouls for
+     * @return the personalFouls in the quarter
      */
-    public int[] getPersonalFoulsPerQuarter() {
-        return personalFoulsPerQuarter;
+    public int getPersonalFoulsPerQuarter(int index) {
+        return personalFoulsPerQuarter[index];
     }
 
     /**
-     * @param personalFoulsPerQuarter the personalFoulsPerQuarter to set
+     * @param index the quarter of which to set the number of fouls
+     * @param
      */
-    public void setPersonalFoulsPerQuarter(int[] personalFoulsPerQuarter) {
-        this.personalFoulsPerQuarter = personalFoulsPerQuarter;
+    public void setPersonalFoulsPerQuarter(int index, int numFouls) {
+        this.personalFoulsPerQuarter[index] = numFouls;
     }
 
     /**

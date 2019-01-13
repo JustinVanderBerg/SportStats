@@ -94,10 +94,11 @@
 
     <Button
         android:id="@+id/btnShotMade"
-        android:background="@color/green"
         android:layout_width="190dp"
         android:layout_height="75dp"
         android:layout_marginEnd="8dp"
+        android:background="@color/green"
+        android:onClick="onClick"
         android:text="@string/shotMadeLabel"
         android:textAllCaps="true"
         app:layout_constraintBaseline_toBaselineOf="@+id/btnShotAttempted"
@@ -107,10 +108,11 @@
 
     <Button
         android:id="@+id/btnFoulShotMade"
-        android:background="@color/green"
         android:layout_width="190dp"
         android:layout_height="75dp"
         android:layout_marginEnd="8dp"
+        android:background="@color/green"
+        android:onClick="onClick"
         android:text="@string/foulShotMadeLabel"
         android:textAllCaps="true"
         app:layout_constraintBaseline_toBaselineOf="@+id/btnFoulShotAttempted"
@@ -119,10 +121,11 @@
 
     <Button
         android:id="@+id/btn3PtMade"
-        android:background="@color/green"
         android:layout_width="190dp"
         android:layout_height="75dp"
         android:layout_marginEnd="8dp"
+        android:background="@color/green"
+        android:onClick="onClick"
         android:text="@string/Point3MadeLabel"
         android:textAllCaps="true"
         app:layout_constraintBaseline_toBaselineOf="@+id/btn3PtAttempted"
@@ -131,10 +134,11 @@
 
     <Button
         android:id="@+id/btnPFoul"
-        android:background="@color/green"
         android:layout_width="190dp"
         android:layout_height="75dp"
         android:layout_marginEnd="8dp"
+        android:background="@color/green"
+        android:onClick="onClick"
         android:text="@string/PersonFoulLabel"
         android:textAllCaps="true"
         app:layout_constraintBaseline_toBaselineOf="@+id/btnTechFoul"
@@ -143,11 +147,12 @@
 
     <Button
         android:id="@+id/btnShotAttempted"
-        android:background="@color/green"
         android:layout_width="190dp"
         android:layout_height="75dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@color/green"
+        android:onClick="onClick"
         android:text="@string/shotAttemptedLabel"
         android:textAllCaps="true"
         app:layout_constraintBottom_toTopOf="@+id/btnFoulShotAttempted"
@@ -156,11 +161,12 @@
 
     <Button
         android:id="@+id/btnFoulShotAttempted"
-        android:background="@color/green"
         android:layout_width="190dp"
         android:layout_height="75dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@color/green"
+        android:onClick="onClick"
         android:text="@string/foulShotAttemptedLabel"
         android:textAllCaps="true"
         app:layout_constraintBottom_toTopOf="@+id/btn3PtAttempted"
@@ -169,11 +175,12 @@
 
     <Button
         android:id="@+id/btn3PtAttempted"
-        android:background="@color/green"
         android:layout_width="190dp"
         android:layout_height="75dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@color/green"
+        android:onClick="onClick"
         android:text="@string/point3AttemptedLabel"
         android:textAllCaps="true"
         app:layout_constraintBottom_toTopOf="@+id/btnTechFoul"
@@ -187,6 +194,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:background="@color/green"
+        android:onClick="onClick"
         android:text="@string/techFoulLabel"
         android:textAllCaps="true"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -207,11 +215,12 @@
 
     <Button
         android:id="@+id/btnNegative"
-        android:background="@color/gray"
         android:layout_width="190dp"
         android:layout_height="90dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@color/gray"
+        android:onClick="onClick"
         android:text="@string/negativeLabel"
         app:layout_constraintBottom_toTopOf="@+id/txtOppScore"
         app:layout_constraintEnd_toStartOf="@+id/courtPlayersScrollBar"
@@ -285,11 +294,12 @@
 
     <Button
         android:id="@+id/btnAddOppScore"
-        android:background="@color/green"
         android:layout_width="190dp"
         android:layout_height="60dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@color/green"
+        android:onClick="onClick"
         android:text="@string/addOppScoreLabel"
         app:layout_constraintBottom_toTopOf="@+id/btnShotAttempted"
         app:layout_constraintEnd_toStartOf="@+id/courtPlayersScrollBar"

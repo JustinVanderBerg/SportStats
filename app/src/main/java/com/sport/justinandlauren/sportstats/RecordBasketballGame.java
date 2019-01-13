@@ -47,6 +47,8 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
         numBenchPlayers = game.getNumPlayers() - 5;
         benchPlayerButtons = new ToggleButton[numBenchPlayers];
         courtPlayerButtons = new ToggleButton[numCourtPlayers];
+        //set the current quarter of the game (from 0 - 3 representing quarters 1 through 4)
+        game.setCurrentQuarter(0);
         setTitle("Record Game");
         //change bench label text transparency
         generateBenchPlayers();
@@ -115,8 +117,6 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
      * @param view view that was clicked on
      */
     private void updatePlayerInfo(View view) {
-        //temp human used to update info
-        BasketballPlayer tempHuman = (BasketballPlayer) game.getHuman(courtSelectedLocation);
         //variable to store whether to add or subtract values
         int changeAmount;
         if (addValues) {
@@ -124,27 +124,65 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
         } else {
             changeAmount = -1;
         }
-        //check which button was clicked
-        //Update number of shots made for the player
-        if (view.getId() == R.id.btnShotMade) {
-            tempHuman.setShotsMade(tempHuman.getShotsMade() + changeAmount);
-            game.setPointsForPerQuarter(game.getCurrentQuarter(), game.getPointsForPerQuarter(game.getCurrentQuarter()) + (changeAmount * 2));
-            //Update number of shots attempted for the player
-        } else if (view.getId() == R.id.btnShotAttempted) {
-            tempHuman.setShotsAttempted(tempHuman.getShotsAttempted() + changeAmount);
-            //Update number of foul shots made for the player
-        } else if (view.getId() == R.id.btnFoulShotMade) {
-            tempHuman.setFoulShotsMade(tempHuman.getFoulShotsMade() + changeAmount);
-            game.setPointsForPerQuarter(game.getCurrentQuarter(), game.getPointsForPerQuarter(game.getCurrentQuarter()) + changeAmount);
-            //Update number of foul shots attempted for the player
-        } else if (view.getId() == R.id.btnFoulShotAttempted) {
-            tempHuman.setFoulShotsAttempted(tempHuman.getFoulShotsAttempted() + changeAmount);
-            //Update number of three points made for the player
-        } else if (view.getId() == R.id.btn3PtMade) {
-            tempHuman.setThreePointsMade(tempHuman.getThreePointsMade() + changeAmount);
-            game.setPointsForPerQuarter(game.getCurrentQuarter(), game.getPointsForPerQuarter(game.getCurrentQuarter()) + (changeAmount * 3));
+        //check whether the user has a player on the court selected
+        //only do button checks if they have a player selected
+        if (courtSelectedLocation != -1) {
+            //temp human used to update info
+            BasketballPlayer tempHuman = (BasketballPlayer) game.getHuman(courtSelectedLocation);
+
+            //check which button was clicked
+            //Update number of shots made for the player
+            if (view.getId() == R.id.btnShotMade) {
+                tempHuman.setShotsMade(tempHuman.getShotsMade() + changeAmount);
+                game.setTotalShotsMade(game.getTotalShotsMade() + changeAmount);
+                game.setPointsForPerQuarter(game.getCurrentQuarter(), game.getPointsForPerQuarter(game.getCurrentQuarter()) + (changeAmount * 2));
+                //Update number of shots attempted for the player
+            } else if (view.getId() == R.id.btnShotAttempted) {
+                tempHuman.setShotsAttempted(tempHuman.getShotsAttempted() + changeAmount);
+                game.setTotalShotsAttempted(game.getTotalShotsAttempted() + changeAmount);
+                //Update number of foul shots made for the player
+            } else if (view.getId() == R.id.btnFoulShotMade) {
+                tempHuman.setFoulShotsMade(tempHuman.getFoulShotsMade() + changeAmount);
+                game.setTotalFoulShotsMade(game.getTotalFoulShotsMade() + changeAmount);
+                game.setPointsForPerQuarter(game.getCurrentQuarter(), game.getPointsForPerQuarter(game.getCurrentQuarter()) + changeAmount);
+                //Update number of foul shots attempted for the player
+            } else if (view.getId() == R.id.btnFoulShotAttempted) {
+                tempHuman.setFoulShotsAttempted(tempHuman.getFoulShotsAttempted() + changeAmount);
+                game.setTotalFoulShotsAttempted(game.getTotalFoulShotsAttempted() + changeAmount);
+                //Update number of three points made for the player
+            } else if (view.getId() == R.id.btn3PtMade) {
+                tempHuman.setThreePointsMade(tempHuman.getThreePointsMade() + changeAmount);
+                game.setTotalThreePointsMade(game.getTotalThreePointsMade() + changeAmount);
+                game.setPointsForPerQuarter(game.getCurrentQuarter(), game.getPointsForPerQuarter(game.getCurrentQuarter()) + (changeAmount * 3));
+                //update number of three points attempted for the player and in game class
+            } else if (view.getId() == R.id.btn3PtAttempted) {
+                tempHuman.setThreePointsMade(tempHuman.getThreePointsMade() + changeAmount);
+                game.setTotalThreePointsAttempted(game.getTotalThreePointsAttempted() + changeAmount);
+                //update the number of personal fouls for a player and the total for the team for the game
+            } else if (view.getId() == R.id.btnPFoul) {
+                tempHuman.setPersonalFoulsPerQuarter(game.getCurrentQuarter(), tempHuman.getPersonalFoulsPerQuarter(game.getCurrentQuarter()) + changeAmount);
+                game.setTeamFoulsPerQuarter(game.getCurrentQuarter(), game.getTeamFoulsPerQuarter(game.getCurrentQuarter()) + changeAmount);
+                //add a technical foul to the selected player and to the team total
+            } else if (view.getId() == R.id.btnTechFoul) {
+                tempHuman.setTotalTechnicalFouls(tempHuman.getTotalTechnicalFouls() + changeAmount);
+                game.setTotalTechFouls(game.getTotalTechFouls() + changeAmount);
+            } else if (view.getId() == R.id.btnAddOppScore) {
+                game.setPointsAgainstPerQuarter(game.getCurrentQuarter(), game.getPointsAgainstPerQuarter(game.getCurrentQuarter()) + changeAmount);
+                game.setPointsAgainst(game.getPointsAgainst() + changeAmount);
+            }
+        } else {
+            //if no player is selected on the court, the user can still add one to the team technical fouls
+            //and add one to the opposing team score
+            if (view.getId() == R.id.btnAddOppScore) {
+                game.setPointsAgainstPerQuarter(game.getCurrentQuarter(), game.getPointsAgainstPerQuarter(game.getCurrentQuarter()) + changeAmount);
+                game.setPointsAgainst(game.getPointsAgainst() + changeAmount);
+            } else if (view.getId() == R.id.btnTechFoul) {
+                game.setTotalTechFouls(game.getTotalTechFouls() + changeAmount);
+            }
         }
+
     }
+
     /**
      * This method is called whenever the user clicks on the screen
      *
@@ -153,6 +191,12 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
     public void onClick(View view) {
         checkToggleButtons(view);
         updatePlayerInfo(view);
+        if (courtSelectedLocation != -1) {
+            changeInfoButtonStates(true);
+        } else {
+            changeInfoButtonStates(false);
+        }
+
     }
 
 
@@ -227,13 +271,25 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
 
                     //make sure that the bench location is valid
                     if (benchSelectedLocation != -1) {
-                        btnClicked = substitution(benchSelectedLocation, i);
-                        courtSelectedLocation = btnClicked;
+                        substitution(benchSelectedLocation, i);
+                        //no court or bench player is currently selected
+                        courtSelectedLocation = -1;
                         benchSelectedLocation = -1;
                         benchSelected = false;
                     }
                 } else {
-                    checkButton(courtPlayerButtons[i]);
+                    //uncheck button if it was deselected by the user
+                    //must call uncheck button in order to change text color
+                    //if it is currently unselected it means the user clicked an already selected button
+                    //therefore uncheck it
+                    if (!courtPlayerButtons[i].isChecked()) {
+                        uncheckButton(courtPlayerButtons[i]);
+                        courtSelectedLocation = -1;
+                    } else {
+                        checkButton(courtPlayerButtons[i]);
+                        courtSelectedLocation = i;
+
+                    }
                     i = numCourtPlayers;
                 }
             }
@@ -373,40 +429,31 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
      *
      * @param bench Player location currently on the bench, who will be swapped with the player on the court
      * @param court Player location on the court who will be swapped with the player on the bench
-     * @return int new location of button(used to click the button of the substituted player if it has changed)
      */
-    private int substitution(int bench, int court) {
+    private void substitution(int bench, int court) {
         //the bench starts at index 5 of the player array, so add five to get correct location in array
         //swap the player locations
         AbstractHuman tempBench = game.getHuman(bench + 5);
         game.setHuman(bench + 5, game.getHuman(court));
         game.setHuman(court, tempBench);
-        int newCourtLocation = court;
         if (game.keepSorted()) {
-            newCourtLocation = sortCourtAndBench(game.getHuman(court).getPlayerNumber());
+            sortCourtAndBench();
         } else {
             //change the text of the bench button to now hold the correct player info
             setText(benchPlayerButtons[bench], "\n" + game.getHuman(bench + 5).getPlayerNumber() + "\n\n" + game.getHuman(bench + 5).getName());
             uncheckButton(benchPlayerButtons[bench]);
             //change the text of the court button to hold the substituted player's info
             setText(courtPlayerButtons[court], "\n" + game.getHuman(court).getPlayerNumber() + "\n\n" + game.getHuman(court).getName());
+            uncheckButton(courtPlayerButtons[court]);
         }
-        //select the player just put on to the court
-        checkButton(courtPlayerButtons[newCourtLocation]);
-        //update the highlighted button location so that it doesn't get deselected
-        return newCourtLocation;
     }
 
     /**
      * Method to sort the court and bench ascending by player number
-     *
-     * @param playerNumber number of the bench player being substituted
-     * @return new location of the substituted player on the court
      */
-    private int sortCourtAndBench(int playerNumber) {
+    private void sortCourtAndBench() {
         //resort the bench and court players so they are ordered from highest to lowest again
         AbstractHuman[] tempPlayers = game.getPlayers();
-        int newCourtLocation = 0;
         //sort the court
         sort(tempPlayers, 0, 4);
 
@@ -415,13 +462,6 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
 
         //update the players array in the game
         game.setPlayers(tempPlayers);
-        //loop through first five players in the game (players on the court) and locate the player that was just substituted
-        for (int i = 0; i < numCourtPlayers; i++) {
-            if (game.getHuman(i).getPlayerNumber() == playerNumber) {
-                newCourtLocation = i;
-                i = numCourtPlayers;
-            }
-        }
         //loop through and update all button text as it could possibly have changed
         for (int i = 0; i < numBenchPlayers; i++) {
             setText(benchPlayerButtons[i], "\n" + game.getHuman(i + 5).getPlayerNumber() + "\n\n" + game.getHuman(i + 5).getName());
@@ -434,7 +474,6 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
             //deselect all buttons
             uncheckButton(courtPlayerButtons[i]);
         }
-        return newCourtLocation;
     }
 
     /**
@@ -520,4 +559,21 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
             k++;
         }
     }
+
+    /**
+     * Method to enable/disable all the buttons that modify the selected court player's info
+     *
+     * @param enabled whether the buttons to add info to players should be enabled or disabled
+     */
+    private void changeInfoButtonStates(boolean enabled) {
+        //enable/disable all the buttons that modify player info
+        findViewById(R.id.btnShotMade).setEnabled(enabled);
+        findViewById(R.id.btnShotAttempted).setEnabled(enabled);
+        findViewById(R.id.btnFoulShotMade).setEnabled(enabled);
+        findViewById(R.id.btnFoulShotAttempted).setEnabled(enabled);
+        findViewById(R.id.btn3PtMade).setEnabled(enabled);
+        findViewById(R.id.btn3PtAttempted).setEnabled(enabled);
+        findViewById(R.id.btnPFoul).setEnabled(enabled);
+    }
+
 }

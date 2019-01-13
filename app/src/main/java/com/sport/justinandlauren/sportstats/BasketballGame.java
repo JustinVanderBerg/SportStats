@@ -1,10 +1,11 @@
 package com.sport.justinandlauren.sportstats;
+
 import java.util.Arrays;
 
 /*
  * Lauren Thomas and Justin VanderBerg
  * December 19, 2018
- * Basketball game class which extends the AbstractGame class. Provides storage for all the data that 
+ * Basketball game class which extends the AbstractGame class. Provides storage for all the data that
  * is collected during a basketball game
  */
 
@@ -12,7 +13,6 @@ import java.util.Arrays;
 //INSERT PACKAGE TITLE
 
 /**
- *
  * @author justin
  */
 public class BasketballGame extends AbstractGame {
@@ -33,14 +33,34 @@ public class BasketballGame extends AbstractGame {
     private int totalFoulShotsMade;
     private double foulShotPercentage;
     private int currentQuarter;
+    private int totalTechFouls;
 
     /**
      * Primary Constructor
      *
-     * @param numPlayers
+     * @param numPlayers number of players playing in the game
+     * @param gameLength the length of the quarters in milliseconds
+     * @param keepBenchSorted Whether to keep the bench sorted throughout the game
      */
     public BasketballGame(int numPlayers, long gameLength, boolean keepBenchSorted) {
         super(numPlayers, gameLength, keepBenchSorted);
+        //initialize variables
+        pointsFor = 0;
+        pointsAgainst = 0;
+        teamFoulsPerQuarter = new int[4];
+        totalTeamFouls = 0;
+        pointsForPerQuarter = new int[4];
+        pointsAgainstPerQuarter = new int[4];
+        totalShotsAttempted = 0;
+        totalShotsMade = 0;
+        shotPercentage = 0;
+        totalThreePointsAttempted = 0;
+        totalThreePointsMade = 0;
+        threePointPercentage = 0;
+        totalFoulShotsAttempted = 0;
+        totalFoulShotsMade = 0;
+        foulShotPercentage = 0;
+        currentQuarter = 0;
     }
 
     /**
@@ -80,8 +100,7 @@ public class BasketballGame extends AbstractGame {
     }
 
     /**
-     *
-     * @param i quarter which to set the number of fouls
+     * @param i        quarter which to set the number of fouls
      * @param numFouls number of fouls that occured in that quarter
      */
     public void setTeamFoulsPerQuarter(int i, int numFouls) {
@@ -114,8 +133,7 @@ public class BasketballGame extends AbstractGame {
     }
 
     /**
-     *
-     * @param i quarter which to set the number of fouls
+     * @param i         quarter which to set the number of fouls
      * @param numPoints number of points for that occured in that quarter
      */
     public void setPointsForPerQuarter(int i, int numPoints) {
@@ -131,8 +149,7 @@ public class BasketballGame extends AbstractGame {
     }
 
     /**
-     *
-     * @param i quarter which to set the number of points against
+     * @param i         quarter which to set the number of points against
      * @param numPoints number of points against that occured in that quarter
      */
     public void setPointsAgainstPerQuarter(int i, int numPoints) {
@@ -140,7 +157,6 @@ public class BasketballGame extends AbstractGame {
     }
 
     /**
-     *
      * @return number of quarters
      */
     public int getCurrentQuarter() {
@@ -148,7 +164,6 @@ public class BasketballGame extends AbstractGame {
     }
 
     /**
-     *
      * @param currentQuarter set the number of quarters
      */
     public void setCurrentQuarter(int currentQuarter) {
@@ -265,6 +280,20 @@ public class BasketballGame extends AbstractGame {
      */
     public void setFoulShotPercentage(double foulShotPercentage) {
         this.foulShotPercentage = foulShotPercentage;
+    }
+
+    /**
+     * @return total technical fouls in the game
+     */
+    public int getTotalTechFouls() {
+        return totalTechFouls;
+    }
+
+    /**
+     * @param totalTechFouls new value to set the total technical fouls to
+     */
+    public void setTotalTechFouls(int totalTechFouls) {
+        this.totalTechFouls = totalTechFouls;
     }
 
     /**
