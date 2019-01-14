@@ -16,10 +16,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -250,34 +246,17 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
         //
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyy-MM-dd-HH:mm");
-        File newGame = new File(this.getFilesDir(), dateFormat.format(calendar.getTime()));
-        boolean succesful = writeGame(newGame);
-        if (succesful) {
+        //File newGame = new File(this.getFilesDir(), dateFormat.format(calendar.getTime()));
+        //boolean successful = writeGame(newGame);
+        //if (successful) {
             Intent intent = new Intent(this, ViewGame.class);
             startActivity(intent);
-        } else {
+        //} else {
             Log.wtf("WHYYYYYYYY", "BOO-HOO");
-        }
+        //}
     }
 
-    /**
-     * Method to write the basketball game to a file
-     */
-    private boolean writeGame(File file) {
-        boolean succesful = true;
-        try {
-            FileOutputStream fos = new FileOutputStream(file);
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(game);
-            oos.flush();
-            oos.close();
 
-        } catch (IOException e) {
-            System.out.println("Error: " + e);
-            succesful = false;
-        }
-        return succesful;
-    }
 
     /**
      * This method is called whenever the user clicks on a button that uses this click listener(court buttons, player modification buttons)

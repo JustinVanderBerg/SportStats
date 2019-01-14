@@ -1,25 +1,35 @@
 package com.sport.justinandlauren.sportstats;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Switch;
+
+import java.io.File;
+import java.util.ArrayList;
 
 public class enterPlayers extends AppCompatActivity {
     private AbstractGame mainGame;
     private EditText[] names;
     private EditText[] numbers;
     private AbstractHuman[] players;
+    //context used in alert builder dialog
+    private Context context = this;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_players);
-
+        //check if there are other games stored on this device
+        checkSportsClass();
         //get the game class, in order to access number of players, and modify the player array
         mainGame = (AbstractGame) getIntent().getSerializableExtra("Game Class");
         names = new EditText[mainGame.getNumPlayers()];
@@ -55,8 +65,63 @@ public class enterPlayers extends AppCompatActivity {
             numbers[i] = tempEditText;
         }
     }
-    //Called when user selects the record game button
-    public void displayRecordGame(View view){
+
+    /**
+     * Method to check if this device has past games stored on it, and if it doesn't, make one
+     * and store it in a file for future use
+     */
+    public void checkSportsClass() {
+        File tempFile = this.getFilesDir();
+        String fileNames[] = tempFile.list();
+        String sportStorageName = getString(R.string.gameHistoryFilename);
+        //loop through file names found and check if any match the title name of our file
+        boolean fileFound = false;
+        for (int i = 0; i < fileNames.length; i++) {
+            if (fileNames[i].equals(sportStorageName)) {
+                fileFound = true;
+            }
+        }
+        //no past games stored on device, therefore create new game class and write it to a new file
+        if (!fileFound) {
+            //create a new file for storing all the games
+            final File newGame = new File(this.getFilesDir(), sportStorageName);
+            //get the user to enter a name for their team
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            //set title
+            builder.setTitle("Start Game");
+            //inputbox
+            final EditText input = new EditText(this);
+            input.setInputType(InputType.TYPE_CLASS_TEXT);
+            builder.setView(input);
+            builder.setMessage("Since this is your first game on this device, please enter your team name")
+                    .setCancelable(false)
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            //Get the team name
+                            String teamName = input.getText().toString();
+                            AbstractSport seasonStats = new Basketball(0, 0, teamName, new ArrayList<AbstractGame>());
+                            boolean successful = seasonStats.writeToFile(newGame);
+                            //if writing to file wasn't successful, write the error to the log
+                            if (!successful) {
+                                Log.e("writingClass", "Error writing class to file");
+                            }
+
+                        }
+                    });
+
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
+
+        }
+        Log.e("testing", "ERROR TAG");
+    }
+
+    /**
+     * Called when user selects the record game button
+     *
+     * @param view view the player clicked on
+     */
+    public void displayRecordGame(View view) {
         //variable to make sure to only show record game screen if all data is entered correctly
         boolean error = false;
 
@@ -113,6 +178,9 @@ public class enterPlayers extends AppCompatActivity {
 
     }
 
+    /**
+     * Used to reset the player array, so that any values from before the error was thrown are no longer stored
+     */
     private void resetPlayerArray() {
         //initialize player array
         for (int i = 0; i < mainGame.getNumPlayers(); i++) {

@@ -6,6 +6,12 @@
 //INSERT PACKAGE TITLE
 package com.sport.justinandlauren.sportstats;
 
+import android.util.Log;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -35,6 +41,9 @@ public class AbstractSport implements Serializable {
         this.games = games;
     }
 
+    public void addGame(AbstractGame game) {
+        games.add(game);
+    }
     /**
      * @return the gamesWon
      */
@@ -77,10 +86,30 @@ public class AbstractSport implements Serializable {
         this.teamName = teamName;
     }
 
-    @Override
     /**
-     * TOO IMPLEMENT
+     * @param file file to write the sport file to
+     * @return true if successful, false otherwise
      */
+    public boolean writeToFile(File file) {
+        boolean successful = true;
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(this);
+            oos.flush();
+            oos.close();
+
+        } catch (IOException e) {
+            Log.e("WritingToFile", "Error writing to file: " + e);
+            successful = false;
+        }
+        return successful;
+    }
+
+    /**
+     * @return string representation of the class
+     */
+    @Override
     public String toString() {
         return "AbstractSport{" + "gamesWon=" + gamesWon + ", gamesPlayed=" + gamesPlayed + ", teamName=" + teamName + ", games=" + games.toString() + '}';
     }

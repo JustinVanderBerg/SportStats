@@ -30,4 +30,5 @@
     <string name="oppScore">Opp Score:</string>
     <string name="ourTeamFouls">Our Team Fouls:</string>
     <string name="endGamePrompt">End Game</string>
+    <string name="gameHistoryFilename">pastGames</string>
 </resources>

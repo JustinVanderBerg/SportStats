@@ -64,7 +64,7 @@ public class LoadScreen extends AppCompatActivity {
 
     //display team stats
     public void displayGameStats(View view) {
-        Intent intent = new Intent(this, ViewGame.class);
+        Intent intent = new Intent(this, SelectGame.class);
         startActivity(intent);
     }
 }

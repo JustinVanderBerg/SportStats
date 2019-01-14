@@ -16,17 +16,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".RecordBasketballGame" />
+        <activity android:name=".RecordBasketballGame" />
         <activity
             android:name=".ViewPlayer"
             android:parentActivityName=".LoadScreen" />
         <activity
             android:name=".ViewGame"
-            android:parentActivityName=".LoadScreen" />
+            android:parentActivityName=".SelectGame" />
         <activity
             android:name=".enterPlayers"
-            android:parentActivityName=".LoadScreen"></activity>
+            android:parentActivityName=".LoadScreen" />
+        <activity
+            android:name=".SelectGame"
+            android:parentActivityName=".LoadScreen" />
     </application>
 
 </manifest>
