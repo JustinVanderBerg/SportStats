@@ -26,10 +26,9 @@
         android:layout_height="0dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/txtCurrentPeriod2"
         app:layout_constraintEnd_toStartOf="@+id/BenchScrollBar"
-        app:layout_constraintTop_toBottomOf="@+id/courtPrompt"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toBottomOf="@+id/courtPrompt">
 
         <LinearLayout
             android:id="@+id/courtPlayers"
@@ -281,6 +280,20 @@
         app:layout_constraintEnd_toStartOf="@+id/btnTimer"
         app:layout_constraintTop_toTopOf="@+id/btnTimer"
         app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/txtCurrentPeriod2"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="8dp"
+        android:background="@color/gray"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/txtPlayerPM"
+        app:layout_constraintStart_toEndOf="@+id/txtPlayerPM"
+        app:layout_constraintTop_toTopOf="@+id/txtPlayerPM" />
 
     <TextView
         android:id="@+id/txtOppScore"

@@ -29,7 +29,7 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
     //variable to store whether clicking a button adds or subtracts the value
     private boolean addValues = true;
     //variable to hold which court player is currently selected
-    private int courtSelectedLocation = 0;
+    private int courtPlayerSelectedLocation = 0;
     //variable to allow substitutions
     private boolean benchSelected = false;
     private int benchSelectedLocation = -1;
@@ -131,9 +131,9 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
         }
         //check whether the user has a player on the court selected
         //only do button checks if they have a player selected
-        if (courtSelectedLocation != -1) {
+        if (courtPlayerSelectedLocation != -1) {
             //temp human used to update info
-            BasketballPlayer tempHuman = (BasketballPlayer) game.getHuman(courtSelectedLocation);
+            BasketballPlayer tempHuman = (BasketballPlayer) game.getHuman(courtPlayerSelectedLocation);
 
             //check which button was clicked
             //Update number of shots made for the player
@@ -200,8 +200,9 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
     public void onClick(View view) {
         //check the bench and court buttons
         checkToggleButtons(view);
+        //check if the user has added values to the players
         updatePlayerInfo(view);
-        if (courtSelectedLocation != -1) {
+        if (courtPlayerSelectedLocation != -1) {
             changeInfoButtonStates(true);
         } else {
             changeInfoButtonStates(false);
@@ -275,7 +276,7 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
         for (int i = 0; i < numCourtPlayers; i++) {
             if (view.getId() == this.getResources().getIdentifier(("court" + (i + 1)), "id", this.getPackageName())) {
                 btnClicked = i;
-                courtSelectedLocation = i;
+                courtPlayerSelectedLocation = i;
                 //do substitution if one of the bench players is selected
                 if (benchSelected) {
 
@@ -283,7 +284,7 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
                     if (benchSelectedLocation != -1) {
                         substitution(benchSelectedLocation, i);
                         //no court or bench player is currently selected
-                        courtSelectedLocation = -1;
+                        courtPlayerSelectedLocation = -1;
                         benchSelectedLocation = -1;
                         benchSelected = false;
                     }
@@ -294,10 +295,10 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
                     //therefore uncheck it
                     if (!courtPlayerButtons[i].isChecked()) {
                         uncheckButton(courtPlayerButtons[i]);
-                        courtSelectedLocation = -1;
+                        courtPlayerSelectedLocation = -1;
                     } else {
                         checkButton(courtPlayerButtons[i]);
-                        courtSelectedLocation = i;
+                        courtPlayerSelectedLocation = i;
 
                     }
                     i = numCourtPlayers;
@@ -590,15 +591,14 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
      * Method to update all the text boxes that display information on the record game screen
      */
     private void updateTextBoxInfo() {
-        //TODO update current period textbox
         //text format for plus minus
         DecimalFormat playerPM = new DecimalFormat("#,##0.0");
         //if there is a player selected on the court
-        if (courtSelectedLocation != -1) {
+        if (courtPlayerSelectedLocation != -1) {
             //show correct player fouls
-            ((TextView) findViewById(R.id.txtPlayerFoul)).setText(getString(R.string.playerFouls) + " " + game.getHuman(courtSelectedLocation).getTotalPersonalFouls());
+            ((TextView) findViewById(R.id.txtPlayerFoul)).setText(getString(R.string.playerFouls) + " " + game.getHuman(courtPlayerSelectedLocation).getTotalPersonalFouls());
             //show correct player plus/minus
-            ((TextView) findViewById(R.id.txtPlayerPM)).setText(getString(R.string.playerPM) + " " + playerPM.format(game.getHuman(courtSelectedLocation).getPlusMinus()));
+            ((TextView) findViewById(R.id.txtPlayerPM)).setText(getString(R.string.playerPM) + " " + playerPM.format(game.getHuman(courtPlayerSelectedLocation).getPlusMinus()));
         } else {
             //set to default text without any values if no player is selected
             ((TextView) findViewById(R.id.txtPlayerFoul)).setText(getString(R.string.playerFouls));
@@ -613,4 +613,6 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
         //show the current quarter
         ((TextView) findViewById(R.id.txtCurrentPeriod)).setText(Html.fromHtml("<small>Current Period</small><br/><br/>" + (game.getCurrentQuarter() + 1)));
     }
+
+
 }
