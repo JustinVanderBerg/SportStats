@@ -76,10 +76,15 @@ public class BasketballGame extends AbstractGame {
     }
 
     /**
-     * @param pointsFor the pointsFor to set
+     *
+     * @param pointsFor
      */
     public void setPointsFor(int pointsFor) {
-        this.pointsFor = pointsFor;
+        if(pointsFor<0) {
+            this.pointsFor = 0;
+        } else {
+            this.pointsFor = pointsFor;
+        }
     }
 
     /**
@@ -93,7 +98,11 @@ public class BasketballGame extends AbstractGame {
      * @param pointsAgainst the pointsAgainst to set
      */
     public void setPointsAgainst(int pointsAgainst) {
-        this.pointsAgainst = pointsAgainst;
+        if(pointsAgainst<0) {
+            this.pointsAgainst = 0;
+        } else {
+            this.pointsAgainst = pointsAgainst;
+        }
     }
 
     /**
@@ -109,14 +118,22 @@ public class BasketballGame extends AbstractGame {
      * @param numFouls number of fouls that occured in that quarter
      */
     public void setTeamFoulsPerQuarter(int i, int numFouls) {
-        this.teamFoulsPerQuarter[i] = numFouls;
+        if(numFouls<0) {
+            this.teamFoulsPerQuarter[i] = 0;
+        } else {
+            this.teamFoulsPerQuarter[i] = numFouls;
+        }
     }
 
     /**
      * @param totalTeamFouls new total team fouls to set
      */
     public void setTotalTeamFouls(int totalTeamFouls) {
-        this.totalTeamFouls = totalTeamFouls;
+        if(totalTeamFouls<0) {
+            this.totalTeamFouls = 0;
+        } else {
+            this.totalTeamFouls = totalTeamFouls;
+        }
     }
     /**
      * @return the totalTeamFouls
@@ -139,7 +156,11 @@ public class BasketballGame extends AbstractGame {
      * @param numPoints number of points for that occured in that quarter
      */
     public void setPointsForPerQuarter(int i, int numPoints) {
-        pointsForPerQuarter[i] = numPoints;
+        if(numPoints<0) {
+            pointsForPerQuarter[i] = 0;
+        } else {
+            pointsForPerQuarter[i] = numPoints;;
+        }
     }
 
     /**
@@ -155,7 +176,11 @@ public class BasketballGame extends AbstractGame {
      * @param numPoints number of points against that occured in that quarter
      */
     public void setPointsAgainstPerQuarter(int i, int numPoints) {
-        pointsAgainstPerQuarter[i] = numPoints;
+        if(numPoints<0) {
+            pointsAgainstPerQuarter[i] = 0;
+        } else {
+            pointsAgainstPerQuarter[i] = numPoints;
+        }
     }
 
     /**
@@ -183,7 +208,11 @@ public class BasketballGame extends AbstractGame {
      * @param totalShotsMade the totalShotsMade to set
      */
     public void setTotalShotsMade(int totalShotsMade) {
-        this.totalShotsMade = totalShotsMade;
+        if(totalShotsMade<0) {
+            this.totalShotsMade = 0;
+        } else {
+            this.totalShotsMade = totalShotsMade;
+        }
     }
 
     /**
@@ -197,7 +226,11 @@ public class BasketballGame extends AbstractGame {
      * @param shotPercentage the shotPercentage to set
      */
     public void setShotPercentage(double shotPercentage) {
-        this.shotPercentage = shotPercentage;
+        if(shotPercentage<0) {
+            this.shotPercentage =  0;
+        } else {
+            this.shotPercentage = shotPercentage;
+        }
     }
 
     /**
@@ -211,7 +244,11 @@ public class BasketballGame extends AbstractGame {
      * @param totalThreePointsAttempted the totalThreePointsAttempted to set
      */
     public void setTotalThreePointsAttempted(int totalThreePointsAttempted) {
-        this.totalThreePointsAttempted = totalThreePointsAttempted;
+        if(totalThreePointsAttempted<0) {
+            this.totalThreePointsAttempted =  0;
+        } else {
+            this.totalThreePointsAttempted = totalThreePointsAttempted;;
+        }
     }
 
     /**
@@ -225,7 +262,11 @@ public class BasketballGame extends AbstractGame {
      * @param totalThreePointsMade the totalThreePointsMade to set
      */
     public void setTotalThreePointsMade(int totalThreePointsMade) {
-        this.totalThreePointsMade = totalThreePointsMade;
+        if(totalThreePointsMade<0) {
+            this.totalThreePointsMade =  0;
+        } else {
+            this.totalThreePointsMade = totalThreePointsMade;
+        }
     }
 
     /**
@@ -253,7 +294,11 @@ public class BasketballGame extends AbstractGame {
      * @param totalFoulShotsAttempted the totalFoulShotsAttempted to set
      */
     public void setTotalFoulShotsAttempted(int totalFoulShotsAttempted) {
-        this.totalFoulShotsAttempted = totalFoulShotsAttempted;
+        if(totalFoulShotsAttempted<0) {
+            this.totalFoulShotsAttempted =  0;
+        } else {
+            this.totalFoulShotsAttempted = totalFoulShotsAttempted;
+        }
     }
 
     /**
@@ -267,7 +312,11 @@ public class BasketballGame extends AbstractGame {
      * @param totalFoulShotsMade the totalFoulShotsMade to set
      */
     public void setTotalFoulShotsMade(int totalFoulShotsMade) {
-        this.totalFoulShotsMade = totalFoulShotsMade;
+        if(totalFoulShotsMade<0) {
+            this.totalFoulShotsMade =  0;
+        } else {
+            this.totalFoulShotsMade = totalFoulShotsMade;
+        }
     }
 
     /**
@@ -295,7 +344,11 @@ public class BasketballGame extends AbstractGame {
      * @param totalTechFouls new value to set the total technical fouls to
      */
     public void setTotalTechFouls(int totalTechFouls) {
-        this.totalTechFouls = totalTechFouls;
+        if(totalTechFouls<0) {
+            this.totalTechFouls =  0;
+        } else {
+            this.totalTechFouls = totalTechFouls;
+        }
     }
 
     /**
@@ -309,7 +362,11 @@ public class BasketballGame extends AbstractGame {
      * @param totalShotsAttempted set the total shots attempted in the game
      */
     public void setTotalShotsAttempted(int totalShotsAttempted) {
-        this.totalShotsAttempted = totalShotsAttempted;
+        if(totalShotsAttempted<0) {
+            this.totalShotsAttempted =  0;
+        } else {
+            this.totalShotsAttempted = totalShotsAttempted;
+        }
     }
 
     /**
@@ -330,3 +387,5 @@ public class BasketballGame extends AbstractGame {
 
 
 }
+//TODO check if there are unnecessary getters and setters that were automatically generated
+//TODO check to make sure I didn't do anything stupid when I added the if statements

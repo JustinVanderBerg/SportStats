@@ -127,6 +127,8 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
     private void updatePlayerInfo(View view) {
         //variable to store whether to add or subtract values
         int changeAmount;
+
+        //check if the user has selected the negative button, and change whether to subtract or add other buttons
         if (view.getId() == R.id.btnNegative) {
             switchNegativeState();
         }
@@ -204,33 +206,31 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
      * Method to switch the negative state if the button is pushed, and change other button colors
      */
     public void switchNegativeState() {
-        //check if the user has selected the negative button, and change whether to subtract or add other buttons
-
         if (negative == false) {
             //if the negative button is selected and was previously false change to true
             negative = true;
             //change the colour of the buttons to red to show that it is subtracting
-            ((Button) findViewById(R.id.btnShotMade)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
-            ((Button) findViewById(R.id.btnAddOppScore)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
-            ((Button) findViewById(R.id.btnShotAttempted)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
-            ((Button) findViewById(R.id.btnFoulShotMade)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
-            ((Button) findViewById(R.id.btnFoulShotAttempted)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
-            ((Button) findViewById(R.id.btn3PtMade)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
-            ((Button) findViewById(R.id.btn3PtAttempted)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
-            ((Button) findViewById(R.id.btnPFoul)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
-            ((Button) findViewById(R.id.btnTechFoul)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
+            findViewById(R.id.btnShotMade).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
+            findViewById(R.id.btnAddOppScore).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
+            findViewById(R.id.btnShotAttempted).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
+            findViewById(R.id.btnFoulShotMade).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
+            findViewById(R.id.btnFoulShotAttempted).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
+            findViewById(R.id.btn3PtMade).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
+            findViewById(R.id.btn3PtAttempted).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
+            findViewById(R.id.btnPFoul).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
+            findViewById(R.id.btnTechFoul).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
         } else if (negative == true) {
             //if the negative button is selected and was previously true change to false
             negative = false;
             //change the colour of the buttons to green to show that it is adding
-            ((Button) findViewById(R.id.btnShotMade)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
-            ((Button) findViewById(R.id.btnAddOppScore)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
-            ((Button) findViewById(R.id.btnShotAttempted)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
-            ((Button) findViewById(R.id.btnFoulShotMade)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
-            ((Button) findViewById(R.id.btnFoulShotAttempted)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
-            ((Button) findViewById(R.id.btn3PtMade)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
-            ((Button) findViewById(R.id.btn3PtAttempted)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
-            ((Button) findViewById(R.id.btnPFoul)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
+            findViewById(R.id.btnShotMade).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
+            findViewById(R.id.btnAddOppScore).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
+            findViewById(R.id.btnShotAttempted).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
+            findViewById(R.id.btnFoulShotMade).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
+            findViewById(R.id.btnFoulShotAttempted).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
+            findViewById(R.id.btn3PtMade).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
+            findViewById(R.id.btn3PtAttempted).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
+            findViewById(R.id.btnPFoul).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
             findViewById(R.id.btnTechFoul).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
         }
 
