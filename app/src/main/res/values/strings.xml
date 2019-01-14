@@ -29,4 +29,5 @@
     <string name="ourScore">Our Score:</string>
     <string name="oppScore">Opp Score:</string>
     <string name="ourTeamFouls">Our Team Fouls:</string>
+    <string name="endGamePrompt">End Game</string>
 </resources>
