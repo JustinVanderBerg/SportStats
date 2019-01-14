@@ -198,6 +198,7 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
      * @param view View that the user clicked
      */
     public void onClick(View view) {
+        //check the bench and court buttons
         checkToggleButtons(view);
         updatePlayerInfo(view);
         if (courtSelectedLocation != -1) {
