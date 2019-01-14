@@ -14,7 +14,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import java.io.File;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class RecordBasketballGame extends AppCompatActivity implements View.OnClickListener {
     //new basketball game
@@ -124,11 +127,12 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
     private void updatePlayerInfo(View view) {
         //variable to store whether to add or subtract values
         int changeAmount;
-
-        checkNegative(view);
+        if (view.getId() == R.id.btnNegative) {
+            switchNegativeState();
+        }
 
         //if it is negative, subtract the amount from the values, if it isn't add the amount to the values
-        if (negative==false) {
+        if (negative == false) {
             changeAmount = 1;
         } else {
             changeAmount = -1;
@@ -196,42 +200,57 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
         }
     }
 
-    public void checkNegative(View view) {
+    /**
+     * Method to switch the negative state if the button is pushed, and change other button colors
+     */
+    public void switchNegativeState() {
         //check if the user has selected the negative button, and change whether to subtract or add other buttons
-        if(view.getId() == R.id.btnNegative) {
-            if(negative == false) {
-                //if the negative button is selected and was previously false change to true
-                negative = true;
-                //change the colour of the buttons to red to show that it is subtracting
-                ((Button) findViewById(R.id.btnShotMade)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
-                ((Button) findViewById(R.id.btnAddOppScore)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
-                ((Button) findViewById(R.id.btnShotAttempted)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
-                ((Button) findViewById(R.id.btnFoulShotMade)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
-                ((Button) findViewById(R.id.btnFoulShotAttempted)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
-                ((Button) findViewById(R.id.btn3PtMade)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
-                ((Button) findViewById(R.id.btn3PtAttempted)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
-                ((Button) findViewById(R.id.btnPFoul)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
-                ((Button) findViewById(R.id.btnTechFoul)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
-            } else if (negative == true) {
-                //if the negative button is selected and was previously true change to false
-                negative = false;
-                //change the colour of the buttons to green to show that it is adding
-                ((Button) findViewById(R.id.btnShotMade)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
-                ((Button) findViewById(R.id.btnAddOppScore)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
-                ((Button) findViewById(R.id.btnShotAttempted)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
-                ((Button) findViewById(R.id.btnFoulShotMade)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
-                ((Button) findViewById(R.id.btnFoulShotAttempted)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
-                ((Button) findViewById(R.id.btn3PtMade)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
-                ((Button) findViewById(R.id.btn3PtAttempted)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
-                ((Button) findViewById(R.id.btnPFoul)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
-                ((Button) findViewById(R.id.btnTechFoul)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
-            }
+
+        if (negative == false) {
+            //if the negative button is selected and was previously false change to true
+            negative = true;
+            //change the colour of the buttons to red to show that it is subtracting
+            ((Button) findViewById(R.id.btnShotMade)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
+            ((Button) findViewById(R.id.btnAddOppScore)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
+            ((Button) findViewById(R.id.btnShotAttempted)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
+            ((Button) findViewById(R.id.btnFoulShotMade)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
+            ((Button) findViewById(R.id.btnFoulShotAttempted)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
+            ((Button) findViewById(R.id.btn3PtMade)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
+            ((Button) findViewById(R.id.btn3PtAttempted)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
+            ((Button) findViewById(R.id.btnPFoul)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
+            ((Button) findViewById(R.id.btnTechFoul)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
+        } else if (negative == true) {
+            //if the negative button is selected and was previously true change to false
+            negative = false;
+            //change the colour of the buttons to green to show that it is adding
+            ((Button) findViewById(R.id.btnShotMade)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
+            ((Button) findViewById(R.id.btnAddOppScore)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
+            ((Button) findViewById(R.id.btnShotAttempted)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
+            ((Button) findViewById(R.id.btnFoulShotMade)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
+            ((Button) findViewById(R.id.btnFoulShotAttempted)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
+            ((Button) findViewById(R.id.btn3PtMade)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
+            ((Button) findViewById(R.id.btn3PtAttempted)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
+            ((Button) findViewById(R.id.btnPFoul)).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
+            findViewById(R.id.btnTechFoul).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
         }
+
     }
 
+    /**
+     * Method to finish the game
+     *
+     * @param view view that the user clicked on
+     */
+    public void endGame(View view) {
+        //
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyy-MM-dd-HH:mm");
+        File newGame = new File(this.getFilesDir(), dateFormat.format(calendar.getTime()));
+
+    }
 
     /**
-     * This method is called whenever the user clicks on the screen
+     * This method is called whenever the user clicks on a button that uses this click listener(court buttons, player modification buttons)
      *
      * @param view View that the user clicked
      */

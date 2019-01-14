@@ -26,7 +26,7 @@
         android:layout_height="0dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/txtCurrentPeriod2"
+        app:layout_constraintBottom_toTopOf="@+id/btnEndGame"
         app:layout_constraintEnd_toStartOf="@+id/BenchScrollBar"
         app:layout_constraintTop_toBottomOf="@+id/courtPrompt">
 
@@ -219,12 +219,24 @@
         android:layout_height="90dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@color/gray"
+        android:background="@android:color/darker_gray"
         android:onClick="onClick"
         android:text="@string/negativeLabel"
         app:layout_constraintBottom_toTopOf="@+id/txtOppScore"
         app:layout_constraintEnd_toStartOf="@+id/courtPlayersScrollBar"
         tools:text="@string/negativeLabel" />
+
+    <Button
+        android:id="@+id/btnEndGame"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="8dp"
+        android:background="@android:color/darker_gray"
+        android:onClick="endGame"
+        android:text="@string/endGamePrompt"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtPlayerPM"
+        app:layout_constraintStart_toEndOf="@+id/txtPlayerPM"
+        tools:text="@string/endGamePrompt" />
 
     <TextView
         android:id="@+id/txtPlayerPM"
@@ -281,22 +293,6 @@
         app:layout_constraintEnd_toStartOf="@+id/btnTimer"
         app:layout_constraintTop_toTopOf="@+id/btnTimer"
         app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/txtCurrentPeriod2"
-        android:layout_width="100dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="8dp"
-        android:background="@color/gray"
-        android:gravity="center"
-        android:text="@string/endGamePrompt"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/txtPlayerPM"
-        app:layout_constraintStart_toEndOf="@+id/txtPlayerPM"
-        app:layout_constraintTop_toTopOf="@+id/txtPlayerPM"
-        tools:text="@string/endGamePrompt" />
 
     <TextView
         android:id="@+id/txtOppScore"
