@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -91,9 +92,11 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
                 @Override
                 public void onFinish() {
 
-                    //if less than a second left
+                    //if less than a second left therefore game is over
                     if (timeLeftInPeriod < 1000) {
                         timeLeftInPeriod = game.getGameLength();
+                        game.setCurrentQuarter(game.getCurrentQuarter() + 1);
+                        updateTextBoxInfo();
                     }
                     //set the initial start time of the period
                     setTimerText(btnTimer, Color.RED);
@@ -168,6 +171,7 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
                 tempHuman.setPersonalFoulsPerQuarter(game.getCurrentQuarter(), tempHuman.getPersonalFoulsPerQuarter(game.getCurrentQuarter()) + changeAmount);
                 tempHuman.setTotalPersonalFouls(tempHuman.getTotalPersonalFouls() + changeAmount);
                 game.setTeamFoulsPerQuarter(game.getCurrentQuarter(), game.getTeamFoulsPerQuarter(game.getCurrentQuarter()) + changeAmount);
+                game.setTotalTeamFouls(game.getTotalTeamFouls() + changeAmount);
                 //add a technical foul to the selected player and to the team total
             } else if (view.getId() == R.id.btnTechFoul) {
                 tempHuman.setTotalTechnicalFouls(tempHuman.getTotalTechnicalFouls() + changeAmount);
@@ -591,20 +595,21 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
         //if there is a player selected on the court
         if (courtSelectedLocation != -1) {
             //show correct player fouls
-            ((TextView) findViewById(R.id.txtPlayerFoul)).setText(getString(R.string.playerFouls) + game.getHuman(courtSelectedLocation).getTotalPersonalFouls());
+            ((TextView) findViewById(R.id.txtPlayerFoul)).setText(getString(R.string.playerFouls) + " " + game.getHuman(courtSelectedLocation).getTotalPersonalFouls());
             //show correct player plus/minus
-            ((TextView) findViewById(R.id.txtPlayerPM)).setText(getString(R.string.playerPM) + playerPM.format(game.getHuman(courtSelectedLocation).getPlusMinus()));
+            ((TextView) findViewById(R.id.txtPlayerPM)).setText(getString(R.string.playerPM) + " " + playerPM.format(game.getHuman(courtSelectedLocation).getPlusMinus()));
         } else {
             //set to default text without any values if no player is selected
             ((TextView) findViewById(R.id.txtPlayerFoul)).setText(getString(R.string.playerFouls));
             ((TextView) findViewById(R.id.txtPlayerPM)).setText(getString(R.string.playerPM));
         }
         //show correct team fouls
-        ((TextView) findViewById(R.id.txtTeamFouls)).setText(getString(R.string.ourTeamFouls) + game.getTotalTeamFouls());
+        ((TextView) findViewById(R.id.txtTeamFouls)).setText(getString(R.string.ourTeamFouls) + " " + game.getTotalTeamFouls());
         //show the correct score for user team
-        ((TextView) findViewById(R.id.txtOurScore)).setText(getString(R.string.ourScore) + game.getPointsFor());
+        ((TextView) findViewById(R.id.txtOurScore)).setText(getString(R.string.ourScore) + " " + game.getPointsFor());
         //show correct score for away team
-        ((TextView) findViewById(R.id.txtOppScore)).setText(getString(R.string.oppScore) + game.getPointsAgainst());
-
+        ((TextView) findViewById(R.id.txtOppScore)).setText(getString(R.string.oppScore) + " " + game.getPointsAgainst());
+        //show the current quarter
+        ((TextView) findViewById(R.id.txtCurrentPeriod)).setText(Html.fromHtml("<small>Current Period</small><br/><br/>" + (game.getCurrentQuarter() + 1)));
     }
 }

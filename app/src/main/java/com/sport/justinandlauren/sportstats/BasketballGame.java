@@ -113,21 +113,18 @@ public class BasketballGame extends AbstractGame {
     }
 
     /**
+     * @param totalTeamFouls new total team fouls to set
+     */
+    public void setTotalTeamFouls(int totalTeamFouls) {
+        this.totalTeamFouls = totalTeamFouls;
+    }
+    /**
      * @return the totalTeamFouls
      */
     public int getTotalTeamFouls() {
         return totalTeamFouls;
     }
 
-    /**
-     * Update the team fouls in the game based off the fouls per quarter
-     */
-    public void updateTotalTeamFouls() {
-        totalTeamFouls = 0;
-        for (int i = 0; i < 4; i++) {
-            totalTeamFouls += teamFoulsPerQuarter[i];
-        }
-    }
 
     /**
      * @param i The quarter which to see the points in
