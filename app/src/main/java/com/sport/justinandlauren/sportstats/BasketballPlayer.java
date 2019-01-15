@@ -61,7 +61,12 @@ public class BasketballPlayer extends AbstractHuman{
      * @param shotsAttempted the shotsAttempted to set
      */
     public void setShotsAttempted(int shotsAttempted) {
-        this.shotsAttempted = shotsAttempted;
+        //check if the number is below 0, and set to 0 if it is
+        if(shotsAttempted<0) {
+            this.shotsAttempted =  0;
+        } else {
+            this.shotsAttempted = shotsAttempted;
+        }
     }
 
     /**
@@ -75,7 +80,12 @@ public class BasketballPlayer extends AbstractHuman{
      * @param shotsMade the shotsMade to set
      */
     public void setShotsMade(int shotsMade) {
-        this.shotsMade = shotsMade;
+        //check if the number is below 0, and set to 0 if it is
+        if(shotsMade<0) {
+            this.shotsMade =  0;
+        } else {
+            this.shotsMade = shotsMade;
+        }
     }
 
     /**
@@ -103,7 +113,12 @@ public class BasketballPlayer extends AbstractHuman{
      * @param threePointsAttempted the threePointsAttempted to set
      */
     public void setThreePointsAttempted(int threePointsAttempted) {
-        this.threePointsAttempted = threePointsAttempted;
+        //check if the number is below 0, and set to 0 if it is
+        if(threePointsAttempted<0) {
+            this.threePointsAttempted =  0;
+        } else {
+            this.threePointsAttempted = threePointsAttempted;
+        }
     }
 
     /**
@@ -117,7 +132,12 @@ public class BasketballPlayer extends AbstractHuman{
      * @param threePointsMade the threePointsMade to set
      */
     public void setThreePointsMade(int threePointsMade) {
-        this.threePointsMade = threePointsMade;
+        //check if the number is below 0, and set to 0 if it is
+        if(threePointsMade<0) {
+            this.threePointsMade =  0;
+        } else {
+            this.threePointsMade = threePointsMade;
+        }
     }
 
     /**
@@ -145,7 +165,12 @@ public class BasketballPlayer extends AbstractHuman{
      * @param foulShotsAttempted the foulShotsAttempted to set
      */
     public void setFoulShotsAttempted(int foulShotsAttempted) {
-        this.foulShotsAttempted = foulShotsAttempted;
+        //check if the number is below 0, and set to 0 if it is
+        if(foulShotsAttempted<0) {
+            this.foulShotsAttempted =  0;
+        } else {
+            this.foulShotsAttempted = foulShotsAttempted;
+        }
     }
 
     /**
@@ -159,7 +184,12 @@ public class BasketballPlayer extends AbstractHuman{
      * @param foulShotsMade the foulShotsMade to set
      */
     public void setFoulShotsMade(int foulShotsMade) {
-        this.foulShotsMade = foulShotsMade;
+        //check if the number is below 0, and set to 0 if it is
+        if(foulShotsMade<0) {
+            this.foulShotsMade =  0;
+        } else {
+            this.foulShotsMade = foulShotsMade;
+        }
     }
 
     /**
@@ -189,7 +219,12 @@ public class BasketballPlayer extends AbstractHuman{
      * @param
      */
     public void setPersonalFoulsPerQuarter(int index, int numFouls) {
-        this.personalFoulsPerQuarter[index] = numFouls;
+        //check if the number is below 0, and set to 0 if it is
+        if(numFouls<0) {
+            this.personalFoulsPerQuarter[index] =  0;
+        } else {
+            this.personalFoulsPerQuarter[index] = numFouls;
+        }
     }
 
     /**
@@ -203,7 +238,12 @@ public class BasketballPlayer extends AbstractHuman{
      * @param totalPersonalFouls the totalPersonalFouls to set
      */
     public void setTotalPersonalFouls(int totalPersonalFouls) {
-        this.totalPersonalFouls = totalPersonalFouls;
+        //check if the number is below 0, and set to 0 if it is
+        if(totalPersonalFouls<0) {
+            this.totalPersonalFouls =  0;
+        } else {
+            this.totalPersonalFouls = totalPersonalFouls;
+        }
     }
 
     /**
@@ -217,7 +257,12 @@ public class BasketballPlayer extends AbstractHuman{
      * @param totalTechnicalFouls the totalTechnicalFouls to set
      */
     public void setTotalTechnicalFouls(int totalTechnicalFouls) {
-        this.totalTechnicalFouls = totalTechnicalFouls;
+        //check if the number is below 0, and set to 0 if it is
+        if(totalTechnicalFouls<0) {
+            this.totalTechnicalFouls =  0;
+        } else {
+            this.totalTechnicalFouls = totalTechnicalFouls;
+        }
     }
 
     /**
@@ -231,7 +276,14 @@ public class BasketballPlayer extends AbstractHuman{
      * @param plusMinus the plusMinus to set
      */
     public void setPlusMinus(double plusMinus) {
-        this.plusMinus = plusMinus;
+        //check if the number is below -10, and set to -10 if it is, and if it is above 10, and set it to 10 if it is
+        if(plusMinus<-10) {
+            this.plusMinus = -10;
+        }else if(plusMinus>10) {
+            this.plusMinus = 10;
+        } else {
+            this.plusMinus = plusMinus;
+        }
     }
 
     @Override
