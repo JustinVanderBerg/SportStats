@@ -68,13 +68,13 @@
         android:text="@string/benchLabel"
         android:textAllCaps="true"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="36sp"
+        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/benchLabel"/>
+        tools:text="@string/benchLabel" />
 
     <TextView
         android:id="@+id/courtPrompt"
@@ -85,11 +85,11 @@
         android:text="@string/onCourtLabel"
         android:textAllCaps="true"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="36sp"
+        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/benchPrompt"
         app:layout_constraintEnd_toStartOf="@+id/benchPrompt"
-        tools:text="@string/onCourtLabel"/>
+        tools:text="@string/onCourtLabel" />
 
     <Button
         android:id="@+id/btnShotMade"
@@ -168,6 +168,7 @@
         android:onClick="onClick"
         android:text="@string/foulShotAttemptedLabel"
         android:textAllCaps="true"
+        android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/btn3PtAttempted"
         app:layout_constraintEnd_toStartOf="@+id/courtPlayersScrollBar"
         tools:text="@string/foulShotAttemptedLabel" />
@@ -200,7 +201,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/courtPlayersScrollBar"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.84"
+        app:layout_constraintVertical_bias="0.858"
         tools:text="@string/techFoulLabel" />
 
     <Button
