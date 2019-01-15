@@ -152,10 +152,12 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
             //check which button was clicked
             //Update number of shots made for the player
             if (view.getId() == R.id.btnShotMade) {
-                tempHuman.setShotsMade(tempHuman.getShotsMade() + changeAmount);
-                game.setTotalShotsMade(game.getTotalShotsMade() + changeAmount);
-                game.setPointsForPerQuarter(game.getCurrentQuarter(), game.getPointsForPerQuarter(game.getCurrentQuarter()) + (changeAmount * 2));
-                game.setPointsFor(game.getPointsFor() + (changeAmount * 2));
+                if(tempHuman.setShotsMade(tempHuman.getShotsMade() + changeAmount)) {
+                    game.setTotalShotsMade(game.getTotalShotsMade() + changeAmount);
+                    game.setPointsForPerQuarter(game.getCurrentQuarter(), game.getPointsForPerQuarter(game.getCurrentQuarter()) + (changeAmount * 2));
+                    game.setPointsFor(game.getPointsFor() + (changeAmount * 2));
+                }
+
                 //Update number of shots attempted for the player
             } else if (view.getId() == R.id.btnShotAttempted) {
                 tempHuman.setShotsAttempted(tempHuman.getShotsAttempted() + changeAmount);

@@ -52,12 +52,14 @@ public class BasketballPlayer extends AbstractHuman{
     /**
      * @param shotsAttempted the shotsAttempted to set
      */
-    public void setShotsAttempted(int shotsAttempted) {
+    public boolean setShotsAttempted(int shotsAttempted) {
         //check if the number is below 0, and set to 0 if it is
         if(shotsAttempted<0) {
             this.shotsAttempted =  0;
+            return false;
         } else {
             this.shotsAttempted = shotsAttempted;
+            return true;
         }
     }
 
@@ -71,12 +73,14 @@ public class BasketballPlayer extends AbstractHuman{
     /**
      * @param shotsMade the shotsMade to set
      */
-    public void setShotsMade(int shotsMade) {
+    public boolean setShotsMade(int shotsMade) {
         //check if the number is below 0, and set to 0 if it is
         if(shotsMade<0) {
             this.shotsMade =  0;
+            return false;
         } else {
             this.shotsMade = shotsMade;
+            return true;
         }
     }
 
@@ -101,6 +105,7 @@ public class BasketballPlayer extends AbstractHuman{
         //check if the number is below 0, and set to 0 if it is
         if(threePointsAttempted<0) {
             this.threePointsAttempted =  0;
+
         } else {
             this.threePointsAttempted = threePointsAttempted;
         }
@@ -161,12 +166,14 @@ public class BasketballPlayer extends AbstractHuman{
     /**
      * @param foulShotsMade the foulShotsMade to set
      */
-    public void setFoulShotsMade(int foulShotsMade) {
+    public boolean setFoulShotsMade(int foulShotsMade) {
         //check if the number is below 0, and set to 0 if it is
         if(foulShotsMade<0) {
             this.foulShotsMade =  0;
+            return false;
         } else {
             this.foulShotsMade = foulShotsMade;
+            return true;
         }
     }
 
@@ -235,14 +242,14 @@ public class BasketballPlayer extends AbstractHuman{
             this.totalTechnicalFouls = totalTechnicalFouls;
         }
     }
-//TODO do we want to keep this / what do we wanna do with this? (set up calculation)
+
     /**
      * @return the plusMinus
      */
     public double getPlusMinus() {
         //calculate and return plusMinus
         double plusMinus = 0;
-        plusMinus = (shotsMade) + (threePointsMade) + (foulShotsMade * .5) - (foulShotsAttempted * 0.5) - (shotsAttempted * 0.5) - (threePointsAttempted) - (totalPersonalFouls) - (totalTechnicalFouls * 5);
+        plusMinus = 0 + (shotsMade) + (threePointsMade) + (foulShotsMade * .5) - (foulShotsAttempted * 0.5) - (shotsAttempted * 0.5) - (threePointsAttempted) - (totalPersonalFouls) - (totalTechnicalFouls * 5);
         if(plusMinus<-10) {
             plusMinus = -10;
         }else if(plusMinus>10) {
