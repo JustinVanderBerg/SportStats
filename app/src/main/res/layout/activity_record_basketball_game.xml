@@ -62,17 +62,14 @@
         android:id="@+id/benchPrompt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
         android:alpha="1"
         android:text="@string/benchLabel"
         android:textAllCaps="true"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="28sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/BenchScrollBar"
+        app:layout_constraintStart_toStartOf="@+id/BenchScrollBar"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="@string/benchLabel" />
 
@@ -80,7 +77,6 @@
         android:id="@+id/courtPrompt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:alpha="1"
         android:text="@string/onCourtLabel"
         android:textAllCaps="true"
@@ -88,7 +84,8 @@
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/benchPrompt"
-        app:layout_constraintEnd_toStartOf="@+id/benchPrompt"
+        app:layout_constraintEnd_toEndOf="@+id/courtPlayersScrollBar"
+        app:layout_constraintStart_toStartOf="@+id/courtPlayersScrollBar"
         tools:text="@string/onCourtLabel" />
 
     <Button

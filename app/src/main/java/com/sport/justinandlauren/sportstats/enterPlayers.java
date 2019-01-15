@@ -40,7 +40,7 @@ public class enterPlayers extends AppCompatActivity {
             EditText tempEditText = new EditText(this);
             tempEditText.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT));
             //set the prompt for the text field
-            tempEditText.setHint((i + 1) + ". Player name");
+            tempEditText.setHint("INITIAL. LastName");
             tempEditText.setText("Player name");
             playerNames.addView(tempEditText);
             names[i] = tempEditText;
@@ -52,7 +52,7 @@ public class enterPlayers extends AppCompatActivity {
             EditText tempEditText = new EditText(this);
             tempEditText.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT));
             //set the prompt for the text field
-            tempEditText.setHint((i + 1) + ". Player number");
+            tempEditText.setHint("Player number");
             tempEditText.setText((i + 1) + "");
             playerNumbers.addView(tempEditText);
             numbers[i] = tempEditText;
@@ -70,7 +70,7 @@ public class enterPlayers extends AppCompatActivity {
         //variable to make sure to only show record game screen if all data is entered correctly
         boolean error = false;
 
-        int minutesPerQuarter = -1;
+        int minutesPerQuarter;
         //get all names and numbers
         for (int i = 0; i < mainGame.getNumPlayers(); i++) {
             try {
