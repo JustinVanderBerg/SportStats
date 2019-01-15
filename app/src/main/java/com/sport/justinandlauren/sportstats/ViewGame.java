@@ -133,7 +133,7 @@ public class ViewGame extends AppCompatActivity implements View.OnClickListener 
                 uncheckButton(playerButtons[i]);
             }
             //show player info of clicked button
-            ((TextView) findViewById(R.id.txtPlayerStats)).setText(game.getHuman(playerSelectedLocation).toString());
+            ((TextView) findViewById(R.id.txtPlayerStats3)).setText(game.getHuman(playerSelectedLocation).toString());
         }
 
     }
