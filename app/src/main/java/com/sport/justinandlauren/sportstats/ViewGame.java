@@ -1,5 +1,6 @@
 package com.sport.justinandlauren.sportstats;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.content.res.ResourcesCompat;
@@ -23,11 +24,14 @@ public class ViewGame extends AppCompatActivity implements View.OnClickListener 
         //get the game passed from the previous page, either the record game or the select game page
         AbstractGame tempGame = (AbstractGame) getIntent().getSerializableExtra("gameClass");
         game = (BasketballGame) tempGame;
-        showStats(game);
+        showStats();
         generatePlayerButtons();
     }
 
-    public void showStats(AbstractGame game) {
+    /**
+     * Method to show the team stats for the game
+     */
+    public void showStats() {
         ((TextView) findViewById(R.id.txtGameOutput)).setText(game.toString());
     }
 
@@ -89,7 +93,7 @@ public class ViewGame extends AppCompatActivity implements View.OnClickListener 
     }
 
     /**
-     * This method is called whenever the user clicks on a button that uses this click listener(court buttons, player modification buttons)
+     * This method is called whenever the user clicks on a button that uses this click listener
      *
      * @param view View that the user clicked
      */
@@ -158,4 +162,13 @@ public class ViewGame extends AppCompatActivity implements View.OnClickListener 
         setText(tempButton, tempButton.getText().toString());
     }
 
+    /**
+     * Method to allow the user to select a different game
+     *
+     * @param view view the player clicked on
+     */
+    public void switchGameClick(View view) {
+        Intent intent = new Intent(this, SelectGame.class);
+        startActivity(intent);
+    }
 }
