@@ -27,10 +27,8 @@ public class BasketballGame extends AbstractGame {
     private int totalShotsMade;
     private int totalThreePointsAttempted;
     private int totalThreePointsMade;
-    private double threePointPercentage;
     private int totalFoulShotsAttempted;
     private int totalFoulShotsMade;
-    private double foulShotPercentage;
     private int currentQuarter;
     private int totalTechFouls;
 
@@ -60,10 +58,8 @@ public class BasketballGame extends AbstractGame {
         totalShotsMade = 0;
         totalThreePointsAttempted = 0;
         totalThreePointsMade = 0;
-        threePointPercentage = 0;
         totalFoulShotsAttempted = 0;
         totalFoulShotsMade = 0;
-        foulShotPercentage = 0;
         currentQuarter = 0;
     }
 
@@ -220,14 +216,13 @@ public class BasketballGame extends AbstractGame {
             this.totalShotsMade = totalShotsMade;
         }
     }
-    //TODO do we want to keep this / what do we wanna do with this?
+
     /**
      * @return the shotPercentage
      */
     public double getShotPercentage() {
-        return totalShotsMade / totalShotsAttempted;
+        return totalShotsMade /( totalShotsAttempted+totalShotsMade);
     }
-
 
     /**
      * @return the totalThreePointsAttempted
@@ -266,19 +261,11 @@ public class BasketballGame extends AbstractGame {
             this.totalThreePointsMade = totalThreePointsMade;
         }
     }
-//TODO do we want to keep this / what do we wanna do with this?
     /**
      * @return the threePointPercentage
      */
     public double getThreePointPercentage() {
-        return threePointPercentage;
-    }
-
-    /**
-     * @param threePointPercentage the threePointPercentage to set
-     */
-    public void setThreePointPercentage(double threePointPercentage) {
-        this.threePointPercentage = threePointPercentage;
+        return totalThreePointsMade/(totalThreePointsAttempted + totalThreePointsMade);
     }
 
     /**
@@ -318,19 +305,12 @@ public class BasketballGame extends AbstractGame {
             this.totalFoulShotsMade = totalFoulShotsMade;
         }
     }
-//TODO do we want to keep this / what do we wanna do with this?
+
     /**
      * @return the foulShotPercentage
      */
     public double getFoulShotPercentage() {
-        return foulShotPercentage;
-    }
-
-    /**
-     * @param foulShotPercentage the foulShotPercentage to set
-     */
-    public void setFoulShotPercentage(double foulShotPercentage) {
-        this.foulShotPercentage = foulShotPercentage;
+        return totalFoulShotsMade/(totalFoulShotsAttempted + totalFoulShotsMade);
     }
 
     /**
@@ -384,7 +364,7 @@ public class BasketballGame extends AbstractGame {
 
     @Override
     public String toString() {
-        return "BasketballGame{" + "pointsFor=" + pointsFor + ", pointsAgainst=" + pointsAgainst + ", teamFoulsPerQuarter=" + Arrays.toString(teamFoulsPerQuarter) + ", totalTeamFouls=" + totalTeamFouls + ", pointsForPerQuarter=" + Arrays.toString(pointsForPerQuarter) + ", pointsAgainstPerQuarter=" + Arrays.toString(pointsAgainstPerQuarter) + ", totalShotsAttempted=" + getTotalShotsAttempted() + ", totalShotsMade=" + totalShotsMade + ", shotPercentage=" + (getShotPercentage() * 100) + ", totalThreePointsAttempted=" + totalThreePointsAttempted + ", totalThreePointsMade=" + totalThreePointsMade + ", threePointPercentage=" + threePointPercentage + ", totalFoulShotsAttempted=" + totalFoulShotsAttempted + ", totalFoulShotsMade=" + totalFoulShotsMade + ", foulShotPercentage=" + foulShotPercentage + '}';
+        return "BasketballGame{" + "pointsFor=" + pointsFor + ", pointsAgainst=" + pointsAgainst + ", teamFoulsPerQuarter=" + Arrays.toString(teamFoulsPerQuarter) + ", totalTeamFouls=" + totalTeamFouls + ", pointsForPerQuarter=" + Arrays.toString(pointsForPerQuarter) + ", pointsAgainstPerQuarter=" + Arrays.toString(pointsAgainstPerQuarter) + ", totalShotsAttempted=" + getTotalShotsAttempted() + ", totalShotsMade=" + totalShotsMade + ", shotPercentage=" + (getShotPercentage() * 100) + ", totalThreePointsAttempted=" + totalThreePointsAttempted + ", totalThreePointsMade=" + totalThreePointsMade + ", threePointPercentage=" + (getThreePointPercentage() * 100) + ", totalFoulShotsAttempted=" + totalFoulShotsAttempted + ", totalFoulShotsMade=" + totalFoulShotsMade + ", foulShotPercentage=" + (getFoulShotPercentage() * 100) + '}';
     }
 
 

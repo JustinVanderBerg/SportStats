@@ -15,17 +15,13 @@ public class BasketballPlayer extends AbstractHuman{
     //protected instance variables
     private int shotsAttempted;
     private int shotsMade;
-    private double shotsPercent;
     private int threePointsAttempted;
     private int threePointsMade;
-    private double threePointsPercent;
     private int foulShotsAttempted;
     private int foulShotsMade;
-    private double foulShotPercent;
     private int personalFoulsPerQuarter[];
     private int totalPersonalFouls;
     private int totalTechnicalFouls;
-    private double plusMinus;
 
     /**
      * Primary Constructor
@@ -34,20 +30,16 @@ public class BasketballPlayer extends AbstractHuman{
         super();
         shotsAttempted = 0;
         shotsMade = 0;
-        shotsPercent = 0;
         threePointsAttempted = 0;
         threePointsMade = 0;
-        threePointsPercent = 0;
         foulShotsAttempted = 0;
         foulShotsMade = 0;
-        foulShotPercent = 0;
         personalFoulsPerQuarter = new int[4];
         for (int i = 0; i < 4; i++) {
             personalFoulsPerQuarter[i] = 0;
         }
         totalPersonalFouls = 0;
         totalTechnicalFouls = 0;
-        plusMinus = 0;
     }
     
     /**
@@ -87,19 +79,12 @@ public class BasketballPlayer extends AbstractHuman{
             this.shotsMade = shotsMade;
         }
     }
-//TODO do we want to keep this / what do we wanna do with this?
+
     /**
      * @return the shotsPercent
      */
     public double getShotsPercent() {
-        return shotsPercent;
-    }
-
-    /**
-     * @param shotsPercent the shotsPercent to set
-     */
-    public void setShotsPercent(double shotsPercent) {
-        this.shotsPercent = shotsPercent;
+        return shotsMade / (shotsAttempted + shotsMade);
     }
 
     /**
@@ -139,19 +124,12 @@ public class BasketballPlayer extends AbstractHuman{
             this.threePointsMade = threePointsMade;
         }
     }
-//TODO do we want to keep this / what do we wanna do with this?
+
     /**
      * @return the threePointsPercent
      */
     public double getThreePointsPercent() {
-        return threePointsPercent;
-    }
-
-    /**
-     * @param threePointsPercent the threePointsPercent to set
-     */
-    public void setThreePointsPercent(double threePointsPercent) {
-        this.threePointsPercent = threePointsPercent;
+        return threePointsMade/(threePointsAttempted+threePointsMade);
     }
 
     /**
@@ -191,19 +169,12 @@ public class BasketballPlayer extends AbstractHuman{
             this.foulShotsMade = foulShotsMade;
         }
     }
-//TODO do we want to keep this / what do we wanna do with this?
+
     /**
      * @return the foulShotPercent
      */
     public double getFoulShotPercent() {
-        return foulShotPercent;
-    }
-
-    /**
-     * @param foulShotPercent the foulShotPercent to set
-     */
-    public void setFoulShotPercent(double foulShotPercent) {
-        this.foulShotPercent = foulShotPercent;
+        return foulShotsMade/(foulShotsAttempted+foulShotsMade);
     }
 
     /**
@@ -269,13 +240,8 @@ public class BasketballPlayer extends AbstractHuman{
      * @return the plusMinus
      */
     public double getPlusMinus() {
+        double plusMinus;
         return plusMinus;
-    }
-
-    /**
-     * @param plusMinus the plusMinus to set
-     */
-    public void setPlusMinus(double plusMinus) {
         //check if the number is below -10, and set to -10 if it is, and if it is above 10, and set it to 10 if it is
         if(plusMinus<-10) {
             this.plusMinus = -10;
@@ -288,7 +254,7 @@ public class BasketballPlayer extends AbstractHuman{
 
     @Override
     public String toString() {
-        return "BasketballPlayer{" + "shotsAttempted=" + shotsAttempted + ", shotsMade=" + shotsMade + ", shotsPercent=" + shotsPercent + ", threePointsAttempted=" + threePointsAttempted + ", threePointsMade=" + threePointsMade + ", threePointsPercent=" + threePointsPercent + ", foulShotsAttempted=" + foulShotsAttempted + ", foulShotsMade=" + foulShotsMade + ", foulShotPercent=" + foulShotPercent + ", personalFoulsPerQuarter=" + personalFoulsPerQuarter + ", totalPersonalFouls=" + totalPersonalFouls + ", totalTechnicalFouls=" + totalTechnicalFouls + ", plusMinus=" + plusMinus + '}';
+        return "BasketballPlayer{" + "shotsAttempted=" + shotsAttempted + ", shotsMade=" + shotsMade + ", shotsPercent=" + (getShotsPercent() * 100) + ", threePointsAttempted=" + threePointsAttempted + ", threePointsMade=" + threePointsMade + ", threePointsPercent=" + (getThreePointsPercent() * 100) + ", foulShotsAttempted=" + foulShotsAttempted + ", foulShotsMade=" + foulShotsMade + ", foulShotPercent=" + (getFoulShotPercent() * 100) + ", personalFoulsPerQuarter=" + personalFoulsPerQuarter + ", totalPersonalFouls=" + totalPersonalFouls + ", totalTechnicalFouls=" + totalTechnicalFouls + ", plusMinus=" + plusMinus + '}';
     }
 
     
