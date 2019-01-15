@@ -10,19 +10,11 @@ import java.util.Arrays;
  */
 
 
-//INSERT PACKAGE TITLE
-
-/**
- * @author justin
- */
 public class BasketballGame extends AbstractGame {
 
     private int pointsFor;
     private int pointsAgainst;
-    private int teamFoulsPerQuarter[];
     private int totalTeamFouls;
-    private int pointsForPerQuarter[];
-    private int pointsAgainstPerQuarter[];
     private int totalShotsAttempted;
     private int totalShotsMade;
     private int totalThreePointsAttempted;
@@ -45,15 +37,7 @@ public class BasketballGame extends AbstractGame {
         //initialize variables
         pointsFor = 0;
         pointsAgainst = 0;
-        teamFoulsPerQuarter = new int[4];
         totalTeamFouls = 0;
-        pointsForPerQuarter = new int[4];
-        pointsAgainstPerQuarter = new int[4];
-        for (int i = 0; i < 4; i++) {
-            teamFoulsPerQuarter[i] = 0;
-            pointsForPerQuarter[i] = 0;
-            pointsAgainstPerQuarter[i] = 0;
-        }
         totalShotsAttempted = 0;
         totalShotsMade = 0;
         totalThreePointsAttempted = 0;
@@ -104,27 +88,6 @@ public class BasketballGame extends AbstractGame {
     }
 
     /**
-     * @param i The quarter in which to see the team fouls
-     * @return the teamFoulsPerQuarter
-     */
-    public int getTeamFoulsPerQuarter(int i) {
-        return teamFoulsPerQuarter[i];
-    }
-
-    /**
-     * @param i        quarter which to set the number of fouls
-     * @param numFouls number of fouls that occured in that quarter
-     */
-    public void setTeamFoulsPerQuarter(int i, int numFouls) {
-        //check if the number is below 0, and set to 0 if it is
-        if(numFouls<0) {
-            this.teamFoulsPerQuarter[i] = 0;
-        } else {
-            this.teamFoulsPerQuarter[i] = numFouls;
-        }
-    }
-
-    /**
      * @param totalTeamFouls new total team fouls to set
      */
     public void setTotalTeamFouls(int totalTeamFouls) {
@@ -142,48 +105,6 @@ public class BasketballGame extends AbstractGame {
         return totalTeamFouls;
     }
 
-
-    /**
-     * @param i The quarter which to see the points in
-     * @return the pointsForPerQuarter
-     */
-    public int getPointsForPerQuarter(int i) {
-        return pointsForPerQuarter[i];
-    }
-
-    /**
-     * @param i         quarter which to set the number of fouls
-     * @param numPoints number of points for that occured in that quarter
-     */
-    public void setPointsForPerQuarter(int i, int numPoints) {
-        //check if the number is below 0, and set to 0 if it is
-        if(numPoints<0) {
-            pointsForPerQuarter[i] = 0;
-        } else {
-            pointsForPerQuarter[i] = numPoints;;
-        }
-    }
-
-    /**
-     * @param i quarter to view points against
-     * @return the pointsAgainstPerQuarter
-     */
-    public int getPointsAgainstPerQuarter(int i) {
-        return pointsAgainstPerQuarter[i];
-    }
-
-    /**
-     * @param i         quarter which to set the number of points against
-     * @param numPoints number of points against that occured in that quarter
-     */
-    public void setPointsAgainstPerQuarter(int i, int numPoints) {
-        //check if the number is below 0, and set to 0 if it is
-        if(numPoints<0) {
-            pointsAgainstPerQuarter[i] = 0;
-        } else {
-            pointsAgainstPerQuarter[i] = numPoints;
-        }
-    }
     /**
      * @return number of quarters
      */
@@ -364,7 +285,7 @@ public class BasketballGame extends AbstractGame {
 
     @Override
     public String toString() {
-        return "BasketballGame{" + "pointsFor=" + pointsFor + ", pointsAgainst=" + pointsAgainst + ", teamFoulsPerQuarter=" + Arrays.toString(teamFoulsPerQuarter) + ", totalTeamFouls=" + totalTeamFouls + ", pointsForPerQuarter=" + Arrays.toString(pointsForPerQuarter) + ", pointsAgainstPerQuarter=" + Arrays.toString(pointsAgainstPerQuarter) + ", totalShotsAttempted=" + getTotalShotsAttempted() + ", totalShotsMade=" + totalShotsMade + ", shotPercentage=" + (getShotPercentage() * 100) + ", totalThreePointsAttempted=" + totalThreePointsAttempted + ", totalThreePointsMade=" + totalThreePointsMade + ", threePointPercentage=" + (getThreePointPercentage() * 100) + ", totalFoulShotsAttempted=" + totalFoulShotsAttempted + ", totalFoulShotsMade=" + totalFoulShotsMade + ", foulShotPercentage=" + (getFoulShotPercentage() * 100) + '}';
+        return "BasketballGame{" + "pointsFor=" + pointsFor + ", pointsAgainst=" + pointsAgainst + ", totalTeamFouls=" + totalTeamFouls + ", totalShotsAttempted=" + getTotalShotsAttempted() + ", totalShotsMade=" + totalShotsMade + ", shotPercentage=" + (getShotPercentage() * 100) + ", totalThreePointsAttempted=" + totalThreePointsAttempted + ", totalThreePointsMade=" + totalThreePointsMade + ", threePointPercentage=" + (getThreePointPercentage() * 100) + ", totalFoulShotsAttempted=" + totalFoulShotsAttempted + ", totalFoulShotsMade=" + totalFoulShotsMade + ", foulShotPercentage=" + (getFoulShotPercentage() * 100) + '}';
     }
 
 

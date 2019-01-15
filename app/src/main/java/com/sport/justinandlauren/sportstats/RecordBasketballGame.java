@@ -154,7 +154,6 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
             if (view.getId() == R.id.btnShotMade) {
                 if(tempHuman.setShotsMade(tempHuman.getShotsMade() + changeAmount)) {
                     game.setTotalShotsMade(game.getTotalShotsMade() + changeAmount);
-                    game.setPointsForPerQuarter(game.getCurrentQuarter(), game.getPointsForPerQuarter(game.getCurrentQuarter()) + (changeAmount * 2));
                     game.setPointsFor(game.getPointsFor() + (changeAmount * 2));
                 }
                 //Update number of shots attempted for the player
@@ -166,7 +165,6 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
             } else if (view.getId() == R.id.btnFoulShotMade) {
                 if(tempHuman.setFoulShotsMade(tempHuman.getFoulShotsMade() + changeAmount)) {
                     game.setTotalFoulShotsMade(game.getTotalFoulShotsMade() + changeAmount);
-                    game.setPointsForPerQuarter(game.getCurrentQuarter(), game.getPointsForPerQuarter(game.getCurrentQuarter()) + changeAmount);
                     game.setPointsFor(game.getPointsFor() + changeAmount);
                 }
                 //Update number of foul shots attempted for the player
@@ -178,7 +176,6 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
             } else if (view.getId() == R.id.btn3PtMade) {
                 if(tempHuman.setThreePointsMade(tempHuman.getThreePointsMade() + changeAmount)) {
                     game.setTotalThreePointsMade(game.getTotalThreePointsMade() + changeAmount);
-                    game.setPointsForPerQuarter(game.getCurrentQuarter(), game.getPointsForPerQuarter(game.getCurrentQuarter()) + (changeAmount * 3));
                     game.setPointsFor(game.getPointsFor() + (changeAmount * 3));
                 }
                 //update number of three points attempted for the player and in game class
@@ -190,9 +187,7 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
             } else if (view.getId() == R.id.btnPFoul) {
 
                     //TODO what on earth do I do here (also, do the related boolean changes in basketballPlayer.java)
-                tempHuman.setPersonalFoulsPerQuarter(game.getCurrentQuarter(), tempHuman.getPersonalFoulsPerQuarter(game.getCurrentQuarter()) + changeAmount);
                 tempHuman.setTotalPersonalFouls(tempHuman.getTotalPersonalFouls() + changeAmount);
-                game.setTeamFoulsPerQuarter(game.getCurrentQuarter(), game.getTeamFoulsPerQuarter(game.getCurrentQuarter()) + changeAmount);
                 game.setTotalTeamFouls(game.getTotalTeamFouls() + changeAmount);
                 //add a technical foul to the selected player and to the team total
             } else if (view.getId() == R.id.btnTechFoul) {
@@ -200,15 +195,12 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
                     game.setTotalTechFouls(game.getTotalTechFouls() + changeAmount);
                 }
             } else if (view.getId() == R.id.btnAddOppScore) {
-                //TODO what on earth do I do for this one?  (also, do related boolean changes in basketballPlayer.java)
-                game.setPointsAgainstPerQuarter(game.getCurrentQuarter(), game.getPointsAgainstPerQuarter(game.getCurrentQuarter()) + changeAmount);
                 game.setPointsAgainst(game.getPointsAgainst() + changeAmount);
             }
         } else {
             //if no player is selected on the court, the user can still add one to the team technical fouls
             //and add one to the opposing team score
             if (view.getId() == R.id.btnAddOppScore) {
-                game.setPointsAgainstPerQuarter(game.getCurrentQuarter(), game.getPointsAgainstPerQuarter(game.getCurrentQuarter()) + changeAmount);
                 game.setPointsAgainst(game.getPointsAgainst() + changeAmount);
             } else if (view.getId() == R.id.btnTechFoul) {
                 game.setTotalTechFouls(game.getTotalTechFouls() + changeAmount);
@@ -727,3 +719,5 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
 
 
 }
+
+//TODO fix end of fourth period to be 0000

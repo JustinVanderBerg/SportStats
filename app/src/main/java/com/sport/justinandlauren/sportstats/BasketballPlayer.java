@@ -3,11 +3,6 @@ Dec 17, 2018
 basketball player class (extends AbstractHuman - ICS4U Final Project Overview
 */
 
-/**
- *
- * @author Lauren
- */
-
 package com.sport.justinandlauren.sportstats;
 
 public class BasketballPlayer extends AbstractHuman{
@@ -19,7 +14,6 @@ public class BasketballPlayer extends AbstractHuman{
     private int threePointsMade;
     private int foulShotsAttempted;
     private int foulShotsMade;
-    private int personalFoulsPerQuarter[];
     private int totalPersonalFouls;
     private int totalTechnicalFouls;
 
@@ -34,10 +28,6 @@ public class BasketballPlayer extends AbstractHuman{
         threePointsMade = 0;
         foulShotsAttempted = 0;
         foulShotsMade = 0;
-        personalFoulsPerQuarter = new int[4];
-        for (int i = 0; i < 4; i++) {
-            personalFoulsPerQuarter[i] = 0;
-        }
         totalPersonalFouls = 0;
         totalTechnicalFouls = 0;
     }
@@ -190,27 +180,6 @@ public class BasketballPlayer extends AbstractHuman{
     }
 
     /**
-     * @param index the quarter to get the fouls for
-     * @return the personalFouls in the quarter
-     */
-    public int getPersonalFoulsPerQuarter(int index) {
-        return personalFoulsPerQuarter[index];
-    }
-
-    /**
-     * @param index the quarter of which to set the number of fouls
-     * @param
-     */
-    public void setPersonalFoulsPerQuarter(int index, int numFouls) {
-        //check if the number is below 0, and set to 0 if it is
-        if(numFouls<0) {
-            this.personalFoulsPerQuarter[index] =  0;
-        } else {
-            this.personalFoulsPerQuarter[index] = numFouls;
-        }
-    }
-
-    /**
      * @return the totalPersonalFouls
      */
     public int getTotalPersonalFouls() {
@@ -269,7 +238,7 @@ public class BasketballPlayer extends AbstractHuman{
 
     @Override
     public String toString() {
-        return "BasketballPlayer{" + "shotsAttempted=" + shotsAttempted + ", shotsMade=" + shotsMade + ", shotsPercent=" + (getShotsPercent() * 100) + ", threePointsAttempted=" + threePointsAttempted + ", threePointsMade=" + threePointsMade + ", threePointsPercent=" + (getThreePointsPercent() * 100) + ", foulShotsAttempted=" + foulShotsAttempted + ", foulShotsMade=" + foulShotsMade + ", foulShotPercent=" + (getFoulShotPercent() * 100) + ", personalFoulsPerQuarter=" + personalFoulsPerQuarter + ", totalPersonalFouls=" + totalPersonalFouls + ", totalTechnicalFouls=" + totalTechnicalFouls + ", plusMinus=" + getPlusMinus() + '}';
+        return "BasketballPlayer{" + "shotsAttempted=" + shotsAttempted + ", shotsMade=" + shotsMade + ", shotsPercent=" + (getShotsPercent() * 100) + ", threePointsAttempted=" + threePointsAttempted + ", threePointsMade=" + threePointsMade + ", threePointsPercent=" + (getThreePointsPercent() * 100) + ", foulShotsAttempted=" + foulShotsAttempted + ", foulShotsMade=" + foulShotsMade + ", foulShotPercent=" + (getFoulShotPercent() * 100) + ", totalPersonalFouls=" + totalPersonalFouls + ", totalTechnicalFouls=" + totalTechnicalFouls + ", plusMinus=" + getPlusMinus() + '}';
     }
 
     
