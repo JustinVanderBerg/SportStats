@@ -14,22 +14,24 @@ public class ViewGame extends AppCompatActivity implements View.OnClickListener 
     private ToggleButton playerButtons[];
     private int playerSelectedLocation;
     private int numPlayers;
-
+    BasketballGame game = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_game);
         setTitle("Game Stats");
-        AbstractGame game = (AbstractGame) getIntent().getSerializableExtra("gameClass");
+        //get the game passed from the previous page, either the record game or the select game page
+        AbstractGame tempGame = (AbstractGame) getIntent().getSerializableExtra("gameClass");
+        game = (BasketballGame) tempGame;
         showStats(game);
-        generatePlayerButtons((BasketballGame) game);
+        generatePlayerButtons();
     }
 
     public void showStats(AbstractGame game) {
         ((TextView) findViewById(R.id.txtGameOutput)).setText(game.toString());
     }
 
-    public void generatePlayerButtons(BasketballGame game) {
+    public void generatePlayerButtons() {
         numPlayers = game.getNumPlayers();
         playerButtons = new ToggleButton[numPlayers];
         //only add players too bench when there are players to add
@@ -48,12 +50,12 @@ public class ViewGame extends AppCompatActivity implements View.OnClickListener 
                 toggleButton.setLayoutParams(params);
 
                 //get and set id(possibility of 15 bench players max)
-                int id = this.getResources().getIdentifier(("bench" + (i + 1)), "id", this.getPackageName());
+                int id = this.getResources().getIdentifier(("player" + (i + 1)), "id", this.getPackageName());
                 toggleButton.setId(id);
                 //set text padding and text of the button
                 toggleButton.setPadding(3, 3, 3, 3);
                 toggleButton.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
-                toggleButton.setMinWidth(100);
+                toggleButton.setMinWidth(110);
                 toggleButton.setMinHeight(105);
                 toggleButton.setLineSpacing(0, 0.8f);
                 //first five players are initially on court, so start at 6th player
@@ -92,7 +94,7 @@ public class ViewGame extends AppCompatActivity implements View.OnClickListener 
      * @param view View that the user clicked
      */
     public void onClick(View view) {
-
+        checkCourtButtons(view);
     }
 
     /**
@@ -106,9 +108,13 @@ public class ViewGame extends AppCompatActivity implements View.OnClickListener 
         int btnClicked = -1;
         //check which button was clicked
         for (int i = 0; i < numPlayers; i++) {
-            if (view.getId() == this.getResources().getIdentifier(("court" + (i + 1)), "id", this.getPackageName())) {
+            if (view.getId() == this.getResources().getIdentifier(("player" + (i + 1)), "id", this.getPackageName())) {
+                //store the selected location
                 btnClicked = i;
                 playerSelectedLocation = i;
+                //check the button the user clicked
+                checkButton(playerButtons[i]);
+                i = numPlayers;
             }
         }
         //only turn off buttons if one of them was pressed(i.e. there was a change in one of their toggle states)
@@ -122,7 +128,10 @@ public class ViewGame extends AppCompatActivity implements View.OnClickListener 
                 //uncheck button
                 uncheckButton(playerButtons[i]);
             }
+            //show player info of clicked button
+            ((TextView) findViewById(R.id.txtPlayerStats)).setText(game.getHuman(playerSelectedLocation).toString());
         }
+
     }
 
     /**
