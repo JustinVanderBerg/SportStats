@@ -78,7 +78,17 @@ public class BasketballPlayer extends AbstractHuman{
      * @return the shotsPercent
      */
     public double getShotsPercent() {
-        return shotsMade / (shotsAttempted + shotsMade);
+        //declare local variable
+        double shotPercent;
+        //avoid divide by 0 error by setting total shots attempted to 1 if it is 0
+        if(shotsAttempted == 0 && shotsMade == 0) {
+            shotsAttempted = 1;
+            shotPercent = shotsMade / (shotsAttempted + shotsMade);
+            shotsAttempted = 0;
+        } else {
+            shotPercent = shotsMade / (shotsAttempted + shotsMade);
+        }
+        return shotPercent;
     }
 
     /**
@@ -127,7 +137,17 @@ public class BasketballPlayer extends AbstractHuman{
      * @return the threePointsPercent
      */
     public double getThreePointsPercent() {
-        return threePointsMade/(threePointsAttempted+threePointsMade);
+        //declare local variable
+        double shotPercent;
+        //avoid divide by 0 error by setting total shots attempted to 1 if it is 0
+        if(threePointsAttempted == 0 && threePointsMade == 0) {
+            threePointsAttempted = 1;
+            shotPercent = threePointsMade/(threePointsAttempted+threePointsMade);
+            threePointsAttempted = 0;
+        } else {
+            shotPercent = threePointsMade/(threePointsAttempted+threePointsMade);
+        }
+        return shotPercent;
     }
 
     /**
@@ -176,7 +196,17 @@ public class BasketballPlayer extends AbstractHuman{
      * @return the foulShotPercent
      */
     public double getFoulShotPercent() {
-        return foulShotsMade/(foulShotsAttempted+foulShotsMade);
+        //declare local variable
+        double shotPercent;
+        //avoid divide by 0 error by setting total shots attempted to 1 if it is 0
+        if(foulShotsAttempted == 0 && foulShotsMade == 0) {
+            foulShotsAttempted = 1;
+            shotPercent = foulShotsMade/(foulShotsAttempted + foulShotsMade);
+            foulShotsAttempted = 0;
+        } else {
+            shotPercent = foulShotsMade/(foulShotsAttempted + foulShotsMade);
+        }
+        return shotPercent;
     }
 
     /**
