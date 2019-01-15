@@ -32,7 +32,9 @@ public class ViewGame extends AppCompatActivity implements View.OnClickListener 
      * Method to show the team stats for the game
      */
     public void showStats() {
-        ((TextView) findViewById(R.id.txtGameOutput1)).setText(game.toString());
+        ((TextView) findViewById(R.id.txtGameOutput1)).setText(game.toString1());
+        ((TextView) findViewById(R.id.txtGameOutput2)).setText(game.toString2());
+        ((TextView) findViewById(R.id.txtGameOutput3)).setText(game.toString3());
     }
 
     public void generatePlayerButtons() {

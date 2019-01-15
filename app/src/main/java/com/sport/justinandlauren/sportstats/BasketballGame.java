@@ -316,8 +316,31 @@ public class BasketballGame extends AbstractGame {
 
     @Override
     public String toString() {
-        return "Total Points For = " + pointsFor + "\t\t\t\tTotal Points Against = " + pointsAgainst + "\t\t\t\tTotal Team Fouls = " + totalTeamFouls + "\nTotal Shots Attempted = " + getTotalShotsAttempted() + "\t\t\t\tTotal Shots Made = " + totalShotsMade + "\t\t\t\tShot Percentage = " + (getShotPercentage() * 100) + "\nTotal Three Points Attempted = " + totalThreePointsAttempted + "\t\t\t\tTotal Three Points Made = " + totalThreePointsMade + "\t\t\t\tThree Point Percentage = " + (getThreePointPercentage() * 100) + "\nTotal Foul Shots Attempted = " + totalFoulShotsAttempted + "\t\t\t\tTotal Foul Shots Made = " + totalFoulShotsMade + "\t\t\t\tFoul Shot Percentage = " + (getFoulShotPercentage() * 100);
+        return "Total Points For = " + pointsFor + "\t\t\t\tTotal Points Against = " + pointsAgainst +
+                "\t\t\t\tTotal Team Fouls = " + totalTeamFouls + "\nTotal Shots Attempted = " +
+                getTotalShotsAttempted() + "\t\t\t\tTotal Shots Made = " + totalShotsMade +
+                "\t\t\t\tShot Percentage = " + (getShotPercentage() * 100) + "\nTotal Three Points Attempted = " +
+                totalThreePointsAttempted + "\t\t\t\tTotal Three Points Made = " + totalThreePointsMade +
+                "\t\t\t\tThree Point Percentage = " + (getThreePointPercentage() * 100) +
+                "\nTotal Foul Shots Attempted = " + totalFoulShotsAttempted + "\t\t\t\tTotal Foul Shots Made = " +
+                totalFoulShotsMade + "\t\t\t\tFoul Shot Percentage = " + (getFoulShotPercentage() * 100);
     }
 
+    public String toString1() {
+        return "Total Points For = " + pointsFor + "\nTotal Shots Attempted = " + getTotalShotsAttempted() +
+                "\nTotal Three Points Attempted = " + totalThreePointsAttempted + "\nTotal Foul Shots Attempted = " +
+                totalFoulShotsAttempted;
+    }
+
+    public String toString2() {
+        return "Total Points Against = " + pointsAgainst + "\nTotal Shots Made = " + totalShotsMade +
+                "\nTotal Three Points Made = " + totalThreePointsMade + "\nTotal Foul Shots Made = " + totalFoulShotsMade;
+    }
+
+    public String toString3() {
+        return "Total Team Fouls = " + totalTeamFouls + "\nShot Percentage = " + (getShotPercentage() * 100) +
+                "\nThree Point Percentage = " + (getThreePointPercentage() * 100) + "\nFoul Shot Percentage = " +
+                (getFoulShotPercentage() * 100);
+    }
 
 }
