@@ -240,21 +240,22 @@ public class BasketballPlayer extends AbstractHuman{
      * @return the plusMinus
      */
     public double getPlusMinus() {
-        double plusMinus;
+        //calculate and return plusMinus
+        double plusMinus = 0;
+        plusMinus = (shotsMade) + (threePointsMade) + (foulShotsMade * .5) - (foulShotsAttempted * 0.5) - (shotsAttempted * 0.5) - (threePointsAttempted) - (totalPersonalFouls) - (totalTechnicalFouls * 5);
+        if(plusMinus<-10) {
+            plusMinus = -10;
+        }else if(plusMinus>10) {
+            plusMinus = 10;
+        }
         return plusMinus;
         //check if the number is below -10, and set to -10 if it is, and if it is above 10, and set it to 10 if it is
-        if(plusMinus<-10) {
-            this.plusMinus = -10;
-        }else if(plusMinus>10) {
-            this.plusMinus = 10;
-        } else {
-            this.plusMinus = plusMinus;
-        }
+
     }
 
     @Override
     public String toString() {
-        return "BasketballPlayer{" + "shotsAttempted=" + shotsAttempted + ", shotsMade=" + shotsMade + ", shotsPercent=" + (getShotsPercent() * 100) + ", threePointsAttempted=" + threePointsAttempted + ", threePointsMade=" + threePointsMade + ", threePointsPercent=" + (getThreePointsPercent() * 100) + ", foulShotsAttempted=" + foulShotsAttempted + ", foulShotsMade=" + foulShotsMade + ", foulShotPercent=" + (getFoulShotPercent() * 100) + ", personalFoulsPerQuarter=" + personalFoulsPerQuarter + ", totalPersonalFouls=" + totalPersonalFouls + ", totalTechnicalFouls=" + totalTechnicalFouls + ", plusMinus=" + plusMinus + '}';
+        return "BasketballPlayer{" + "shotsAttempted=" + shotsAttempted + ", shotsMade=" + shotsMade + ", shotsPercent=" + (getShotsPercent() * 100) + ", threePointsAttempted=" + threePointsAttempted + ", threePointsMade=" + threePointsMade + ", threePointsPercent=" + (getThreePointsPercent() * 100) + ", foulShotsAttempted=" + foulShotsAttempted + ", foulShotsMade=" + foulShotsMade + ", foulShotPercent=" + (getFoulShotPercent() * 100) + ", personalFoulsPerQuarter=" + personalFoulsPerQuarter + ", totalPersonalFouls=" + totalPersonalFouls + ", totalTechnicalFouls=" + totalTechnicalFouls + ", plusMinus=" + getPlusMinus() + '}';
     }
 
     
