@@ -316,7 +316,7 @@ public class BasketballGame extends AbstractGame {
 
     @Override
     public String toString() {
-        return "pointsFor=" + pointsFor + "\t\tpointsAgainst=" + pointsAgainst + ", totalTeamFouls=" + totalTeamFouls + ", totalShotsAttempted=" + getTotalShotsAttempted() + ", totalShotsMade=" + totalShotsMade + ", shotPercentage=" + (getShotPercentage() * 100) + ", totalThreePointsAttempted=" + totalThreePointsAttempted + ", totalThreePointsMade=" + totalThreePointsMade + ", threePointPercentage=" + (getThreePointPercentage() * 100) + ", totalFoulShotsAttempted=" + totalFoulShotsAttempted + ", totalFoulShotsMade=" + totalFoulShotsMade + ", foulShotPercentage=" + (getFoulShotPercentage() * 100);
+        return "Total Points For = " + pointsFor + "\t\t\t\tTotal Points Against = " + pointsAgainst + "\t\t\t\tTotal Team Fouls = " + totalTeamFouls + "\nTotal Shots Attempted = " + getTotalShotsAttempted() + "\t\t\t\tTotal Shots Made = " + totalShotsMade + "\t\t\t\tShot Percentage = " + (getShotPercentage() * 100) + "\nTotal Three Points Attempted = " + totalThreePointsAttempted + "\t\t\t\tTotal Three Points Made = " + totalThreePointsMade + "\t\t\t\tThree Point Percentage = " + (getThreePointPercentage() * 100) + "\nTotal Foul Shots Attempted = " + totalFoulShotsAttempted + "\t\t\t\tTotal Foul Shots Made = " + totalFoulShotsMade + "\t\t\t\tFoul Shot Percentage = " + (getFoulShotPercentage() * 100);
     }
 
 
