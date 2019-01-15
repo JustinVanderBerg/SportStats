@@ -147,8 +147,8 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
         //only do button checks if they have a player selected
         if (courtPlayerSelectedLocation != -1) {
             //temp human used to update info
-            BasketballPlayer tempHuman = (BasketballPlayer) game.getHuman(courtPlayerSelectedLocation);
-            // TODO fix shot addition and subtraction (when subtracting shots, player value won't go below 0, but team fouls/shots/everything will)
+            BasketballPlayer tempHuman = game.getHuman(courtPlayerSelectedLocation);
+            // TODO fix shot addition and subtraction (when subtracting shots, player value won't go below 0, but team fouls/shots/everything will) Return boolean value
             //check which button was clicked
             //Update number of shots made for the player
             if (view.getId() == R.id.btnShotMade) {
@@ -279,7 +279,7 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
             //if season stats were successfully stored, show the game stats to the user
             if (successful) {
                 Intent intent = new Intent(this, ViewGame.class);
-                intent.putExtra("gameLocation", seasonStats.getGame(seasonStats.getGames().size() - 1));
+                intent.putExtra("gameClass", game);
                 startActivity(intent);
             } else {
                 //game was not successfully stored, show debugging info in the log
