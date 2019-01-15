@@ -142,7 +142,17 @@ public class BasketballGame extends AbstractGame {
      * @return the shotPercentage
      */
     public double getShotPercentage() {
-        return totalShotsMade /( totalShotsAttempted+totalShotsMade);
+        //declare local variable
+        double shotPercent;
+        //avoid divide by 0 error by setting total shots attempted to 1 if it is 0
+        if(totalShotsAttempted == 0 && totalShotsMade == 0) {
+            totalShotsAttempted = 1;
+            shotPercent = totalShotsMade /( totalShotsAttempted+totalShotsMade);
+            totalShotsAttempted = 0;
+        } else {
+            shotPercent = totalShotsMade /( totalShotsAttempted+totalShotsMade);
+        }
+        return shotPercent;
     }
 
     /**
@@ -182,11 +192,22 @@ public class BasketballGame extends AbstractGame {
             this.totalThreePointsMade = totalThreePointsMade;
         }
     }
+
     /**
      * @return the threePointPercentage
      */
     public double getThreePointPercentage() {
-        return totalThreePointsMade/(totalThreePointsAttempted + totalThreePointsMade);
+        //declare local variable
+        double shotPercent;
+        //avoid divide by 0 error by setting total shots attempted to 1 if it is 0
+        if(totalThreePointsAttempted == 0 && totalThreePointsMade == 0) {
+            totalThreePointsAttempted = 1;
+            shotPercent = totalThreePointsMade/(totalThreePointsAttempted + totalThreePointsMade);
+            totalThreePointsAttempted = 0;
+        } else {
+            shotPercent = totalThreePointsMade/(totalThreePointsAttempted + totalThreePointsMade);
+        }
+        return shotPercent;
     }
 
     /**
@@ -231,7 +252,17 @@ public class BasketballGame extends AbstractGame {
      * @return the foulShotPercentage
      */
     public double getFoulShotPercentage() {
-        return totalFoulShotsMade/(totalFoulShotsAttempted + totalFoulShotsMade);
+        //declare local variable
+        double shotPercent;
+        //avoid divide by 0 error by setting total shots attempted to 1 if it is 0
+        if(totalFoulShotsAttempted == 0 && totalFoulShotsMade == 0) {
+            totalFoulShotsAttempted = 1;
+            shotPercent = totalFoulShotsMade/(totalFoulShotsAttempted + totalFoulShotsMade);
+            totalFoulShotsAttempted = 0;
+        } else {
+            shotPercent = totalFoulShotsMade/(totalFoulShotsAttempted + totalFoulShotsMade);
+        }
+        return shotPercent;
     }
 
     /**
@@ -285,7 +316,7 @@ public class BasketballGame extends AbstractGame {
 
     @Override
     public String toString() {
-        return "BasketballGame{" + "pointsFor=" + pointsFor + ", pointsAgainst=" + pointsAgainst + ", totalTeamFouls=" + totalTeamFouls + ", totalShotsAttempted=" + getTotalShotsAttempted() + ", totalShotsMade=" + totalShotsMade + ", shotPercentage=" + (getShotPercentage() * 100) + ", totalThreePointsAttempted=" + totalThreePointsAttempted + ", totalThreePointsMade=" + totalThreePointsMade + ", threePointPercentage=" + (getThreePointPercentage() * 100) + ", totalFoulShotsAttempted=" + totalFoulShotsAttempted + ", totalFoulShotsMade=" + totalFoulShotsMade + ", foulShotPercentage=" + (getFoulShotPercentage() * 100) + '}';
+        return "pointsFor=" + pointsFor + "\t\tpointsAgainst=" + pointsAgainst + ", totalTeamFouls=" + totalTeamFouls + ", totalShotsAttempted=" + getTotalShotsAttempted() + ", totalShotsMade=" + totalShotsMade + ", shotPercentage=" + (getShotPercentage() * 100) + ", totalThreePointsAttempted=" + totalThreePointsAttempted + ", totalThreePointsMade=" + totalThreePointsMade + ", threePointPercentage=" + (getThreePointPercentage() * 100) + ", totalFoulShotsAttempted=" + totalFoulShotsAttempted + ", totalFoulShotsMade=" + totalFoulShotsMade + ", foulShotPercentage=" + (getFoulShotPercentage() * 100);
     }
 
 
