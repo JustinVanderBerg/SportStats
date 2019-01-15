@@ -14,6 +14,8 @@ import android.widget.LinearLayout;
 import android.widget.Switch;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 
 public class enterPlayers extends AppCompatActivity {
@@ -97,13 +99,17 @@ public class enterPlayers extends AppCompatActivity {
                     .setCancelable(false)
                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            //Get the team name
-                            String teamName = input.getText().toString();
-                            AbstractSport seasonStats = new Basketball(0, 0, teamName, new ArrayList<AbstractGame>());
-                            boolean successful = seasonStats.writeToFile(newGame);
-                            //if writing to file wasn't successful, write the error to the log
-                            if (!successful) {
-                                Log.e("writingClass", "Error writing class to file");
+                            try {
+                                //Get the team name
+                                String teamName = input.getText().toString();
+                                AbstractSport seasonStats = new Basketball(0, 0, teamName, new ArrayList<AbstractGame>());
+                                boolean successful = seasonStats.writeToFile(new FileOutputStream(newGame));
+                                //if writing to file wasn't successful, write the error to the log
+                                if (!successful) {
+                                    Log.e("writingClass", "Error writing class to file");
+                                }
+                            } catch (FileNotFoundException e) {
+                                Log.e("errorMakingFile", "Error making the file" + e);
                             }
 
                         }
@@ -113,7 +119,6 @@ public class enterPlayers extends AppCompatActivity {
             alertDialog.show();
 
         }
-        Log.e("testing", "ERROR TAG");
     }
 
     /**

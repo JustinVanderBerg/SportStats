@@ -25,6 +25,6 @@ public class Basketball extends AbstractSport{
     }
     
     public BasketballGame readPastGames(int i){
-        return (BasketballGame)(games.get(i));
+        return (BasketballGame) (getGames().get(i));
     }
 }

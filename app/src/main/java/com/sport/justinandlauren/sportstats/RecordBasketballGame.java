@@ -16,6 +16,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -135,7 +138,7 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
         }
 
         //if it is negative, subtract the amount from the values, if it isn't add the amount to the values
-        if (negative == false) {
+        if (!negative) {
             changeAmount = 1;
         } else {
             changeAmount = -1;
@@ -243,26 +246,48 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
      * @param view view that the user clicked on
      */
     public void endGame(View view) {
-        //try{
+        AbstractSport seasonStats = null;
+        FileOutputStream fos = null;
+        boolean error = false;
+        try {
+            //get file that stores all the season stats
+            FileInputStream fis = openFileInput(getString(R.string.gameHistoryFilename));
+            //get the season stats object from the file
+            seasonStats = AbstractSport.getSeasonFromFile(fis);
+            //attempt to open a file output stream to store the updated season stats
+            fos = openFileOutput(getString(R.string.gameHistoryFilename), MODE_PRIVATE);
+        } catch (FileNotFoundException e) {
+            Log.e("readFileError", "Error reading season stats from file: " + e);
+            error = true;
+        }
+        //if there was no errors in finding the files, finish the game, update data and store on file
+        if (!error) {
+            //get the date, used to identify games easily
+            Calendar calendar = Calendar.getInstance();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyy-MM-dd-HH:mm");
+            game.setDate(dateFormat.format(calendar.getTime()));
+            //add the game to the season
+            seasonStats.addGame(game);
+            //check who won the game, and update the number of games won if the user's team won
+            if (game.getPointsFor() > game.getPointsAgainst()) {
+                seasonStats.setGamesWon(seasonStats.getGamesWon() + 1);
+            }
+            //add one to the number of games played in the season
+            seasonStats.setGamesPlayed(seasonStats.getGamesPlayed() + 1);
+            //try to write the updated season info to the file
+            boolean successful = seasonStats.writeToFile(fos);
+            //if season stats were successfully stored, show the game stats to the user
+            if (successful) {
+                Intent intent = new Intent(this, ViewGame.class);
+                intent.putExtra("gameLocation", seasonStats.getGame(seasonStats.getGames().size() - 1));
+                startActivity(intent);
+            } else {
+                //game was not successfully stored, show debugging info in the log
+                Log.e("WHY", "BOO-HOO");
 
-        //}catch(FileNotFoundException e){
-
-        //}
-        //get file for storing games
-
-        //AbstractSport pastGames = AbstractSport.getGameFromFile(file);
-        Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyy-MM-dd-HH:mm");
-        //File newGame = new File(this.getFilesDir(), dateFormat.format(calendar.getTime()));
-        //boolean successful = writeGame(newGame);
-        //if (successful) {
-            Intent intent = new Intent(this, ViewGame.class);
-            startActivity(intent);
-        //} else {
-        Log.wtf("WHY", "BOO-HOO");
-        //}
+            }
+        }
     }
-
 
 
     /**

@@ -20,6 +20,8 @@ public abstract class AbstractGame implements Serializable {
     AbstractHuman[] players;
     private long gameLength;
     private boolean keepBenchSorted;
+    private String date;
+
     /**
      * Primary Constructor
      *
@@ -30,6 +32,23 @@ public abstract class AbstractGame implements Serializable {
         this.players = null;
         this.gameLength = gameLength;
         this.keepBenchSorted = keepBenchSorted;
+        date = "";
+    }
+
+    /**
+     * @return the date the game was played on
+     */
+    public String getDate() {
+        return date;
+    }
+
+    /**
+     * Set the date of the game
+     *
+     * @param date date that the game was played on
+     */
+    public void setDate(String date) {
+        this.date = date;
     }
 
     /**

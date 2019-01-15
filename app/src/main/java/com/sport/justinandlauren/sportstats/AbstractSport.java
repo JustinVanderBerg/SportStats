@@ -8,7 +8,6 @@ package com.sport.justinandlauren.sportstats;
 
 import android.util.Log;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -18,7 +17,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- *
  * @author justin
  */
 
@@ -27,14 +25,15 @@ public abstract class AbstractSport implements Serializable {
     private int gamesWon;
     private int gamesPlayed;
     private String teamName;
-    ArrayList<AbstractGame> games;
-    
+    private ArrayList<AbstractGame> games;
+
     /**
      * Primary Constructor
+     *
      * @param gamesWon
      * @param gamesPlayed
      * @param teamName
-     * @param games 
+     * @param games
      */
     public AbstractSport(int gamesWon, int gamesPlayed, String teamName, ArrayList<AbstractGame> games) {
         this.gamesWon = gamesWon;
@@ -43,9 +42,27 @@ public abstract class AbstractSport implements Serializable {
         this.games = games;
     }
 
+    /**
+     * Return a game object from a specific game in the season
+     *
+     * @param index index of the game you want to get
+     * @return return the game object at that index
+     */
+    public AbstractGame getGame(int index) {
+        if (index >= 0 && index < games.size()) {
+            return games.get(index);
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * @param game Game object to add to the season stats
+     */
     public void addGame(AbstractGame game) {
         games.add(game);
     }
+
     /**
      * @return the gamesWon
      */
@@ -89,13 +106,12 @@ public abstract class AbstractSport implements Serializable {
     }
 
     /**
-     * @param file file to write the sport file to
+     * @param fos file output stream to write the sport file to
      * @return true if successful, false otherwise
      */
-    public boolean writeToFile(File file) {
+    public boolean writeToFile(FileOutputStream fos) {
         boolean successful = true;
         try {
-            FileOutputStream fos = new FileOutputStream(file);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(this);
             oos.flush();
@@ -109,20 +125,26 @@ public abstract class AbstractSport implements Serializable {
     }
 
     /**
-     * @param file file to to get the game history from
+     * @param fis file input stream to to get the game history from
      * @return the game history in the file
      */
-    public static AbstractSport getGameFromFile(File file) {
+    public static AbstractSport getSeasonFromFile(FileInputStream fis) {
         try {
-            FileInputStream fis = new FileInputStream(file);
             ObjectInputStream ois = new ObjectInputStream(fis);
             AbstractSport temp = (AbstractSport) ois.readObject();
             return temp;
         } catch (IOException | ClassNotFoundException e) {
             //print error data from log
-            Log.e("readGameError", "Error reading game from file:" + e);
+            Log.e("readSeasonError", "Error reading season data from file:" + e);
         }
         return null;
+    }
+
+    /**
+     * @return an arrayList of all games in the season
+     */
+    public ArrayList<AbstractGame> getGames() {
+        return games;
     }
 
     /**
@@ -130,9 +152,8 @@ public abstract class AbstractSport implements Serializable {
      */
     @Override
     public String toString() {
-        return "AbstractSport{" + "gamesWon=" + gamesWon + ", gamesPlayed=" + gamesPlayed + ", teamName=" + teamName + ", games=" + games.toString() + '}';
+        return "AbstractSport{" + "gamesWon=" + gamesWon + ", gamesPlayed=" + gamesPlayed + ", teamName=" + teamName + ", games=" + getGames().toString() + '}';
     }
-    
-    
+
 
 }
