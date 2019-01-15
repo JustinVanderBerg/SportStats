@@ -67,6 +67,7 @@ public class BasketballGame extends AbstractGame {
         totalFoulShotsMade = 0;
         foulShotPercentage = 0;
         currentQuarter = 0;
+        date = "";
     }
 
     /**

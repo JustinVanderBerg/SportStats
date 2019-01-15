@@ -104,4 +104,5 @@ public abstract class AbstractGame implements Serializable {
     public void setGameLength(long gameLength) {
         this.gameLength = gameLength;
     }
+
 }

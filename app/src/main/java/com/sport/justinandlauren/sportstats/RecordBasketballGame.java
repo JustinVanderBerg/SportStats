@@ -243,7 +243,14 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
      * @param view view that the user clicked on
      */
     public void endGame(View view) {
-        //
+        //try{
+
+        //}catch(FileNotFoundException e){
+
+        //}
+        //get file for storing games
+
+        //AbstractSport pastGames = AbstractSport.getGameFromFile(file);
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyy-MM-dd-HH:mm");
         //File newGame = new File(this.getFilesDir(), dateFormat.format(calendar.getTime()));
@@ -252,7 +259,7 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
             Intent intent = new Intent(this, ViewGame.class);
             startActivity(intent);
         //} else {
-            Log.wtf("WHYYYYYYYY", "BOO-HOO");
+        Log.wtf("WHY", "BOO-HOO");
         //}
     }
 

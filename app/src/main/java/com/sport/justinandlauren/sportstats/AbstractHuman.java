@@ -12,7 +12,7 @@ package com.sport.justinandlauren.sportstats;
 
 import java.io.Serializable;
 
-public class AbstractHuman implements Serializable {
+public abstract class AbstractHuman implements Serializable {
     //declare variables
     //protected instance variables
     protected String name;

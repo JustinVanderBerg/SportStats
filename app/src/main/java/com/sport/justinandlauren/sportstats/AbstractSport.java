@@ -9,8 +9,10 @@ package com.sport.justinandlauren.sportstats;
 import android.util.Log;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -20,7 +22,7 @@ import java.util.ArrayList;
  * @author justin
  */
 
-public class AbstractSport implements Serializable {
+public abstract class AbstractSport implements Serializable {
 
     private int gamesWon;
     private int gamesPlayed;
@@ -104,6 +106,23 @@ public class AbstractSport implements Serializable {
             successful = false;
         }
         return successful;
+    }
+
+    /**
+     * @param file file to to get the game history from
+     * @return the game history in the file
+     */
+    public static AbstractSport getGameFromFile(File file) {
+        try {
+            FileInputStream fis = new FileInputStream(file);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            AbstractSport temp = (AbstractSport) ois.readObject();
+            return temp;
+        } catch (IOException | ClassNotFoundException e) {
+            //print error data from log
+            Log.e("readGameError", "Error reading game from file:" + e);
+        }
+        return null;
     }
 
     /**
