@@ -148,7 +148,7 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
         if (courtPlayerSelectedLocation != -1) {
             //temp human used to update info
             BasketballPlayer tempHuman = (BasketballPlayer) game.getHuman(courtPlayerSelectedLocation);
-
+            // TODO fix shot addition and subtraction (when subtracting shots, player value won't go below 0, but team fouls/shots/everything will)
             //check which button was clicked
             //Update number of shots made for the player
             if (view.getId() == R.id.btnShotMade) {
@@ -470,7 +470,8 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
                 toggleButton.setPadding(3, 3, 3, 3);
                 toggleButton.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
                 toggleButton.setMinWidth(100);
-                toggleButton.setMinHeight(100);
+                toggleButton.setMinHeight(105);
+                toggleButton.setLineSpacing(0, 0.8f);
                 //first five players are initially on court, so start at 6th player
                 //set the text of the button
                 setText(toggleButton, "\n" + game.getHuman(i + 5).getPlayerNumber() + "\n\n" + game.getHuman(i + 5).getName());
@@ -511,8 +512,10 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
             toggleButton.setId(id);
             //text location on the button
             toggleButton.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
-            toggleButton.setMinWidth(100);
-            toggleButton.setMinHeight(100);
+            toggleButton.setTextSize(13);
+            toggleButton.setMinWidth(115);
+            toggleButton.setMinHeight(105);
+            toggleButton.setLineSpacing(0, 0.80f);
             //set text padding and text of the button
             toggleButton.setPadding(3, 3, 3, 3);
             setText(toggleButton, "\n" + game.getHuman(i).getPlayerNumber() + "\n\n" + game.getHuman(i).getName());

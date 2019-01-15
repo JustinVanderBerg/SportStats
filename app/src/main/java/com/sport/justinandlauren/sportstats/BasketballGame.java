@@ -25,7 +25,6 @@ public class BasketballGame extends AbstractGame {
     private int pointsAgainstPerQuarter[];
     private int totalShotsAttempted;
     private int totalShotsMade;
-    private double shotPercentage;
     private int totalThreePointsAttempted;
     private int totalThreePointsMade;
     private double threePointPercentage;
@@ -59,7 +58,6 @@ public class BasketballGame extends AbstractGame {
         }
         totalShotsAttempted = 0;
         totalShotsMade = 0;
-        shotPercentage = 0;
         totalThreePointsAttempted = 0;
         totalThreePointsMade = 0;
         threePointPercentage = 0;
@@ -190,7 +188,6 @@ public class BasketballGame extends AbstractGame {
             pointsAgainstPerQuarter[i] = numPoints;
         }
     }
-
     /**
      * @return number of quarters
      */
@@ -228,15 +225,9 @@ public class BasketballGame extends AbstractGame {
      * @return the shotPercentage
      */
     public double getShotPercentage() {
-        return shotPercentage;
+        return totalShotsMade / totalShotsAttempted;
     }
 
-    /**
-     * @param shotPercentage the shotPercentage to set
-     */
-    public void setShotPercentage(double shotPercentage) {
-            this.shotPercentage = shotPercentage;
-    }
 
     /**
      * @return the totalThreePointsAttempted
@@ -393,7 +384,7 @@ public class BasketballGame extends AbstractGame {
 
     @Override
     public String toString() {
-        return "BasketballGame{" + "pointsFor=" + pointsFor + ", pointsAgainst=" + pointsAgainst + ", teamFoulsPerQuarter=" + Arrays.toString(teamFoulsPerQuarter) + ", totalTeamFouls=" + totalTeamFouls + ", pointsForPerQuarter=" + Arrays.toString(pointsForPerQuarter) + ", pointsAgainstPerQuarter=" + Arrays.toString(pointsAgainstPerQuarter) + ", totalShotsAttempted=" + getTotalShotsAttempted() + ", totalShotsMade=" + totalShotsMade + ", shotPercentage=" + shotPercentage + ", totalThreePointsAttempted=" + totalThreePointsAttempted + ", totalThreePointsMade=" + totalThreePointsMade + ", threePointPercentage=" + threePointPercentage + ", totalFoulShotsAttempted=" + totalFoulShotsAttempted + ", totalFoulShotsMade=" + totalFoulShotsMade + ", foulShotPercentage=" + foulShotPercentage + '}';
+        return "BasketballGame{" + "pointsFor=" + pointsFor + ", pointsAgainst=" + pointsAgainst + ", teamFoulsPerQuarter=" + Arrays.toString(teamFoulsPerQuarter) + ", totalTeamFouls=" + totalTeamFouls + ", pointsForPerQuarter=" + Arrays.toString(pointsForPerQuarter) + ", pointsAgainstPerQuarter=" + Arrays.toString(pointsAgainstPerQuarter) + ", totalShotsAttempted=" + getTotalShotsAttempted() + ", totalShotsMade=" + totalShotsMade + ", shotPercentage=" + (getShotPercentage() * 100) + ", totalThreePointsAttempted=" + totalThreePointsAttempted + ", totalThreePointsMade=" + totalThreePointsMade + ", threePointPercentage=" + threePointPercentage + ", totalFoulShotsAttempted=" + totalFoulShotsAttempted + ", totalFoulShotsMade=" + totalFoulShotsMade + ", foulShotPercentage=" + foulShotPercentage + '}';
     }
 
 
