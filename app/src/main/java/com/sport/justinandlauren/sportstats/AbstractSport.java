@@ -26,6 +26,7 @@ public abstract class AbstractSport implements Serializable {
     private int gamesPlayed;
     private String teamName;
     private ArrayList<AbstractGame> games;
+    private static final long serialVersionUID = 4L;
 
     /**
      * Primary Constructor
