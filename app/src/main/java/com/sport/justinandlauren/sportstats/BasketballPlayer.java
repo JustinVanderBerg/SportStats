@@ -101,13 +101,14 @@ public class BasketballPlayer extends AbstractHuman{
     /**
      * @param threePointsAttempted the threePointsAttempted to set
      */
-    public void setThreePointsAttempted(int threePointsAttempted) {
+    public boolean setThreePointsAttempted(int threePointsAttempted) {
         //check if the number is below 0, and set to 0 if it is
         if(threePointsAttempted<0) {
             this.threePointsAttempted =  0;
-
+            return false;
         } else {
             this.threePointsAttempted = threePointsAttempted;
+            return true;
         }
     }
 
@@ -121,12 +122,14 @@ public class BasketballPlayer extends AbstractHuman{
     /**
      * @param threePointsMade the threePointsMade to set
      */
-    public void setThreePointsMade(int threePointsMade) {
+    public boolean setThreePointsMade(int threePointsMade) {
         //check if the number is below 0, and set to 0 if it is
         if(threePointsMade<0) {
             this.threePointsMade =  0;
+            return false;
         } else {
             this.threePointsMade = threePointsMade;
+            return true;
         }
     }
 
@@ -147,12 +150,14 @@ public class BasketballPlayer extends AbstractHuman{
     /**
      * @param foulShotsAttempted the foulShotsAttempted to set
      */
-    public void setFoulShotsAttempted(int foulShotsAttempted) {
+    public boolean setFoulShotsAttempted(int foulShotsAttempted) {
         //check if the number is below 0, and set to 0 if it is
         if(foulShotsAttempted<0) {
             this.foulShotsAttempted =  0;
+            return false;
         } else {
             this.foulShotsAttempted = foulShotsAttempted;
+            return true;
         }
     }
 
@@ -234,12 +239,14 @@ public class BasketballPlayer extends AbstractHuman{
     /**
      * @param totalTechnicalFouls the totalTechnicalFouls to set
      */
-    public void setTotalTechnicalFouls(int totalTechnicalFouls) {
+    public boolean setTotalTechnicalFouls(int totalTechnicalFouls) {
         //check if the number is below 0, and set to 0 if it is
         if(totalTechnicalFouls<0) {
             this.totalTechnicalFouls =  0;
+            return false;
         } else {
             this.totalTechnicalFouls = totalTechnicalFouls;
+            return true;
         }
     }
 

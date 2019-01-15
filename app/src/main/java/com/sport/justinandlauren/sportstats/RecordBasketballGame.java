@@ -157,42 +157,50 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
                     game.setPointsForPerQuarter(game.getCurrentQuarter(), game.getPointsForPerQuarter(game.getCurrentQuarter()) + (changeAmount * 2));
                     game.setPointsFor(game.getPointsFor() + (changeAmount * 2));
                 }
-
                 //Update number of shots attempted for the player
             } else if (view.getId() == R.id.btnShotAttempted) {
-                tempHuman.setShotsAttempted(tempHuman.getShotsAttempted() + changeAmount);
-                game.setTotalShotsAttempted(game.getTotalShotsAttempted() + changeAmount);
+                if(tempHuman.setShotsAttempted(tempHuman.getShotsAttempted() + changeAmount)) {
+                    game.setTotalShotsAttempted(game.getTotalShotsAttempted() + changeAmount);
+                }
                 //Update number of foul shots made for the player
             } else if (view.getId() == R.id.btnFoulShotMade) {
-                tempHuman.setFoulShotsMade(tempHuman.getFoulShotsMade() + changeAmount);
-                game.setTotalFoulShotsMade(game.getTotalFoulShotsMade() + changeAmount);
-                game.setPointsForPerQuarter(game.getCurrentQuarter(), game.getPointsForPerQuarter(game.getCurrentQuarter()) + changeAmount);
-                game.setPointsFor(game.getPointsFor() + changeAmount);
+                if(tempHuman.setFoulShotsMade(tempHuman.getFoulShotsMade() + changeAmount)) {
+                    game.setTotalFoulShotsMade(game.getTotalFoulShotsMade() + changeAmount);
+                    game.setPointsForPerQuarter(game.getCurrentQuarter(), game.getPointsForPerQuarter(game.getCurrentQuarter()) + changeAmount);
+                    game.setPointsFor(game.getPointsFor() + changeAmount);
+                }
                 //Update number of foul shots attempted for the player
             } else if (view.getId() == R.id.btnFoulShotAttempted) {
-                tempHuman.setFoulShotsAttempted(tempHuman.getFoulShotsAttempted() + changeAmount);
-                game.setTotalFoulShotsAttempted(game.getTotalFoulShotsAttempted() + changeAmount);
+                if(tempHuman.setFoulShotsAttempted(tempHuman.getFoulShotsAttempted() + changeAmount)) {
+                    game.setTotalFoulShotsAttempted(game.getTotalFoulShotsAttempted() + changeAmount);
+                }
                 //Update number of three points made for the player
             } else if (view.getId() == R.id.btn3PtMade) {
-                tempHuman.setThreePointsMade(tempHuman.getThreePointsMade() + changeAmount);
-                game.setTotalThreePointsMade(game.getTotalThreePointsMade() + changeAmount);
-                game.setPointsForPerQuarter(game.getCurrentQuarter(), game.getPointsForPerQuarter(game.getCurrentQuarter()) + (changeAmount * 3));
-                game.setPointsFor(game.getPointsFor() + (changeAmount * 3));
+                if(tempHuman.setThreePointsMade(tempHuman.getThreePointsMade() + changeAmount)) {
+                    game.setTotalThreePointsMade(game.getTotalThreePointsMade() + changeAmount);
+                    game.setPointsForPerQuarter(game.getCurrentQuarter(), game.getPointsForPerQuarter(game.getCurrentQuarter()) + (changeAmount * 3));
+                    game.setPointsFor(game.getPointsFor() + (changeAmount * 3));
+                }
                 //update number of three points attempted for the player and in game class
             } else if (view.getId() == R.id.btn3PtAttempted) {
-                tempHuman.setThreePointsAttempted(tempHuman.getThreePointsAttempted() + changeAmount);
-                game.setTotalThreePointsAttempted(game.getTotalThreePointsAttempted() + changeAmount);
+                if(tempHuman.setThreePointsAttempted(tempHuman.getThreePointsAttempted() + changeAmount)) {
+                    game.setTotalThreePointsAttempted(game.getTotalThreePointsAttempted() + changeAmount);
+                }
                 //update the number of personal fouls for a player and the total for the team for the game
             } else if (view.getId() == R.id.btnPFoul) {
+
+                    //TODO what on earth do I do here (also, do the related boolean changes in basketballPlayer.java)
                 tempHuman.setPersonalFoulsPerQuarter(game.getCurrentQuarter(), tempHuman.getPersonalFoulsPerQuarter(game.getCurrentQuarter()) + changeAmount);
                 tempHuman.setTotalPersonalFouls(tempHuman.getTotalPersonalFouls() + changeAmount);
                 game.setTeamFoulsPerQuarter(game.getCurrentQuarter(), game.getTeamFoulsPerQuarter(game.getCurrentQuarter()) + changeAmount);
                 game.setTotalTeamFouls(game.getTotalTeamFouls() + changeAmount);
                 //add a technical foul to the selected player and to the team total
             } else if (view.getId() == R.id.btnTechFoul) {
-                tempHuman.setTotalTechnicalFouls(tempHuman.getTotalTechnicalFouls() + changeAmount);
-                game.setTotalTechFouls(game.getTotalTechFouls() + changeAmount);
+                if(tempHuman.setTotalTechnicalFouls(tempHuman.getTotalTechnicalFouls() + changeAmount)) {
+                    game.setTotalTechFouls(game.getTotalTechFouls() + changeAmount);
+                }
             } else if (view.getId() == R.id.btnAddOppScore) {
+                //TODO what on earth do I do for this one?  (also, do related boolean changes in basketballPlayer.java)
                 game.setPointsAgainstPerQuarter(game.getCurrentQuarter(), game.getPointsAgainstPerQuarter(game.getCurrentQuarter()) + changeAmount);
                 game.setPointsAgainst(game.getPointsAgainst() + changeAmount);
             }
