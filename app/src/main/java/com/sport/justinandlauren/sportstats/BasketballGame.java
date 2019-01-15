@@ -223,7 +223,7 @@ public class BasketballGame extends AbstractGame {
             this.totalShotsMade = totalShotsMade;
         }
     }
-
+    //TODO do we want to keep this / what do we wanna do with this?
     /**
      * @return the shotPercentage
      */
@@ -275,7 +275,7 @@ public class BasketballGame extends AbstractGame {
             this.totalThreePointsMade = totalThreePointsMade;
         }
     }
-
+//TODO do we want to keep this / what do we wanna do with this?
     /**
      * @return the threePointPercentage
      */
@@ -327,7 +327,7 @@ public class BasketballGame extends AbstractGame {
             this.totalFoulShotsMade = totalFoulShotsMade;
         }
     }
-
+//TODO do we want to keep this / what do we wanna do with this?
     /**
      * @return the foulShotPercentage
      */
@@ -398,4 +398,3 @@ public class BasketballGame extends AbstractGame {
 
 
 }
-//TODO check if there are unnecessary getters and setters that were automatically generated

@@ -87,7 +87,7 @@ public class BasketballPlayer extends AbstractHuman{
             this.shotsMade = shotsMade;
         }
     }
-
+//TODO do we want to keep this / what do we wanna do with this?
     /**
      * @return the shotsPercent
      */
@@ -139,7 +139,7 @@ public class BasketballPlayer extends AbstractHuman{
             this.threePointsMade = threePointsMade;
         }
     }
-
+//TODO do we want to keep this / what do we wanna do with this?
     /**
      * @return the threePointsPercent
      */
@@ -191,7 +191,7 @@ public class BasketballPlayer extends AbstractHuman{
             this.foulShotsMade = foulShotsMade;
         }
     }
-
+//TODO do we want to keep this / what do we wanna do with this?
     /**
      * @return the foulShotPercent
      */
@@ -264,7 +264,7 @@ public class BasketballPlayer extends AbstractHuman{
             this.totalTechnicalFouls = totalTechnicalFouls;
         }
     }
-
+//TODO do we want to keep this / what do we wanna do with this? (set up calculation)
     /**
      * @return the plusMinus
      */
