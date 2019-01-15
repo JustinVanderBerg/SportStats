@@ -178,7 +178,7 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
                 game.setPointsFor(game.getPointsFor() + (changeAmount * 3));
                 //update number of three points attempted for the player and in game class
             } else if (view.getId() == R.id.btn3PtAttempted) {
-                tempHuman.setThreePointsMade(tempHuman.getThreePointsMade() + changeAmount);
+                tempHuman.setThreePointsAttempted(tempHuman.getThreePointsAttempted() + changeAmount);
                 game.setTotalThreePointsAttempted(game.getTotalThreePointsAttempted() + changeAmount);
                 //update the number of personal fouls for a player and the total for the team for the game
             } else if (view.getId() == R.id.btnPFoul) {
@@ -451,11 +451,11 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
         //only add players too bench when there are players to add
         if (numBenchPlayers > 0) {
 
-            //layout where all the benchPlayerButtons get placed
+            //layout where all the playerButtons get placed
             LinearLayout layout = findViewById(R.id.benchPlayers);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
-            //generate two benchPlayerButtons
+            //generate the bench buttons
             for (int i = 0; i < numBenchPlayers; i++) {
 
                 //make a new toggle button(either on or off)
