@@ -8,7 +8,6 @@ import android.os.CountDownTimer;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -16,21 +15,18 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.text.DecimalFormat;
 
 public class RecordBasketballGame extends AppCompatActivity implements View.OnClickListener {
+    private final int numCourtPlayers = 5;
+    CountDownTimer gameTime;
     //new basketball game
     private BasketballGame game;
     //5 players on court at all times, therefore number of players on bench is total players subtract 5
     private int numBenchPlayers;
-    private final int numCourtPlayers = 5;
     //buttons for the bench players
     private ToggleButton[] benchPlayerButtons;
     private ToggleButton[] courtPlayerButtons;
-
     //variable to store whether clicking a button adds or subtracts the value
     private boolean negative = false;
     //variable to hold which court player is currently selected
@@ -38,12 +34,10 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
     //variable to allow substitutions
     private boolean benchSelected = false;
     private int benchSelectedLocation = -1;
-
     //Variable to hold whether the game is going or not
     private boolean gameGoing = false;
     private long timeLeftInPeriod = -1;
     private DecimalFormat timerFormat = new DecimalFormat("00");
-    CountDownTimer gameTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -156,35 +150,35 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
             //check which button was clicked
             //Update number of shots made for the player
             if (view.getId() == R.id.btnShotMade) {
-                if(tempHuman.setShotsMade(tempHuman.getShotsMade() + changeAmount)) {
+                if (tempHuman.setShotsMade(tempHuman.getShotsMade() + changeAmount)) {
                     game.setTotalShotsMade(game.getTotalShotsMade() + changeAmount);
                     game.setPointsFor(game.getPointsFor() + (changeAmount * 2));
                 }
                 //Update number of shots attempted for the player
             } else if (view.getId() == R.id.btnShotAttempted) {
-                if(tempHuman.setShotsAttempted(tempHuman.getShotsAttempted() + changeAmount)) {
+                if (tempHuman.setShotsAttempted(tempHuman.getShotsAttempted() + changeAmount)) {
                     game.setTotalShotsAttempted(game.getTotalShotsAttempted() + changeAmount);
                 }
                 //Update number of foul shots made for the player
             } else if (view.getId() == R.id.btnFoulShotMade) {
-                if(tempHuman.setFoulShotsMade(tempHuman.getFoulShotsMade() + changeAmount)) {
+                if (tempHuman.setFoulShotsMade(tempHuman.getFoulShotsMade() + changeAmount)) {
                     game.setTotalFoulShotsMade(game.getTotalFoulShotsMade() + changeAmount);
                     game.setPointsFor(game.getPointsFor() + changeAmount);
                 }
                 //Update number of foul shots attempted for the player
             } else if (view.getId() == R.id.btnFoulShotAttempted) {
-                if(tempHuman.setFoulShotsAttempted(tempHuman.getFoulShotsAttempted() + changeAmount)) {
+                if (tempHuman.setFoulShotsAttempted(tempHuman.getFoulShotsAttempted() + changeAmount)) {
                     game.setTotalFoulShotsAttempted(game.getTotalFoulShotsAttempted() + changeAmount);
                 }
                 //Update number of three points made for the player
             } else if (view.getId() == R.id.btn3PtMade) {
-                if(tempHuman.setThreePointsMade(tempHuman.getThreePointsMade() + changeAmount)) {
+                if (tempHuman.setThreePointsMade(tempHuman.getThreePointsMade() + changeAmount)) {
                     game.setTotalThreePointsMade(game.getTotalThreePointsMade() + changeAmount);
                     game.setPointsFor(game.getPointsFor() + (changeAmount * 3));
                 }
                 //update number of three points attempted for the player and in game class
             } else if (view.getId() == R.id.btn3PtAttempted) {
-                if(tempHuman.setThreePointsAttempted(tempHuman.getThreePointsAttempted() + changeAmount)) {
+                if (tempHuman.setThreePointsAttempted(tempHuman.getThreePointsAttempted() + changeAmount)) {
                     game.setTotalThreePointsAttempted(game.getTotalThreePointsAttempted() + changeAmount);
                 }
                 //update the number of personal fouls for a player and the total for the team for the game
@@ -196,7 +190,7 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
 
                 //add a technical foul to the selected player and to the team total
             } else if (view.getId() == R.id.btnTechFoul) {
-                if(tempHuman.setTotalTechnicalFouls(tempHuman.getTotalTechnicalFouls() + changeAmount)) {
+                if (tempHuman.setTotalTechnicalFouls(tempHuman.getTotalTechnicalFouls() + changeAmount)) {
                     game.setTotalTechFouls(game.getTotalTechFouls() + changeAmount);
                 }
             } else if (view.getId() == R.id.btnAddOppScore) {
@@ -253,43 +247,11 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
      * @param view view that the user clicked on
      */
     public void endGame(View view) {
-        AbstractSport seasonStats = null;
-        FileOutputStream fos = null;
-        boolean error = false;
-        try {
-            //get file that stores all the season stats
-            FileInputStream fis = openFileInput(getString(R.string.gameHistoryFilename));
-            //get the season stats object from the file
-            seasonStats = AbstractSport.getSeasonFromFile(fis);
-            //attempt to open a file output stream to store the updated season stats
-            fos = openFileOutput(getString(R.string.gameHistoryFilename), MODE_PRIVATE);
-        } catch (FileNotFoundException e) {
-            Log.e("readFileError", "Error reading season stats from file: " + e);
-            error = true;
-        }
-        //if there was no errors in finding the files, finish the game, update data and store on file
-        if (!error) {
-            //add the game to the season
-            seasonStats.addGame(game);
-            //check who won the game, and update the number of games won if the user's team won
-            if (game.getPointsFor() > game.getPointsAgainst()) {
-                seasonStats.setGamesWon(seasonStats.getGamesWon() + 1);
-            }
-            //add one to the number of games played in the season
-            seasonStats.setGamesPlayed(seasonStats.getGamesPlayed() + 1);
-            //try to write the updated season info to the file
-            boolean successful = seasonStats.writeToFile(fos);
-            //if season stats were successfully stored, show the game stats to the user
-            if (successful) {
-                Intent intent = new Intent(this, ViewGame.class);
-                intent.putExtra("gameClass", game);
-                startActivity(intent);
-            } else {
-                //game was not successfully stored, show debugging info in the log
-                Log.e("WHY", "BOO-HOO");
+        Intent intent = new Intent(this, ViewGame.class);
+        intent.putExtra("gameClass", game);
+        intent.putExtra("recordGame", true);
+        startActivity(intent);
 
-            }
-        }
     }
 
 

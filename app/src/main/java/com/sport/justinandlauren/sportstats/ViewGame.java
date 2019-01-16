@@ -5,23 +5,30 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+
 public class ViewGame extends AppCompatActivity implements View.OnClickListener {
     private ToggleButton playerButtons[];
     private int playerSelectedLocation;
     private int numPlayers;
     BasketballGame game = null;
+    private boolean comeFromRecordGame;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_game);
         //get the game passed from the previous page, either the record game or the select game page
         AbstractGame tempGame = (AbstractGame) getIntent().getSerializableExtra("gameClass");
+        comeFromRecordGame = getIntent().getBooleanExtra("recordGame", false);
         game = (BasketballGame) tempGame;
         //resort the players array
         game.sortPlayers(0, game.getNumPlayers() - 1);
@@ -186,7 +193,37 @@ public class ViewGame extends AppCompatActivity implements View.OnClickListener 
      * @param view view the player clicked on
      */
     public void switchGameClick(View view) {
-        Intent intent = new Intent(this, SelectGame.class);
+        if (comeFromRecordGame) {
+            AbstractSport seasonStats = null;
+            FileOutputStream fos = null;
+            boolean error = false;
+            try {
+                //get file that stores all the season stats
+                FileInputStream fis = openFileInput(getString(R.string.gameHistoryFilename));
+                //get the season stats object from the file
+                seasonStats = AbstractSport.getSeasonFromFile(fis);
+                //attempt to open a file output stream to store the updated season stats
+                fos = openFileOutput(getString(R.string.gameHistoryFilename), MODE_PRIVATE);
+            } catch (FileNotFoundException e) {
+                Log.e("readFileError", "Error reading season stats from file: " + e);
+                error = true;
+            }
+            //if there was no errors in finding the files, finish the game, update data and store on file
+            if (!error) {
+                //add the game to the season
+                seasonStats.addGame(game);
+                //check who won the game, and update the number of games won if the user's team won
+                if (game.getPointsFor() > game.getPointsAgainst()) {
+                    seasonStats.setGamesWon(seasonStats.getGamesWon() + 1);
+                }
+                //add one to the number of games played in the season
+                seasonStats.setGamesPlayed(seasonStats.getGamesPlayed() + 1);
+                //try to write the updated season info to the file
+                seasonStats.writeToFile(fos);
+
+            }
+        }
+        Intent intent = new Intent(this, LoadScreen.class);
         startActivity(intent);
     }
 }

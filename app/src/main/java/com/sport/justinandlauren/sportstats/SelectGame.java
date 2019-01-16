@@ -103,6 +103,7 @@ public class SelectGame extends AppCompatActivity implements View.OnClickListene
         }
         Intent intent = new Intent(this, ViewGame.class);
         intent.putExtra("gameClass", gamesPlayed[gameLocation]);
+        intent.putExtra("recordGame", false);
         startActivity(intent);
     }
 

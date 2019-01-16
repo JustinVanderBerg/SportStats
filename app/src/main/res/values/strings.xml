@@ -33,6 +33,6 @@
     <string name="ourTeamFouls">Our Team Fouls:</string>
     <string name="endGamePrompt">End Game</string>
     <string name="gameHistoryFilename">pastGames</string>
-    <string name="selectGame">Switch Game</string>
+    <string name="selectGame">Done</string>
     <string name="creditsLabel">Credits</string>
 </resources>
