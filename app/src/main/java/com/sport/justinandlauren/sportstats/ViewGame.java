@@ -32,7 +32,7 @@ public class ViewGame extends AppCompatActivity implements View.OnClickListener 
      * Method to show the team stats for the game
      */
     public void showGameStats() {
-        //Show the values from the game in the game stats box
+        //Show the game stats
         ((TextView) findViewById(R.id.txtGameOutput1)).setText(game.toString1());
         ((TextView) findViewById(R.id.txtGameOutput2)).setText(game.toString2());
         ((TextView) findViewById(R.id.txtGameOutput3)).setText(game.toString3());
@@ -42,7 +42,7 @@ public class ViewGame extends AppCompatActivity implements View.OnClickListener 
      * Method to show player stats for the game
      */
     public void showPlayerStats() {
-        //show the values in the text box
+        //show the player stats
         ((TextView) findViewById(R.id.txtPlayerOutput1)).setText(game.getHuman(playerSelectedLocation).toString1());
         ((TextView) findViewById(R.id.txtPlayerOutput2)).setText(game.getHuman(playerSelectedLocation).toString2());
         ((TextView) findViewById(R.id.txtPlayerOutput3)).setText(game.getHuman(playerSelectedLocation).toString3());
