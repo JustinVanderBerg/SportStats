@@ -20,8 +20,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 public class RecordBasketballGame extends AppCompatActivity implements View.OnClickListener {
     //new basketball game
@@ -57,7 +55,7 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
         courtPlayerButtons = new ToggleButton[numCourtPlayers];
         //set the current quarter of the game (from 0 - 3 representing quarters 1 through 4)
         game.setCurrentQuarter(0);
-        setTitle("Record Game");
+        setTitle("Record Game - " + game.getDate());
         //change bench label text transparency
         generateBenchPlayers();
         generateCourtPlayers();
@@ -271,10 +269,6 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
         }
         //if there was no errors in finding the files, finish the game, update data and store on file
         if (!error) {
-            //get the date, used to identify games easily
-            Calendar calendar = Calendar.getInstance();
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyy-MM-dd-HH:mm");
-            game.setDate(dateFormat.format(calendar.getTime()));
             //add the game to the season
             seasonStats.addGame(game);
             //check who won the game, and update the number of games won if the user's team won

@@ -10,6 +10,9 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class enterPlayers extends AppCompatActivity {
     private AbstractGame mainGame;
     private EditText[] names;
@@ -94,8 +97,11 @@ public class enterPlayers extends AppCompatActivity {
             mainGame.setPlayers(players);
             //sort the players array from highest to lowest based off player number
             mainGame.sortPlayers(0, players.length - 1);
-            //update the players array in the main game
-
+            //set the date of the game to the start time of the game
+            //get the date, used to identify games easily
+            Calendar calendar = Calendar.getInstance();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyy-MM-dd-HH:mm");
+            mainGame.setDate(dateFormat.format(calendar.getTime()));
             Intent intent = new Intent(this, RecordBasketballGame.class);
             intent.putExtra("Game Class", mainGame);
             startActivity(intent);
