@@ -8,7 +8,7 @@ public class ViewPlayer extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_player);
+        setContentView(R.layout.activity_credits);
         setTitle("Player Stats");
     }
 }
