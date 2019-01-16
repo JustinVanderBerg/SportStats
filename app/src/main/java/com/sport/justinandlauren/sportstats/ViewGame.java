@@ -116,7 +116,7 @@ public class ViewGame extends AppCompatActivity implements View.OnClickListener 
      * @param view View that the user clicked
      */
     public void onClick(View view) {
-        checkCourtButtons(view);
+        checkPlayerButtons(view);
     }
 
     /**
@@ -124,7 +124,7 @@ public class ViewGame extends AppCompatActivity implements View.OnClickListener 
      *
      * @param view The view that the user clicked
      */
-    private void checkCourtButtons(View view) {
+    private void checkPlayerButtons(View view) {
 
         //only allow one bench player to be selected at once
         int btnClicked = -1;

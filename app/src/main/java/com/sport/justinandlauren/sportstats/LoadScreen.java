@@ -118,16 +118,6 @@ public class LoadScreen extends AppCompatActivity {
     }
 
     /**
-     * Method to display the player stats
-     *
-     * @param view view the user clicked on
-     */
-    public void displayPlayerStats(View view) {
-        Intent intent = new Intent(this, ViewPlayer.class);
-        startActivity(intent);
-    }
-
-    /**
      * Method to display the game select screen
      * @param view view the user clicked on
      */

@@ -18,9 +18,6 @@
         </activity>
         <activity android:name=".RecordBasketballGame" />
         <activity
-            android:name=".ViewPlayer"
-            android:parentActivityName=".LoadScreen" />
-        <activity
             android:name=".ViewGame"
             android:parentActivityName=".SelectGame" />
         <activity

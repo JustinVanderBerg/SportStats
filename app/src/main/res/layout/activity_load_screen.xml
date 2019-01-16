@@ -7,23 +7,6 @@
     tools:context=".LoadScreen">
 
     <Button
-        android:id="@+id/btnPlayerStats"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:onClick="displayPlayerStats"
-        android:text="@string/PlayerPrompt"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.404" />
-
-    <Button
         android:id="@+id/RecordGame"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
@@ -32,7 +15,7 @@
         android:layout_marginBottom="24dp"
         android:onClick="displayEnterPlayers"
         android:text="@string/RecordPrompt"
-        app:layout_constraintBottom_toTopOf="@+id/btnPlayerStats"
+        app:layout_constraintBottom_toTopOf="@+id/btnGameStats"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -41,13 +24,15 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:onClick="displayGameStats"
         android:text="@string/GamePrompt"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnPlayerStats" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnCredits"
