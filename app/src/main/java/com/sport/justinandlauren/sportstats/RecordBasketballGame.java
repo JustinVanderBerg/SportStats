@@ -102,8 +102,15 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
                     //if less than a second left therefore game is over
                     if (timeLeftInPeriod < 1000) {
                         timeLeftInPeriod = game.getGameLength();
-                        game.setCurrentQuarter(game.getCurrentQuarter() + 1);
-                        updateTextBoxInfo();
+                        //user can only have four quarters in a game therefore game is finished
+                        if (game.getCurrentQuarter() == 3) {
+                            timeLeftInPeriod = 0;
+                            updateTextBoxInfo();
+                            btnTimer.setEnabled(false);
+                        } else {
+                            game.setCurrentQuarter(game.getCurrentQuarter() + 1);
+                            updateTextBoxInfo();
+                        }
                     }
                     //set the initial start time of the period
                     setTimerText(btnTimer, Color.RED);
@@ -148,7 +155,6 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
         if (courtPlayerSelectedLocation != -1) {
             //temp human used to update info
             BasketballPlayer tempHuman = game.getHuman(courtPlayerSelectedLocation);
-            // TODO fix shot addition and subtraction (when subtracting shots, player value won't go below 0, but team fouls/shots/everything will) Return boolean value
             //check which button was clicked
             //Update number of shots made for the player
             if (view.getId() == R.id.btnShotMade) {
@@ -185,10 +191,11 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
                 }
                 //update the number of personal fouls for a player and the total for the team for the game
             } else if (view.getId() == R.id.btnPFoul) {
+                //only update team fouls if the player's fouls are updated
+                if (tempHuman.setTotalPersonalFouls(tempHuman.getTotalPersonalFouls() + changeAmount)) {
+                    game.setTotalTeamFouls(game.getTotalTeamFouls() + changeAmount);
+                }
 
-                    //TODO what on earth do I do here (also, do the related boolean changes in basketballPlayer.java)
-                tempHuman.setTotalPersonalFouls(tempHuman.getTotalPersonalFouls() + changeAmount);
-                game.setTotalTeamFouls(game.getTotalTeamFouls() + changeAmount);
                 //add a technical foul to the selected player and to the team total
             } else if (view.getId() == R.id.btnTechFoul) {
                 if(tempHuman.setTotalTechnicalFouls(tempHuman.getTotalTechnicalFouls() + changeAmount)) {
@@ -469,11 +476,12 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
                 int id = this.getResources().getIdentifier(("bench" + (i + 1)), "id", this.getPackageName());
                 toggleButton.setId(id);
                 //set text padding and text of the button
-                toggleButton.setPadding(3, 3, 3, 3);
+                toggleButton.setPadding(10, 3, 10, 3);
                 toggleButton.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
+                toggleButton.setTextSize(13);
                 toggleButton.setMinWidth(100);
                 toggleButton.setMinHeight(105);
-                toggleButton.setLineSpacing(0, 0.8f);
+                toggleButton.setLineSpacing(0, 0.80f);
                 //first five players are initially on court, so start at 6th player
                 //set the text of the button
                 setText(toggleButton, "\n" + game.getHuman(i + 5).getPlayerNumber() + "\n\n" + game.getHuman(i + 5).getName());
@@ -519,7 +527,7 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
             toggleButton.setMinHeight(105);
             toggleButton.setLineSpacing(0, 0.80f);
             //set text padding and text of the button
-            toggleButton.setPadding(3, 3, 3, 3);
+            toggleButton.setPadding(10, 3, 10, 3);
             setText(toggleButton, "\n" + game.getHuman(i).getPlayerNumber() + "\n\n" + game.getHuman(i).getName());
 
             //add it to the linear layout view

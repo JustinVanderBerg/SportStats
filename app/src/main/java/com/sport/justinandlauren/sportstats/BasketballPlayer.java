@@ -219,12 +219,14 @@ public class BasketballPlayer extends AbstractHuman{
     /**
      * @param totalPersonalFouls the totalPersonalFouls to set
      */
-    public void setTotalPersonalFouls(int totalPersonalFouls) {
+    public boolean setTotalPersonalFouls(int totalPersonalFouls) {
         //check if the number is below 0, and set to 0 if it is
         if(totalPersonalFouls<0) {
             this.totalPersonalFouls =  0;
+            return false;
         } else {
             this.totalPersonalFouls = totalPersonalFouls;
+            return true;
         }
     }
 
