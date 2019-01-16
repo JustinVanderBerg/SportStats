@@ -24,7 +24,7 @@ public class enterPlayers extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_players);
         //get the game class, in order to access number of players, and modify the player array
-        mainGame = (AbstractGame) getIntent().getSerializableExtra("Game Class");
+        mainGame = (AbstractGame) getIntent().getSerializableExtra("gameClass");
         names = new EditText[mainGame.getNumPlayers()];
         numbers = new EditText[mainGame.getNumPlayers()];
         players = new BasketballPlayer[mainGame.getNumPlayers()];
@@ -102,8 +102,9 @@ public class enterPlayers extends AppCompatActivity {
             Calendar calendar = Calendar.getInstance();
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyy-MM-dd-HH:mm");
             mainGame.setDate(dateFormat.format(calendar.getTime()));
+            //start the record game form
             Intent intent = new Intent(this, RecordBasketballGame.class);
-            intent.putExtra("Game Class", mainGame);
+            intent.putExtra("gameClass", mainGame);
             startActivity(intent);
         } else {
             //make a new alert dialog
@@ -136,4 +137,5 @@ public class enterPlayers extends AppCompatActivity {
             players[i] = new BasketballPlayer();
         }
     }
+
 }

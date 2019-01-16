@@ -16,7 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RecordBasketballGame" />
+        <activity
+            android:name=".RecordBasketballGame"
+            android:parentActivityName=".enterPlayers" />
         <activity
             android:name=".ViewGame"
             android:parentActivityName=".SelectGame" />

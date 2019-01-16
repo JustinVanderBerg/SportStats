@@ -28,6 +28,7 @@ public class ViewGame extends AppCompatActivity implements View.OnClickListener 
         setContentView(R.layout.activity_view_game);
         //get the game passed from the previous page, either the record game or the select game page
         AbstractGame tempGame = (AbstractGame) getIntent().getSerializableExtra("gameClass");
+        //whether the user came from record game or select game.
         comeFromRecordGame = getIntent().getBooleanExtra("recordGame", false);
         game = (BasketballGame) tempGame;
         //resort the players array
@@ -223,6 +224,7 @@ public class ViewGame extends AppCompatActivity implements View.OnClickListener 
 
             }
         }
+        //show the load screen
         Intent intent = new Intent(this, LoadScreen.class);
         startActivity(intent);
     }

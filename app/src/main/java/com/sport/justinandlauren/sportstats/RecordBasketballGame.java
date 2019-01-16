@@ -9,6 +9,7 @@ import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -43,7 +44,7 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_record_basketball_game);
-        game = (BasketballGame) (getIntent().getSerializableExtra("Game Class"));
+        game = (BasketballGame) (getIntent().getSerializableExtra("gameClass"));
         numBenchPlayers = game.getNumPlayers() - 5;
         benchPlayerButtons = new ToggleButton[numBenchPlayers];
         courtPlayerButtons = new ToggleButton[numCourtPlayers];
@@ -607,7 +608,22 @@ public class RecordBasketballGame extends AppCompatActivity implements View.OnCl
         ((TextView) findViewById(R.id.txtCurrentPeriod)).setText(Html.fromHtml("<small>Current Period</small><br/><br/>" + (game.getCurrentQuarter() + 1)));
     }
 
-
+    /**
+     * react to the user tapping the back/up icon in the action bar
+     *
+     * @param item Menu item that they clicked on at the top of the app
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // this takes the user 'back', as if they pressed the back button in the main android toolbar
+                //required in order to properly modify the entered players
+                this.onBackPressed();
+                return true;
+            default:
+                //allow android to handle other menu items
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }
-
-//TODO fix end of fourth period to be 0000

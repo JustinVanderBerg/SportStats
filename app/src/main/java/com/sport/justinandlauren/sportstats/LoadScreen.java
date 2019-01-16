@@ -15,6 +15,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 
+import static android.content.Intent.FLAG_ACTIVITY_RETAIN_IN_RECENTS;
+
 public class LoadScreen extends AppCompatActivity {
 
     private AbstractGame mainGame;
@@ -46,7 +48,8 @@ public class LoadScreen extends AppCompatActivity {
                             int numPlayers = Integer.parseInt(input.getText().toString());
                             if (numPlayers >= 5 && numPlayers <= 20) {
                                 mainGame = new BasketballGame(numPlayers, 0, false);
-                                intent.putExtra("Game Class", mainGame);
+                                intent.putExtra("gameClass", mainGame);
+                                intent.setFlags(FLAG_ACTIVITY_RETAIN_IN_RECENTS);
                                 startActivity(intent);
                             }
                         } catch (NumberFormatException e) {
