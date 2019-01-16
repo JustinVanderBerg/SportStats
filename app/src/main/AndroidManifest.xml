@@ -29,7 +29,9 @@
         <activity
             android:name=".SelectGame"
             android:parentActivityName=".LoadScreen" />
-        <activity android:name=".ViewCredits"></activity>
+        <activity
+            android:name=".ViewCredits"
+            android:parentActivityName=".LoadScreen"></activity>
     </application>
 
 </manifest>
