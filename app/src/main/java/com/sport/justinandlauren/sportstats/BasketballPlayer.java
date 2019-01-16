@@ -268,8 +268,26 @@ public class BasketballPlayer extends AbstractHuman{
 
     @Override
     public String toString() {
-        return "BasketballPlayer{" + "shotsAttempted=" + shotsAttempted + ", shotsMade=" + shotsMade + ", shotsPercent=" + (getShotsPercent() * 100) + ", threePointsAttempted=" + threePointsAttempted + ", threePointsMade=" + threePointsMade + ", threePointsPercent=" + (getThreePointsPercent() * 100) + ", foulShotsAttempted=" + foulShotsAttempted + ", foulShotsMade=" + foulShotsMade + ", foulShotPercent=" + (getFoulShotPercent() * 100) + ", totalPersonalFouls=" + totalPersonalFouls + ", totalTechnicalFouls=" + totalTechnicalFouls + ", plusMinus=" + getPlusMinus() + '}';
+        return "BasketballPlayer{" + "shotsAttempted=" + shotsAttempted + ", shotsMade=" + shotsMade +
+                ", shotsPercent=" + (getShotsPercent() * 100) + ", threePointsAttempted=" + threePointsAttempted +
+                ", threePointsMade=" + threePointsMade + ", threePointsPercent=" + (getThreePointsPercent() * 100) +
+                ", foulShotsAttempted=" + foulShotsAttempted + ", foulShotsMade=" + foulShotsMade +
+                ", foulShotPercent=" + (getFoulShotPercent() * 100) + ", totalPersonalFouls=" +
+                totalPersonalFouls + ", totalTechnicalFouls=" + totalTechnicalFouls + ", plusMinus=" + getPlusMinus() + '}';
     }
 
-    
+    public String toString1() {
+        return "Plus/Minus = " + getPlusMinus() + "\nShots Attempted = " + shotsAttempted +
+                "\nThree Points Attempted = " + threePointsAttempted + "\nFoul Shots Attempted = " + foulShotsAttempted;
+    }
+
+    public String toString2() {
+        return "Total Perconal Fouls = " + totalPersonalFouls + "\nShots Made = " + shotsMade + "\nThree Points Made = " + threePointsMade + "\nFoul Shots Made = " +
+                foulShotsMade;
+    }
+
+    public String toString3() {
+        return "Total Technical Fouls = " + totalTechnicalFouls + "\nShots Percent = " + (getShotsPercent() * 100) + "\nThree Points Percent = " +
+                (getThreePointsPercent() * 100) + "\nFoul Shot Percent = " + (getFoulShotPercent() * 100);
+    }
 }

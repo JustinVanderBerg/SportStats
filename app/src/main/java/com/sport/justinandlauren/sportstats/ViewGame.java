@@ -24,17 +24,23 @@ public class ViewGame extends AppCompatActivity implements View.OnClickListener 
         //get the game passed from the previous page, either the record game or the select game page
         AbstractGame tempGame = (AbstractGame) getIntent().getSerializableExtra("gameClass");
         game = (BasketballGame) tempGame;
-        showStats();
+        showGameStats();
         generatePlayerButtons();
     }
 
     /**
      * Method to show the team stats for the game
      */
-    public void showStats() {
+    public void showGameStats() {
         ((TextView) findViewById(R.id.txtGameOutput1)).setText(game.toString1());
         ((TextView) findViewById(R.id.txtGameOutput2)).setText(game.toString2());
         ((TextView) findViewById(R.id.txtGameOutput3)).setText(game.toString3());
+    }
+
+    public void showPlayerStats() {
+        ((TextView) findViewById(R.id.txtPlayerOutput1)).setText(game.getHuman(playerSelectedLocation).toString1());
+        ((TextView) findViewById(R.id.txtPlayerOutput2)).setText(game.getHuman(playerSelectedLocation).toString2());
+        ((TextView) findViewById(R.id.txtPlayerOutput3)).setText(game.getHuman(playerSelectedLocation).toString3());
     }
 
     public void generatePlayerButtons() {
@@ -135,7 +141,7 @@ public class ViewGame extends AppCompatActivity implements View.OnClickListener 
                 uncheckButton(playerButtons[i]);
             }
             //show player info of clicked button
-            ((TextView) findViewById(R.id.txtPlayerStats3)).setText(game.getHuman(playerSelectedLocation).toString());
+            showPlayerStats();
         }
 
     }
