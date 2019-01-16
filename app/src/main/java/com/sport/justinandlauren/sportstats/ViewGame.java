@@ -20,10 +20,10 @@ public class ViewGame extends AppCompatActivity implements View.OnClickListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_game);
-        setTitle("Game Stats");
         //get the game passed from the previous page, either the record game or the select game page
         AbstractGame tempGame = (AbstractGame) getIntent().getSerializableExtra("gameClass");
         game = (BasketballGame) tempGame;
+        setTitle("Game Stats for " + game.getDate());
         showGameStats();
         generatePlayerButtons();
     }
@@ -37,12 +37,18 @@ public class ViewGame extends AppCompatActivity implements View.OnClickListener 
         ((TextView) findViewById(R.id.txtGameOutput3)).setText(game.toString3());
     }
 
+    /**
+     * Method to show player stats for the game
+     */
     public void showPlayerStats() {
         ((TextView) findViewById(R.id.txtPlayerOutput1)).setText(game.getHuman(playerSelectedLocation).toString1());
         ((TextView) findViewById(R.id.txtPlayerOutput2)).setText(game.getHuman(playerSelectedLocation).toString2());
         ((TextView) findViewById(R.id.txtPlayerOutput3)).setText(game.getHuman(playerSelectedLocation).toString3());
     }
 
+    /**
+     * Method to generate the buttons for the players who played in the game
+     */
     public void generatePlayerButtons() {
         numPlayers = game.getNumPlayers();
         playerButtons = new ToggleButton[numPlayers];
