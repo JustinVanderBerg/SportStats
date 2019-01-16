@@ -9,7 +9,7 @@
     <string name="StartGamePrompt">Done</string>
     <string name="benchLabel">Bench</string>
     <string name="onCourtLabel">Court</string>
-    <string name="creditsLabel">Credits</string>
+
 
     <string name="shotMadeLabel">Shot Made</string>
     <string name="Point3MadeLabel">3-Point Made</string>
@@ -33,4 +33,5 @@
     <string name="endGamePrompt">End Game</string>
     <string name="gameHistoryFilename">pastGames</string>
     <string name="selectGame">Switch Game</string>
+    <string name="creditsLabel">Credits</string>
 </resources>

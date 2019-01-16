@@ -116,15 +116,33 @@ public class LoadScreen extends AppCompatActivity {
 
         }
     }
-    //display player stats
+
+    /**
+     * Method to display the player stats
+     *
+     * @param view view the user clicked on
+     */
     public void displayPlayerStats(View view) {
         Intent intent = new Intent(this, ViewPlayer.class);
         startActivity(intent);
     }
 
-    //display team stats
+    /**
+     * Method to display the game select screen
+     * @param view view the user clicked on
+     */
     public void displayGameStats(View view) {
         Intent intent = new Intent(this, SelectGame.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Method to display the credits screen
+     *
+     * @param view view the user clicked on
+     */
+    public void displayCredits(View view) {
+        Intent intent = new Intent(this, ViewCredits.class);
         startActivity(intent);
     }
 }
