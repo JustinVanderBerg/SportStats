@@ -1,11 +1,13 @@
 package com.sport.justinandlauren.sportstats;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridLayout;
 import android.widget.LinearLayout;
 
 import java.io.FileInputStream;
@@ -14,6 +16,7 @@ import java.io.IOException;
 public class SelectGame extends AppCompatActivity implements View.OnClickListener {
     private AbstractSport season = null;
     private Button games[];
+    private AbstractGame gamesPlayed[];
     private int numGames;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +25,7 @@ public class SelectGame extends AppCompatActivity implements View.OnClickListene
         setTitle("Select Game");
         season = getPastGames();
         numGames = season.getGames().size();
+        gamesPlayed = new AbstractGame[numGames];
         games = new Button[numGames];
         generateGameButtons();
     }
@@ -44,13 +48,13 @@ public class SelectGame extends AppCompatActivity implements View.OnClickListene
      * Generate the buttons for the user to click on to view the games stats for
      */
     public void generateGameButtons() {
-        AbstractGame gamesPlayed[] = new AbstractGame[numGames];
+
         gamesPlayed = season.getGames().toArray(gamesPlayed);
         //only show games if there are games to show
         if (numGames > 0) {
 
             //layout where all the playerButtons get placed
-            LinearLayout layout = findViewById(R.id.gameSelectButtons);
+            GridLayout layout = findViewById(R.id.gameSelectButtons);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
             //generate two playerButtons
@@ -62,7 +66,7 @@ public class SelectGame extends AppCompatActivity implements View.OnClickListene
                 button.setLayoutParams(params);
 
                 //get and set id(possibility of 20 players max)
-                int id = this.getResources().getIdentifier(("player" + (i + 1)), "id", this.getPackageName());
+                int id = i + 1;
                 button.setId(id);
                 //set text padding and text of the button
                 button.setPadding(20, 3, 20, 3);
@@ -91,7 +95,15 @@ public class SelectGame extends AppCompatActivity implements View.OnClickListene
      * @param view View that the user clicked
      */
     public void onClick(View view) {
-
+        int gameLocation = -1;
+        for (int i = 0; i < numGames; i++) {
+            if (games[i].getId() == view.getId()) {
+                gameLocation = i;
+            }
+        }
+        Intent intent = new Intent(this, ViewGame.class);
+        intent.putExtra("gameClass", gamesPlayed[gameLocation]);
+        startActivity(intent);
     }
 
 }
