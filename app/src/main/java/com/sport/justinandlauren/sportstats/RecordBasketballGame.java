@@ -20,7 +20,7 @@ import java.text.DecimalFormat;
 
 public class RecordBasketballGame extends AppCompatActivity implements View.OnClickListener {
     private final int numCourtPlayers = 5;
-    CountDownTimer gameTime;
+    private CountDownTimer gameTime;
     //new basketball game
     private BasketballGame game;
     //5 players on court at all times, therefore number of players on bench is total players subtract 5
