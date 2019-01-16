@@ -23,6 +23,8 @@ public class ViewGame extends AppCompatActivity implements View.OnClickListener 
         //get the game passed from the previous page, either the record game or the select game page
         AbstractGame tempGame = (AbstractGame) getIntent().getSerializableExtra("gameClass");
         game = (BasketballGame) tempGame;
+        //resort the players array
+        game.sortPlayers(0, game.getNumPlayers() - 1);
         setTitle("Game Stats for " + game.getDate());
         showGameStats();
         generatePlayerButtons();
@@ -61,7 +63,7 @@ public class ViewGame extends AppCompatActivity implements View.OnClickListener 
             LinearLayout layout = findViewById(R.id.btnLayout);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
-            //generate two playerButtons
+            //generate the player buttons
             for (int i = 0; i < numPlayers; i++) {
 
                 //make a new toggle button(either on or off)
