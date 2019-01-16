@@ -1,7 +1,6 @@
 package com.sport.justinandlauren.sportstats;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,8 +15,6 @@ public class enterPlayers extends AppCompatActivity {
     private EditText[] names;
     private EditText[] numbers;
     private AbstractHuman[] players;
-    //context used in alert builder dialog
-    private Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
