@@ -268,12 +268,12 @@ public class BasketballPlayer extends AbstractHuman{
 
     @Override
     public String toString() {
-        return "BasketballPlayer{" + "shotsAttempted=" + shotsAttempted + ", shotsMade=" + shotsMade +
-                ", shotsPercent=" + (getShotsPercent() * 100) + ", threePointsAttempted=" + threePointsAttempted +
-                ", threePointsMade=" + threePointsMade + ", threePointsPercent=" + (getThreePointsPercent() * 100) +
-                ", foulShotsAttempted=" + foulShotsAttempted + ", foulShotsMade=" + foulShotsMade +
-                ", foulShotPercent=" + (getFoulShotPercent() * 100) + ", totalPersonalFouls=" +
-                totalPersonalFouls + ", totalTechnicalFouls=" + totalTechnicalFouls + ", plusMinus=" + getPlusMinus() + '}';
+        return "Shots Attempted = " + shotsAttempted + "\nShots Made = " + shotsMade +
+                "\nShots Percent = " + (getShotsPercent() * 100) + "\nThree Points Attempted = " + threePointsAttempted +
+                "\nThree Points Made = " + threePointsMade + "\nThree Points Percent = " + (getThreePointsPercent() * 100) +
+                "\nFoul Shots Attempted = " + foulShotsAttempted + "\nFoul Shots Made = " + foulShotsMade +
+                "\nFoul Shot Percent = " + (getFoulShotPercent() * 100) + "\nTotal Personal Fouls = " +
+                totalPersonalFouls + "\nTotal Technical Fouls = " + totalTechnicalFouls + "\nPlus/Minus = " + getPlusMinus();
     }
 
     public String toString1() {
