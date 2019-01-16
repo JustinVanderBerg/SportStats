@@ -9,6 +9,7 @@
     <string name="StartGamePrompt">Done</string>
     <string name="benchLabel">Bench</string>
     <string name="onCourtLabel">Court</string>
+    <string name="creditsOutput">This app is presented to you by: \nJandL SportsStats Production Company</string>
 
 
     <string name="shotMadeLabel">Shot Made</string>
