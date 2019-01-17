@@ -36,4 +36,6 @@
     <string name="selectGame">Done</string>
     <string name="creditsLabel">Credits</string>
     <string name="title_activity_splash_screen">SplashScreen</string>
+    <string name="companyName">JandL SportsStats Production Company presents:</string>
+    <string name="logoDescription">Image of a basketball</string>
 </resources>
