@@ -3,14 +3,9 @@
  * December 19, 2018
  * Basketball class used to read all past games from the season. Extends AbstractSport class
  */
-//INSERT PACKAGE NAME HERE
 package com.sport.justinandlauren.sportstats;
 import java.util.ArrayList;
 
-/**
- *
- * @author justin
- */
 public class Basketball extends AbstractSport{
     
     /**

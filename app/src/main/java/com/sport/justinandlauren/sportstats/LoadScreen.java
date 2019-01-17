@@ -1,3 +1,9 @@
+/*
+ * Lauren Thomas and Justin VanderBerg
+ * January 17, 2019
+ * This is a class that allows the user to record a new game, view past game stats or view the
+ * credits for the app
+ */
 package com.sport.justinandlauren.sportstats;
 
 import android.app.AlertDialog;

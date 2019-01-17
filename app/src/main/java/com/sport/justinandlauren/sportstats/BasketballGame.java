@@ -1,15 +1,12 @@
-package com.sport.justinandlauren.sportstats;
-
-import java.text.DecimalFormat;
-import java.util.Arrays;
-
 /*
  * Lauren Thomas and Justin VanderBerg
  * December 19, 2018
  * Basketball game class which extends the AbstractGame class. Provides storage for all the data that
  * is collected during a basketball game
  */
+package com.sport.justinandlauren.sportstats;
 
+import java.text.DecimalFormat;
 
 public class BasketballGame extends AbstractGame {
 

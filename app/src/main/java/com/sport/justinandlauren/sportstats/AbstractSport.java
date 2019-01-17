@@ -3,7 +3,6 @@
  * December 19, 2018
  * Abstract class which stores all the info for a team for the season
  */
-//INSERT PACKAGE TITLE
 package com.sport.justinandlauren.sportstats;
 
 import android.util.Log;
@@ -16,9 +15,6 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-/**
- * @author justin
- */
 
 public abstract class AbstractSport implements Serializable {
 

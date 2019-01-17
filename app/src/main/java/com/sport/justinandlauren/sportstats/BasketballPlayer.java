@@ -5,8 +5,6 @@ basketball player class (extends AbstractHuman - ICS4U Final Project Overview
 
 package com.sport.justinandlauren.sportstats;
 
-import android.util.Log;
-
 import java.text.DecimalFormat;
 
 public class BasketballPlayer extends AbstractHuman{

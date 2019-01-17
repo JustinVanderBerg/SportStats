@@ -1,3 +1,12 @@
+/*
+ * Lauren Thomas and Justin VanderBerg
+ * January 17, 2019
+ * This is a class that shows the user all the data collected throughout a game. This form is called
+ * after the user finishes recording a game, and also from the select game form. If the user comes from
+ * record game, when they select the done button, the game is saved to the device, and they are returned
+ * to the main menu. If they select done but came from the select game form, they are returned to the
+ * main menu but the game is not re-saved to the season stats
+ */
 package com.sport.justinandlauren.sportstats;
 
 import android.content.Intent;

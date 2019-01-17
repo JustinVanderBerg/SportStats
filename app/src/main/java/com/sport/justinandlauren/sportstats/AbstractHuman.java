@@ -3,11 +3,6 @@ Dec 17, 2018
 abstract human class - ICS4U Final Project Overview
 */
 
-/**
- *
- * @author Lauren
- */
-
 package com.sport.justinandlauren.sportstats;
 
 import java.io.Serializable;

@@ -1,3 +1,9 @@
+/*
+ * Lauren Thomas and Justin VanderBerg
+ * January 17, 2019
+ * This is a class that handles the input of player names, numbers and minutes per quarter
+ * after the user selects record game
+ */
 package com.sport.justinandlauren.sportstats;
 
 import android.app.AlertDialog;

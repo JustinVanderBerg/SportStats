@@ -1,3 +1,9 @@
+/*
+ * Lauren Thomas and Justin VanderBerg
+ * January 17, 2019
+ * This class shows the splash/load screen of the app for 3 seconds, before showing the main menu and
+ * disposing of the splash screen so the user cannot access it, even with the android back button
+ */
 package com.sport.justinandlauren.sportstats;
 
 import android.content.Context;

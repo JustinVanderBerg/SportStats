@@ -1,19 +1,15 @@
 package com.sport.justinandlauren.sportstats;
-
-import java.io.Serializable;
-import java.util.Arrays;
-
 /*
  * Lauren Thomas and Justin VanderBerg
  * December 19, 2018
  * Abstract class which stores all the basic info that the app will collect on any sport game
  * This stores the number of players in the game, and an array of the players in the game
  */
+import java.io.Serializable;
+import java.util.Arrays;
 
 
-/**
- * @author justin
- */
+
 public abstract class AbstractGame implements Serializable {
     //once game is created, cannot change the number of players
     private int numPlayers;

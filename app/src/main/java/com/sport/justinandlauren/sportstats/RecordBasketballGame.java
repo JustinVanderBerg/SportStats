@@ -1,3 +1,12 @@
+/*
+ * Lauren Thomas and Justin VanderBerg
+ * January 17, 2019
+ * This is a class that handles the recording of the game. It responds to all the actions the user does
+ * on the record game form. It also generates the bench and player buttons dynamically, and handles
+ * the timing of the game. The user can substitute players from the bench and court, add values to the
+ * selected player on the court, and press the negative value to remove values from the player in case
+ * of a misclick or the values being off.
+ */
 package com.sport.justinandlauren.sportstats;
 
 import android.content.Intent;

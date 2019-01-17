@@ -1,3 +1,11 @@
+/*
+ * Lauren Thomas and Justin VanderBerg
+ * January 17, 2019
+ * This is a class that allows the user to select any game from the season, and view all its stats
+ * in full detail. The scroll view allows the user to be able to select a game, no matter how many games
+ * are stored in a season. It then passes the correct game to the view game form once a game is
+ * selected
+ */
 package com.sport.justinandlauren.sportstats;
 
 import android.content.Intent;
