@@ -24,6 +24,7 @@ public class SplashScreen extends AppCompatActivity {
             public void run() {
                 Intent intent = new Intent(context,LoadScreen.class);
                 startActivity(intent);
+                finish();
             }
 
         },3000);//number of milliseconds to show splash screen for
