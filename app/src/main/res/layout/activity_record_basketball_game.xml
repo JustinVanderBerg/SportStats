@@ -46,7 +46,7 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.998"
+        app:layout_constraintHorizontal_bias="0.728"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/benchPrompt"
         app:layout_constraintVertical_bias="0.0">
@@ -228,12 +228,13 @@
         android:id="@+id/btnEndGame"
         android:layout_width="100dp"
         android:layout_height="60dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:background="@android:color/darker_gray"
         android:onClick="endGame"
         android:text="@string/endGamePrompt"
-        app:layout_constraintBaseline_toBaselineOf="@+id/txtPlayerPM"
-        app:layout_constraintStart_toEndOf="@+id/txtPlayerPM"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:text="@string/endGamePrompt" />
 
     <TextView
