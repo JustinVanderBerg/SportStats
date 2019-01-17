@@ -5,6 +5,10 @@ basketball player class (extends AbstractHuman - ICS4U Final Project Overview
 
 package com.sport.justinandlauren.sportstats;
 
+import android.util.Log;
+
+import java.text.DecimalFormat;
+
 public class BasketballPlayer extends AbstractHuman{
     //declare variables
     //protected instance variables
@@ -16,7 +20,7 @@ public class BasketballPlayer extends AbstractHuman{
     private int foulShotsMade;
     private int totalPersonalFouls;
     private int totalTechnicalFouls;
-
+    private DecimalFormat df = new DecimalFormat("#,#00.0%");
     /**
      * Primary Constructor
      */
@@ -83,10 +87,10 @@ public class BasketballPlayer extends AbstractHuman{
         //avoid divide by 0 error by setting total shots attempted to 1 if it is 0
         if(shotsAttempted == 0 && shotsMade == 0) {
             shotsAttempted = 1;
-            shotPercent = shotsMade / (shotsAttempted + shotsMade);
+            shotPercent = (double)shotsMade / (shotsAttempted + shotsMade);
             shotsAttempted = 0;
         } else {
-            shotPercent = shotsMade / (shotsAttempted + shotsMade);
+            shotPercent = (double)shotsMade / (shotsAttempted + shotsMade);
         }
         return shotPercent;
     }
@@ -142,10 +146,10 @@ public class BasketballPlayer extends AbstractHuman{
         //avoid divide by 0 error by setting total shots attempted to 1 if it is 0
         if(threePointsAttempted == 0 && threePointsMade == 0) {
             threePointsAttempted = 1;
-            shotPercent = threePointsMade/(threePointsAttempted+threePointsMade);
+            shotPercent = (double)threePointsMade/(threePointsAttempted+threePointsMade);
             threePointsAttempted = 0;
         } else {
-            shotPercent = threePointsMade/(threePointsAttempted+threePointsMade);
+            shotPercent = (double)threePointsMade/(threePointsAttempted+threePointsMade);
         }
         return shotPercent;
     }
@@ -201,10 +205,10 @@ public class BasketballPlayer extends AbstractHuman{
         //avoid divide by 0 error by setting total shots attempted to 1 if it is 0
         if(foulShotsAttempted == 0 && foulShotsMade == 0) {
             foulShotsAttempted = 1;
-            shotPercent = foulShotsMade/(foulShotsAttempted + foulShotsMade);
+            shotPercent = (double)foulShotsMade/(foulShotsAttempted + foulShotsMade);
             foulShotsAttempted = 0;
         } else {
-            shotPercent = foulShotsMade/(foulShotsAttempted + foulShotsMade);
+            shotPercent = (double)foulShotsMade/(foulShotsAttempted + foulShotsMade);
         }
         return shotPercent;
     }
@@ -271,10 +275,10 @@ public class BasketballPlayer extends AbstractHuman{
     @Override
     public String toString() {
         return "Shots Attempted = " + shotsAttempted + "\nShots Made = " + shotsMade +
-                "\nShots Percent = " + (getShotsPercent() * 100) + "\nThree Points Attempted = " + threePointsAttempted +
-                "\nThree Points Made = " + threePointsMade + "\nThree Points Percent = " + (getThreePointsPercent() * 100) +
+                "\nShots Percent = " + df.format(getShotsPercent()) + "\nThree Points Attempted = " + threePointsAttempted +
+                "\nThree Points Made = " + threePointsMade + "\nThree Points Percent = " + df.format(getThreePointsPercent()) +
                 "\nFoul Shots Attempted = " + foulShotsAttempted + "\nFoul Shots Made = " + foulShotsMade +
-                "\nFoul Shot Percent = " + (getFoulShotPercent() * 100) + "\nTotal Personal Fouls = " +
+                "\nFoul Shot Percent = " + df.format(getFoulShotPercent()) + "\nTotal Personal Fouls = " +
                 totalPersonalFouls + "\nTotal Technical Fouls = " + totalTechnicalFouls + "\nPlus/Minus = " + getPlusMinus();
     }
 
@@ -289,7 +293,7 @@ public class BasketballPlayer extends AbstractHuman{
     }
 
     public String toString3() {
-        return "Total Technical Fouls = " + totalTechnicalFouls + "\nShots Percent = " + (getShotsPercent() * 100) + "\nThree Points Percent = " +
-                (getThreePointsPercent() * 100) + "\nFoul Shot Percent = " + (getFoulShotPercent() * 100);
+        return "Total Technical Fouls = " + totalTechnicalFouls + "\nShots Percent = " + df.format(getShotsPercent()) + "\nThree Points Percent = " +
+                df.format(getThreePointsPercent()) + "\nFoul Shot Percent = " + df.format(getFoulShotPercent());
     }
 }
