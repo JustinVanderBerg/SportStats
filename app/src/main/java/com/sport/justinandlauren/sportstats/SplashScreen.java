@@ -26,7 +26,7 @@ public class SplashScreen extends AppCompatActivity {
                 startActivity(intent);
             }
 
-        },3000);//number of seconds to show splash screen for
+        },3000);//number of milliseconds to show splash screen for
     }
 
 }
