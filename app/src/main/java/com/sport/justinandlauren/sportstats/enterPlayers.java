@@ -41,7 +41,6 @@ public class enterPlayers extends AppCompatActivity {
             tempEditText.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT));
             //set the prompt for the text field
             tempEditText.setHint("INITIAL. LastName");
-            tempEditText.setText("Player name");
             playerNames.addView(tempEditText);
             names[i] = tempEditText;
         }
@@ -53,7 +52,6 @@ public class enterPlayers extends AppCompatActivity {
             tempEditText.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT));
             //set the prompt for the text field
             tempEditText.setHint("Player number");
-            tempEditText.setText((mainGame.getNumPlayers() - i) + "");
             playerNumbers.addView(tempEditText);
             numbers[i] = tempEditText;
         }

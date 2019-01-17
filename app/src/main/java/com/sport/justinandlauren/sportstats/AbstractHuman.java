@@ -18,7 +18,7 @@ public abstract class AbstractHuman implements Serializable {
     protected String name;
     protected int playerNumber;
     protected long secondsPlayed;
-    
+    private static final long serialVersionUID = 3L;
     
     /**
      * Primary constructor

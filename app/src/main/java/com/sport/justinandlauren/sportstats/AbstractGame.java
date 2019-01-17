@@ -21,7 +21,7 @@ public abstract class AbstractGame implements Serializable {
     private long gameLength;
     private boolean keepBenchSorted;
     private String date;
-
+    private static final long serialVersionUID = 2L;
     /**
      * Primary Constructor
      *
